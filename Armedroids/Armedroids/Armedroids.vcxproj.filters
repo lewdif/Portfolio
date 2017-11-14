@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{d53ec1ce-4b92-4eca-8976-536a4ab7b0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SceneManager">
+      <UniqueIdentifier>{7a0bf03e-7dd7-48c0-9bed-969f1436c659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{6cec3452-9cda-4b43-b60d-3b831b29854a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Interface">
+      <UniqueIdentifier>{396a1539-6b4a-422f-83de-c175a95ab215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\iniFileLoader">
+      <UniqueIdentifier>{19b6b7cd-9bcc-45c9-a1b6-cd77fc9914e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\DeviceManager">
+      <UniqueIdentifier>{63dfe63e-17c9-4340-8543-e1922b02d777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\MeshManager">
+      <UniqueIdentifier>{dc2c4067-c5e8-4761-b947-cb3292d32d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\TimeManager">
+      <UniqueIdentifier>{2fc5747d-d34c-4ec3-a545-b9ca8f75b6a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\InGame">
+      <UniqueIdentifier>{77460cc3-52e8-438b-b97e-e2de3af83d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{93da7bee-8909-41df-bb0f-757a9d89907f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components">
+      <UniqueIdentifier>{7018d791-66e6-4c31-b551-09987b00c32d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Charecter">
+      <UniqueIdentifier>{4c7f73a3-07bd-41a6-a1c7-2bd48f544978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Charecter\Lucy">
+      <UniqueIdentifier>{648eb8d8-7187-4d90-98a8-d5ef7212fc88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Camera">
+      <UniqueIdentifier>{c239d550-9967-4b70-a8ad-b4dc39f5b88b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\SkinnedMesh">
+      <UniqueIdentifier>{6765ca18-11f9-4dbf-8806-102c28ed3fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Transform">
+      <UniqueIdentifier>{c4752a94-86d4-411a-ad70-a1b6818fba29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\RigidBody">
+      <UniqueIdentifier>{77069127-1cd2-4c5f-8796-2f0c742ce111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Skybox">
+      <UniqueIdentifier>{884fcb52-5d4f-4ee4-8c7a-ee0f006aeb1c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Camera.cpp">
+      <Filter>GameObject\Components\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Managers\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Lucy.cpp">
+      <Filter>GameObject\Components\Charecter\Lucy</Filter>
+    </ClCompile>
+    <ClCompile Include="iniFileLoaderBase.cpp">
+      <Filter>Managers\iniFileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceManager.cpp">
+      <Filter>Managers\DeviceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshManager.cpp">
+      <Filter>Managers\MeshManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BoneHierarchyLoader.cpp">
+      <Filter>GameObject\Components\SkinnedMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="SkinnedMesh.cpp">
+      <Filter>GameObject\Components\SkinnedMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Managers\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="InGame.cpp">
+      <Filter>Scene\InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="LucyState.cpp">
+      <Filter>GameObject\Components\Charecter\Lucy</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>GameObject\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform3D.cpp">
+      <Filter>GameObject\Components\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>GameObject\Components\Skybox</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h">
+      <Filter>GameObject\Components\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="headers.h" />
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Managers\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ISingleton.h">
+      <Filter>Managers\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Lucy.h">
+      <Filter>GameObject\Components\Charecter\Lucy</Filter>
+    </ClInclude>
+    <ClInclude Include="iniFileLoaderBase.h">
+      <Filter>Managers\iniFileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceManager.h">
+      <Filter>Managers\DeviceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshManager.h">
+      <Filter>Managers\MeshManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BoneHierarchyLoader.h">
+      <Filter>GameObject\Components\SkinnedMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="SkinnedMesh.h">
+      <Filter>GameObject\Components\SkinnedMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>GameObject\Components\Charecter</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Managers\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="InGame.h">
+      <Filter>Scene\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>GameObject\Components\Charecter</Filter>
+    </ClInclude>
+    <ClInclude Include="LucyState.h">
+      <Filter>GameObject\Components\Charecter\Lucy</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>GameObject\Components\Charecter</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>GameObject\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform3D.h">
+      <Filter>GameObject\Components\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>GameObject\Components\Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
