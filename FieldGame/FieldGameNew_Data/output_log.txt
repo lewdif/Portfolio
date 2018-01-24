@@ -1,0 +1,87 @@
+Initialize engine version: 5.5.4f1 (8ffd0efd98b1)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce 940MX (ID=0x134d)
+    Vendor:   NVIDIA
+    VRAM:     2020 MB
+    Driver:   20.19.15.4454
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.026 seconds
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\UnityScript.Lang.dll (this message is harmless)
+Platform assembly: C:\Users\june7\Desktop\FieldGame\FieldGameNew_Data\Managed\Boo.Lang.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 7.683117 ms
+[Singleton] An instance of RestClient is needed in the scene, so '(singleton) RestClient (UnityEngine.GameObject)' was created with DontDestroyOnLoad.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 29a8 -> priority: 1 
+Lewdif
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+ljy
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Request: url = http://localhost:8080/login.php
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Request: input {userid => Lewdif}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Request: input {password => ljy}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Response: {"RESULT":"EMPTY_ACCOUNT"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Lewdif
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+lee
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Request: url = http://localhost:8080/login.php
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Request: input {userid => Lewdif}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Request: input {password => lee}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+REST Response: {"RESULT":"EMPTY_ACCOUNT"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
