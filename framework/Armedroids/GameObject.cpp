@@ -3,6 +3,7 @@
 #include "SkinnedMesh.h"
 #include "Transform3D.h"
 #include "Script.h"
+#include "RigidBody.h"
 
 namespace CompEngine
 {
@@ -235,12 +236,16 @@ namespace CompEngine
 
 	void GameObject::Update()
 	{
-		auto skinnedMesh = this->GetComponent("SkinnedMesh");
+		auto rigidBody = this->GetComponent("RigidBody");
+		if (rigidBody != nullptr)
+		{
+			((RigidBody*)rigidBody)->UpdateTransform();
+		}
 
+		auto skinnedMesh = this->GetComponent("SkinnedMesh");
 		if (skinnedMesh != nullptr)
 		{
 			((SkinnedMesh*)skinnedMesh)->UpdateAnimation();
-			//cout << this->GetName() << " is being updated" << endl;
 		}
 
 		for each(auto obj in componentList)
@@ -250,10 +255,10 @@ namespace CompEngine
 				((Script*)obj.second)->Update();
 			}
 			//cout << obj.second->GetComponentName() << endl;
-			/*
-			else if (obj.first == "RigidBody")
-			((RigidBody*)obj.second)->UpdateTransform();
-			*/
+			
+			/*else if (obj.first == "RigidBody")
+			((RigidBody*)obj.second)->UpdateTransform();*/
+			
 		}
 		// if any component is added, should add update function of that component too
 	}
@@ -286,5 +291,15 @@ namespace CompEngine
 		}
 		// for now, there is only skinnedmesh to render.
 		// if any component is added, should add rendering function of that component
+	}
+	
+	void GameObject::DebugOut()
+	{
+		cout << "------ Components in " << this->GetName() << " : Open -------" << endl;
+		for (const auto& kv : componentList)
+		{
+			cout << kv.first << ", " << kv.second->GetComponentName() << endl;
+		}
+		cout << "------ Components in " << this->GetName() << " : Close ------" << endl;
 	}
 }

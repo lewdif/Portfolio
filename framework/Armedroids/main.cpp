@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "Skybox.h"
 #include "Script.h"
+#include "RigidBody.h"
 
 #include "GameCharecter.h"
 #include "FirstTestCam.h"
@@ -92,9 +93,14 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		GameObject* Lucy;
 		Transform3D* lucyTrans3D;
 		SkinnedMesh* lucyMesh;
+		RigidBody* lucyRigidBody;
 
 		testScene = new Scene;
-
+		testScene->SetName("testScene");
+		SceneMgr->AddScene("testScene", testScene);
+		SceneMgr->SetCurrentScene(testScene->GetName());
+		SceneMgr->CurrentScene()->createEmptyDynamicsWorld_Debug();
+		SceneMgr->CurrentScene()->SetGravity(Vec3(0, 0, 0));
 
 		// ---- MAIN CAMERA ------------------------------
 		/*Vec3 mainCamUpVec(0.0f, 1.0f, 0.0f);
@@ -125,17 +131,25 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		Lucy = new GameObject;
 		lucyTrans3D = new Transform3D;
 		lucyMesh = new SkinnedMesh;
+		lucyRigidBody = new RigidBody;
 		testScrpt = new GameCharecter;
 
+		btBoxShape* lucyShape = new btBoxShape(btVector3(150, 150, 150));
+		cout << "Lucy scale : (" << lucyTrans3D->GetScale().x << ", " << lucyTrans3D->GetScale().y << ", " << lucyTrans3D->GetScale().z << ")" << endl;
 		lucyMesh->Load(".\\Resources\\Lucy.x");
 		lucyMesh->SetAnimation("Idle");
 		lucyTrans3D->SetPosition(0, 0, 0);
 		//lucyTrans3D->SetScale(0.01f, 0.01f, 0.01f);
+		cout << lucyTrans3D->GetComponentName() << endl;
 
+		Lucy->SetName("Main Charecter");
 		Lucy->AddComponent(dynamic_cast<Component*>(lucyMesh));
 		Lucy->AddComponent(dynamic_cast<Component*>(lucyTrans3D));
+		Lucy->AddComponent(dynamic_cast<Component*>(lucyRigidBody));
 		Lucy->AddComponent(dynamic_cast<Component*>(testScrpt));
 		dynamic_cast<Script*>(testScrpt)->SetInfo(Lucy, "test01");
+
+		lucyRigidBody->SetRigidBody(Lucy, 1.0, lucyShape);
 
 		//camComp->SetTargetPosition(lucyTrans3D->GetPosition());
 		// -----------------------------------------------
@@ -148,7 +162,6 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 		testScene->SetSkybox(".\\Resources\\Skybox", "skySamp01", "png");
 
-		SceneMgr->AddScene("testScene", testScene);
 		SceneMgr->StartScene("testScene");
 		/// ----------------------------------------------- ///
 	}

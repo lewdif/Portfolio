@@ -38,6 +38,8 @@ namespace CompEngine
 		updateMatrices((Bone *)rootBone, nullptr);
 		setupBoneMatrixPointers(nullptr);
 		GetAnimationSets();
+
+		cout << "Mesh is loaded : " + fileName << endl;
 	}
 
 	void SkinnedMesh::softwareRender(Bone* bone, GameObject* object)

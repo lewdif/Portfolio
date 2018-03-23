@@ -1,5 +1,6 @@
 #include "Skybox.h"
-#include"DeviceManager.h"
+#include "DeviceManager.h"
+#include "SceneManager.h"
 #include "Transform3D.h"
 #include "Vertex.h"
 
@@ -134,10 +135,12 @@ namespace CompEngine
 
 		isInit = true;
 
+		cout << "Skybox is successfully set." << endl;
+
 		return isInit;
 	}
 
-	void Skybox::Render(GameObject* cameraObject)
+	void Skybox::Render(/*GameObject* cameraaObject*/)
 	{
 		if (isInit)
 		{
@@ -161,7 +164,9 @@ namespace CompEngine
 				DeviceMgr->GetDevice()->SetRenderState(D3DRS_LIGHTING, FALSE);			//조명 끄기
 
 				//스카이 박스 이동.
+				GameObject* cameraObject = SceneMgr->CurrentScene()->GetCurrentCamera();
 				D3DXVECTOR3 vPos = ((Transform3D*)cameraObject->GetComponent("Transform3D"))->GetPosition();
+
 				//cout << "vPos : " << vPos.x << ", " << vPos.y << ", " << vPos.z << endl;
 				//cout << cameraObject->GetName() << endl;
 

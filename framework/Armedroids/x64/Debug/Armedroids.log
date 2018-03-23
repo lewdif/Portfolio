@@ -1,3 +1,98 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Armedroids.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Armedroids.vcxproj -> C:\Users\june7\Desktop\171228\framework\x64\Debug\CompEngine.exe
-  Armedroids.vcxproj -> C:\Users\june7\Desktop\171228\framework\x64\Debug\CompEngine.pdb (Full PDB)
+  Vertex.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Transform3D.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Skybox.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  SkinnedMesh.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\skinnedmesh.cpp(81): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Script.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  SceneManager.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Scene.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\scene.cpp(133): warning C4244: '인수': 'double'에서 'btScalar'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  InputManager.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\inputmanager.cpp(47): warning C4244: '인수': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameObject.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  GameCharecter.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\gamecharecter.cpp(45): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\gamecharecter.cpp(68): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\gamecharecter.cpp(92): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\gamecharecter.cpp(109): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Component.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Camera.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\camera.cpp(64): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\camera.cpp(66): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\camera.cpp(93): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\camera.cpp(95): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\camera.cpp(124): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\camera.cpp(126): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  DebugDraw.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\debugdraw.cpp(23): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Bt3dCollision.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  BoneHierarchyLoader.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\bonehierarchyloader.cpp(77): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  코드를 생성하고 있습니다...
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\gameobject.cpp(143): warning C4715: 'CompEngine::GameObject::FindChildByTag': 모든 제어 경로에서 값을 반환하지는 않습니다.
+d:\lewdif\github\3dbot\portfolio\framework\armedroids\scene.cpp(251): warning C4715: 'CompEngine::Scene::GetCurrentCamera': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  FirstTestCam.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  DeviceManager.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  RigidBody.cpp
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  코드를 생성하고 있습니다...
+  Armedroids.vcxproj -> D:\Lewdif\Github\3dbot\Portfolio\framework\x64\Debug\CompEngine.exe
+  Armedroids.vcxproj -> D:\Lewdif\Github\3dbot\Portfolio\framework\x64\Debug\CompEngine.pdb (Full PDB)

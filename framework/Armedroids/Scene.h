@@ -8,6 +8,38 @@ namespace CompEngine
 {
 	class Scene
 	{
+	private:
+		string name;
+		list<GameObject*> objectList;
+		list<GameObject*> staticObjectList;
+
+		Skybox skybox;
+
+		double accumulator;
+
+		int cameraIndex;
+
+		bool isRunning;
+
+		//btDynamicsWorld* physicsWorld;
+		//PhysicsEventListener physicsEventListner; // maybe add this for any events
+		bool enablePhysics;
+		btDiscreteDynamicsWorld* m_dynamicsWorld;
+		btBroadphaseInterface*	m_broadphase;
+		btCollisionDispatcher*	m_dispatcher;
+		btConstraintSolver*	m_solver;
+		btDefaultCollisionConfiguration* m_collisionConfiguration;
+
+	private :
+		void createEmptyDynamicsWorld();
+
+	public:
+		// function for building test;
+		void createEmptyDynamicsWorld_Debug()
+		{
+			createEmptyDynamicsWorld();
+		}
+
 	public:
 		explicit Scene();
 		~Scene();
@@ -19,8 +51,10 @@ namespace CompEngine
 		void Render();
 		void LateUpdate();
 		//void LateRender();
+		void PhysicsUpdate(double deltaTime);
 
 		void Destroy(GameObject* gameObject);
+
 
 		void AddComponent(GameObject* object, string name);
 		//void AddComponents(GameObject** objects, int size);
@@ -34,19 +68,20 @@ namespace CompEngine
 		int GetCameraIndex();
 
 		void SetName(std::string name);
-		std::string GetName();
+		string GetName();
+
+		GameObject* FindObjectByTag(string tag);
+		GameObject* FindObjectByName(string name);
 
 		GameObject* GetCurrentCamera();
 
-	private:
-		string name;
-		list<GameObject*> objectList;
-		list<GameObject*> staticObjectList;
+	// methods for physics
+	public:
+		void EnablePhysics(bool enable);
+		bool IsEnablePhysics();
 
-		Skybox skybox;
-
-		int cameraIndex;
-
-		bool isRunning;
+		// Normal way gravity is vec3(0. -10, 0)
+		void SetGravity(Vec3 vec3);
+		btDiscreteDynamicsWorld* GetDiscreteDynamicsWorld();
 	};
 }

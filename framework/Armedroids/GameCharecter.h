@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "SkinnedMesh.h"
 #include "SceneManager.h"
+#include "RigidBody.h"
 
 namespace CompEngine
 {
@@ -12,6 +13,7 @@ namespace CompEngine
 	private:
 		Transform3D* trans;
 		SkinnedMesh* skinnedMesh;
+		RigidBody* rigidBody;
 
 	public:
 		virtual void Init();

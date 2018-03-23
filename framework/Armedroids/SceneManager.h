@@ -14,7 +14,7 @@ namespace CompEngine
 		virtual void ReleaseMembers() {}
 
 	public:
-		void SetScene(string sceneName);
+		void SetCurrentScene(string sceneName);
 		void AddScene(string sceneName, Scene* scene);
 		Scene* CurrentScene();
 		void StartScene(string sceneName);

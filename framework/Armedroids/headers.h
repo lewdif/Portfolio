@@ -24,6 +24,7 @@ using namespace std;
 
 // Bullet Physics
 #include <btBulletDynamicsCommon.h>
+#include <btBulletCollisionCommon.h>
 
 //static double deltaTime;
 
@@ -44,4 +45,7 @@ using namespace std;
 #define SceneMgr SceneManager::GetInstance()
 #define InputMgr InputManager::GetInstance()
 
-#define GetTransform3D(Object) ((Transform3D*)Object->transform3D)
+#define GET_TRANSFORM_3D(Object) ((Transform3D*)Object->transform3D)
+//#define GET_COLLISION(Object)    ((CompEngine::Collision*)Object->GetComponent("Collision"))
+//#define GET_RIGIDBODY(Object)    ((RigidBody*)Object->GetComponent("RigidBody"))
+//#define GET_SKINNED_MESH(Object) ((SkinnedMesh*)Object->GetComponent("SkinnedMesh"))

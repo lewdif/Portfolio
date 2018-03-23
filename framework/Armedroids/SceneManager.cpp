@@ -20,7 +20,7 @@ namespace CompEngine
 		backColor.b = 45.0f / 255.0f;
 	}
 
-	void SceneManager::SetScene(string sceneName)
+	void SceneManager::SetCurrentScene(string sceneName)
 	{
 		curScene = sceneName;
 	}
@@ -93,6 +93,7 @@ namespace CompEngine
 					if (SceneContainer[sceneName]->GetSceneFlag())
 					{
 						SceneContainer[sceneName]->Update();
+						SceneContainer[sceneName]->PhysicsUpdate(deltaTime);
 						SceneContainer[sceneName]->LateUpdate();
 						SceneContainer[sceneName]->Render();
 					}

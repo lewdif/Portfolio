@@ -6,9 +6,9 @@ namespace CompEngine
 	{
 	}
 
-	void Component::SetComponentName(std::string typeName)
+	void Component::SetComponentName(std::string ComponentName)
 	{
-		this->componentName = typeName;
+		this->componentName = ComponentName;
 	}
 
 	string Component::GetComponentName()

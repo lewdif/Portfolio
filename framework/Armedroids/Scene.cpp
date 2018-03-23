@@ -4,12 +4,15 @@
 #include "DeviceManager.h"
 #include "SceneManager.h"
 #include "Transform3D.h"
+#include "RigidBody.h"
 
 namespace CompEngine
 {
 	Scene::Scene()
-		:name(""), isRunning(false)
+		:name(""), isRunning(false), m_broadphase(0), m_dispatcher(0),
+		m_solver(0), m_collisionConfiguration(0), enablePhysics(true)
 	{
+		m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
 	}
 
 	Scene::~Scene()
@@ -30,15 +33,43 @@ namespace CompEngine
 		}
 	}
 
+	void  Scene::createEmptyDynamicsWorld()
+	{
+		///collision configuration contains default setup for memory, collision setup
+		m_collisionConfiguration = new btDefaultCollisionConfiguration();
+		//m_collisionConfiguration->setConvexConvexMultipointIterations();
+
+		///use the default collision dispatcher. For parallel processing you can use a diffent dispatcher (see Extras/BulletMultiThreaded)
+		m_dispatcher = new	btCollisionDispatcher(m_collisionConfiguration);
+
+		m_broadphase = new btDbvtBroadphase();
+
+		///the default constraint solver. For parallel processing you can use a different solver (see Extras/BulletMultiThreaded)
+		btSequentialImpulseConstraintSolver* sol = new btSequentialImpulseConstraintSolver;
+		m_solver = sol;
+
+		m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
+
+		m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
+
+		cout << "Dynamics world is successfully created." << endl;
+	}
+
 	bool Scene::InitializeMembers()
 	{
+		//createEmptyDynamicsWorld();
+
+		cout << "Objects in current scene" << endl << "{" << endl;
 		for each(auto obj in objectList)
 		{
-			obj->Init();
+			//obj->Init();
+			cout << "    " << obj->GetName() << endl;
 		}
+		cout << "}" << endl;
 
 		isRunning = true;
 
+		cout << "Scene members are successfully initialized." << endl;
 		return isRunning;
 	}
 
@@ -55,7 +86,7 @@ namespace CompEngine
 
 	void Scene::Update()
 	{
-		skybox.Render(GetCurrentCamera());
+		skybox.Render(/*GetCurrentCamera()*/);
 
 		for each(auto obj in objectList)
 		{
@@ -71,6 +102,18 @@ namespace CompEngine
 		}
 	}
 
+	void Scene::Render()
+	{
+		for each(auto obj in objectList)
+		{
+			if (obj->GetIsActive())
+			{
+				obj->Render();
+				//cout << obj->GetName() << " is rendered" << endl;
+			}
+		}
+	}
+
 	void Scene::LateUpdate()
 	{
 		for each(auto obj in objectList)
@@ -81,18 +124,14 @@ namespace CompEngine
 				//cout << obj->GetName() << " is updated(late)" << endl;
 			}
 		}
-
 	}
 
-	void Scene::Render()
+	void Scene::PhysicsUpdate(double deltaTime)
 	{
-		for each(auto obj in objectList)
+		if (enablePhysics)
 		{
-			if (obj->GetIsActive())
-			{
-				obj->Render();
-				//cout << obj->GetName() << " is rendered" << endl;
-			}
+			m_dynamicsWorld->stepSimulation(deltaTime);
+			//cout << "physics running" << endl;
 		}
 	}
 
@@ -108,6 +147,16 @@ namespace CompEngine
 		}
 
 		delete gameObject;
+	}
+
+	void Scene::EnablePhysics(bool enable)
+	{
+		enablePhysics = enable;
+	}
+
+	bool Scene::IsEnablePhysics()
+	{
+		return enablePhysics;
 	}
 
 	void Scene::AddComponent(GameObject* object, std::string name)
@@ -153,6 +202,33 @@ namespace CompEngine
 		return name;
 	}
 
+	GameObject* Scene::FindObjectByTag(string tag)
+	{
+
+		for (auto Iter = objectList.begin(); Iter != objectList.end(); Iter++)
+			if (tag == (*Iter)->GetTag())
+				return (*Iter);
+
+		for (auto Iter = staticObjectList.begin(); Iter != staticObjectList.end(); Iter++)
+			if (tag == (*Iter)->GetTag())
+				return (*Iter);
+
+		return nullptr;
+	}
+
+	GameObject* Scene::FindObjectByName(string name)
+	{
+		for (auto Iter = objectList.begin(); Iter != objectList.end(); Iter++)
+			if (name == (*Iter)->GetName())
+				return (*Iter);
+
+		for (auto Iter = staticObjectList.begin(); Iter != staticObjectList.end(); Iter++)
+			if (name == (*Iter)->GetName())
+				return (*Iter);
+
+		return nullptr;
+	}
+
 	GameObject* Scene::GetCurrentCamera()
 	{
 		for each(auto obj in objectList)
@@ -172,5 +248,15 @@ namespace CompEngine
 				cout << "CAMERA NOT FOUND" << endl;
 			}
 		}
+	}
+
+	void Scene::SetGravity(Vec3 vec3)
+	{
+		m_dynamicsWorld->setGravity(btVector3(vec3.x, vec3.y, vec3.z));
+	}
+
+	btDiscreteDynamicsWorld* Scene::GetDiscreteDynamicsWorld()
+	{
+		return m_dynamicsWorld;
 	}
 }

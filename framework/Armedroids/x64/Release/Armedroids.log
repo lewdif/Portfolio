@@ -1,0 +1,38 @@
+﻿  BoneHierarchyLoader.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Bt3dCollision.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Bt3dRigidBody.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Camera.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Component.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  DeviceManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  FirstTestCam.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  GameCharecter.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  GameObject.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  InputManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  main.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  MeshManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Scene.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  SceneManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Script.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  SkinnedMesh.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Skybox.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Transform3D.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+  Vertex.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory

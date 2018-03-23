@@ -63,5 +63,7 @@ namespace CompEngine
 
 		void Render();
 		// [NEED TO CONSIDER] do i need to added 2d rendering function for UI components?
+
+		void DebugOut();
 	};
 }

@@ -108,9 +108,13 @@ namespace CompEngine
 
 			Vec3 Position(0, 0, 0);
 
-			Position = Tr->GetPosition();
+			if (Tr != nullptr)
+				Position = Tr->GetPosition();
+			else
+				cout << "Camera - Don't Exist Transform3D Component." << endl;
 
-			D3DXVec3Normalize(&viewVector, &(tagert - Tr->GetPosition()));//->GetWorldPositon()));
+
+			D3DXVec3Normalize(&viewVector, &(tagert - Tr->GetPosition()));
 			D3DXVec3Cross(&crossVector, &cameraUp, &viewVector);
 
 			D3DXMatrixLookAtLH(&viewMatrix, &Position, &tagert, &cameraUp);

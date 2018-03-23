@@ -1,3 +1,40 @@
-﻿  main.cpp
-  Armedroids.vcxproj -> C:\Users\june7\documents\visual studio 2015\Projects\Armedroids\Debug\Armedroids.exe
-  Armedroids.vcxproj -> C:\Users\june7\documents\visual studio 2015\Projects\Armedroids\Debug\Armedroids.pdb (Full PDB)
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Armedroids.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Vertex.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Transform3D.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Skybox.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  SkinnedMesh.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Script.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  SceneManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Scene.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  MeshManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  main.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  InputManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  GameObject.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  GameCharecter.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  FirstTestCam.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  DeviceManager.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Component.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Camera.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Bt3dRigidBody.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  Bt3dCollision.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  BoneHierarchyLoader.cpp
+c:\users\june7\desktop\171228\framework\armedroids\headers.h(26): fatal error C1083: 포함 파일을 열 수 없습니다. 'btBulletDynamicsCommon.h': No such file or directory
+  코드를 생성하고 있습니다...
