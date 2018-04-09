@@ -5,11 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CompEngine", "Armedroids\Armedroids.vcxproj", "{9659A864-C4DD-41AA-93AC-AD96475D20E3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletCollision", "C:\bullet\src\BulletCollision\BulletCollision.vcxproj", "{FB40785D-77F8-332F-BBD2-BADE07D71267}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletCollision", "..\..\..\..\..\bullet\src\BulletCollision\BulletCollision.vcxproj", "{FB40785D-77F8-332F-BBD2-BADE07D71267}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletDynamics", "C:\bullet\src\BulletDynamics\BulletDynamics.vcxproj", "{DF59F0F0-1301-3DC1-AD3C-3B757D0BA8CC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletDynamics", "..\..\..\..\..\bullet\src\BulletDynamics\BulletDynamics.vcxproj", "{DF59F0F0-1301-3DC1-AD3C-3B757D0BA8CC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinearMath", "C:\bullet\src\LinearMath\LinearMath.vcxproj", "{19CF548F-9BC4-3147-92B1-91C64027A775}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinearMath", "..\..\..\..\..\bullet\src\LinearMath\LinearMath.vcxproj", "{19CF548F-9BC4-3147-92B1-91C64027A775}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

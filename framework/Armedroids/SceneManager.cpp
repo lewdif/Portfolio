@@ -53,6 +53,9 @@ namespace CompEngine
 
 	void SceneManager::StartScene(string sceneName)
 	{
+		// 디버깅용 와이어프레임 모드
+		//DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+
 		curScene = sceneName;
 		double lastTime = (double)timeGetTime();
 

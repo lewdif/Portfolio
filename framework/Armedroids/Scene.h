@@ -34,7 +34,7 @@ namespace CompEngine
 		void createEmptyDynamicsWorld();
 
 	public:
-		// function for building test;
+		// Function for building test.
 		void createEmptyDynamicsWorld_Debug()
 		{
 			createEmptyDynamicsWorld();
@@ -57,7 +57,7 @@ namespace CompEngine
 
 
 		void AddComponent(GameObject* object, string name);
-		//void AddComponents(GameObject** objects, int size);
+		// think about : AddComponents( ... );
 
 		void SetSkybox(string path, string name, string type);
 
@@ -75,7 +75,7 @@ namespace CompEngine
 
 		GameObject* GetCurrentCamera();
 
-	// methods for physics
+	// Methods for physics
 	public:
 		void EnablePhysics(bool enable);
 		bool IsEnablePhysics();

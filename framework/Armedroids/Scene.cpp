@@ -57,8 +57,6 @@ namespace CompEngine
 
 	bool Scene::InitializeMembers()
 	{
-		//createEmptyDynamicsWorld();
-
 		cout << "Objects in current scene" << endl << "{" << endl;
 		for each(auto obj in objectList)
 		{
@@ -75,9 +73,6 @@ namespace CompEngine
 
 	void Scene::Reference()
 	{
-		/*for (auto Iter = objectList.begin(); Iter != objectList.end(); Iter++)
-			(*Iter)->Reference();
-			*/
 		for each(auto obj in objectList)
 		{
 			obj->Reference();
@@ -86,18 +81,13 @@ namespace CompEngine
 
 	void Scene::Update()
 	{
-		skybox.Render(/*GetCurrentCamera()*/);
+		skybox.Render();
 
 		for each(auto obj in objectList)
 		{
 			if (obj->GetIsActive())
 			{
 				obj->Update();
-				//cout << obj->GetName() << " is updated" << endl;
-				/*cout << obj->GetName() << " pos : " 
-					<< ((Transform3D*)obj->GetComponent("Transform3D"))->GetPosition().x << ", "
-					<< ((Transform3D*)obj->GetComponent("Transform3D"))->GetPosition().y << ", "
-					<< ((Transform3D*)obj->GetComponent("Transform3D"))->GetPosition().z << endl;*/
 			}
 		}
 	}
@@ -109,7 +99,6 @@ namespace CompEngine
 			if (obj->GetIsActive())
 			{
 				obj->Render();
-				//cout << obj->GetName() << " is rendered" << endl;
 			}
 		}
 	}
@@ -121,7 +110,6 @@ namespace CompEngine
 			if (obj->GetIsActive())
 			{
 				obj->LateUpdate();
-				//cout << obj->GetName() << " is updated(late)" << endl;
 			}
 		}
 	}
@@ -131,7 +119,6 @@ namespace CompEngine
 		if (enablePhysics)
 		{
 			m_dynamicsWorld->stepSimulation(deltaTime);
-			//cout << "physics running" << endl;
 		}
 	}
 
@@ -168,7 +155,6 @@ namespace CompEngine
 
 	void Scene::SetSkybox(string path, string name, string type)
 	{
-		//skybox.SetFilePath(path, name);
 		skybox.SetSkybox(path, name, type);
 	}
 
@@ -233,13 +219,11 @@ namespace CompEngine
 	{
 		for each(auto obj in objectList)
 		{
-			//cout << "SEARCHING CAMERA" << endl;
 			if (((Camera*)(obj)->GetComponent("Camera")) != NULL)
 			{
-				//cout << obj->GetName() << endl;
 				if (((Camera*)(obj)->GetComponent("Camera"))->GetID() == SceneMgr->CurrentScene()->GetCameraIndex())
 				{
-					//cout << obj->GetName() << endl;
+					//cout << obj->GetName();
 					return (obj);
 				}
 			}

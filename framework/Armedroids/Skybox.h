@@ -21,7 +21,7 @@ namespace CompEngine
 
 		void SetFilePath(string path, string name);
 		bool SetSkybox(string path, string name, string fileType);
-		void Render(/*GameObject* camera*/);
+		void Render();
 		void Release();
 	};
 }

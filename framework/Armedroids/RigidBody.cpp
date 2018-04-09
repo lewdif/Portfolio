@@ -106,7 +106,7 @@ namespace CompEngine
 
 	void RigidBody::UpdateTransform()
 	{
-		m_dynamicsWorld->debugDrawWorld();
+		//m_dynamicsWorld->debugDrawWorld();
 
 		if (SceneMgr->CurrentScene()->IsEnablePhysics())
 		{

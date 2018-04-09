@@ -239,6 +239,7 @@ namespace CompEngine
 		auto rigidBody = this->GetComponent("RigidBody");
 		if (rigidBody != nullptr)
 		{
+			((RigidBody*)rigidBody)->DrawFunc();
 			((RigidBody*)rigidBody)->UpdateTransform();
 		}
 
@@ -254,10 +255,6 @@ namespace CompEngine
 			{
 				((Script*)obj.second)->Update();
 			}
-			//cout << obj.second->GetComponentName() << endl;
-			
-			/*else if (obj.first == "RigidBody")
-			((RigidBody*)obj.second)->UpdateTransform();*/
 			
 		}
 		// if any component is added, should add update function of that component too
@@ -295,7 +292,7 @@ namespace CompEngine
 	
 	void GameObject::DebugOut()
 	{
-		cout << "------ Components in " << this->GetName() << " : Open -------" << endl;
+		cout << endl << "------ Components in " << this->GetName() << " : Open -------" << endl;
 		for (const auto& kv : componentList)
 		{
 			cout << kv.first << ", " << kv.second->GetComponentName() << endl;

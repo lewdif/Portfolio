@@ -47,5 +47,5 @@ using namespace std;
 
 #define GET_TRANSFORM_3D(Object) ((Transform3D*)Object->transform3D)
 //#define GET_COLLISION(Object)    ((CompEngine::Collision*)Object->GetComponent("Collision"))
-//#define GET_RIGIDBODY(Object)    ((RigidBody*)Object->GetComponent("RigidBody"))
-//#define GET_SKINNED_MESH(Object) ((SkinnedMesh*)Object->GetComponent("SkinnedMesh"))
+#define GET_RIGIDBODY(Object)    ((RigidBody*)Object->GetComponent("RigidBody"))
+#define GET_SKINNED_MESH(Object) ((SkinnedMesh*)Object->GetComponent("SkinnedMesh"))

@@ -9,25 +9,23 @@ namespace CompEngine
 	void GameCharecter::Init()
 	{
 		gameObject->AddTag("Player");
-		((Transform3D*)gameObject->GetComponent("Transform3D"))->SetScale(0.1f, 0.1f, 0.1f);
-		((Transform3D*)gameObject->GetComponent("Transform3D"))->SetPosition(0, 0, 0);
+		GET_TRANSFORM_3D(gameObject)->SetScale(0.1f, 0.1f, 0.1f);
+		GET_TRANSFORM_3D(gameObject)->SetPosition(0, 0, 0);
 
 	}
 
 	void GameCharecter::Reference()
 	{
-		skinnedMesh = ((SkinnedMesh*)gameObject->GetComponent("SkinnedMesh"));
-		trans = (Transform3D*)gameObject->GetComponent("Transform3D");
-
-		rigidBody = ((RigidBody*)(this->gameObject)->GetComponent("RigidBody"));
-		trans = GET_TRANSFORM_3D(this->gameObject);
+		//skinnedMesh = ((SkinnedMesh*)gameObject->GetComponent("SkinnedMesh"));
+		skinnedMesh = GET_SKINNED_MESH(gameObject);
+		rigidBody = GET_RIGIDBODY(gameObject);
+		trans = GET_TRANSFORM_3D(gameObject);
 		gameObject->DebugOut();
 	}
 
 	void GameCharecter::Update()
 	{
 		bool Input = false;
-		//((RigidBody*)gameObject->GetComponent("RigidBody"))->DrawFunc();
 
 		float rotateYAngle = trans->GetRotationAngle().y;
 		rigidBody->SetTransform(trans->GetPosition(), Vec3(0, rotateYAngle, 0));
@@ -54,6 +52,12 @@ namespace CompEngine
 		{
 			rigidBody->SetLinearVelocity(0, 0, 0);
 			I_Key = false;
+
+			/*cout << "skinned mesh obj pos : ("
+			<< ((Transform3D*)object->transform3D)->GetPosition().x << ", "
+			<< ((Transform3D*)object->transform3D)->GetPosition().y << ", "
+			<< ((Transform3D*)object->transform3D)->GetPosition().z << ")"
+			<< endl;*/
 
 			cout << "char pos : (" << trans->GetPosition().x << ", "
 				<< trans->GetPosition().y << ", "
@@ -123,7 +127,7 @@ namespace CompEngine
 			skinnedMesh->SetAnimation("Idle");
 		}
 
-		//((Transform3D*)gameObject->GetComponent("Transform3D"))->SetPosition(trans->GetPosition());
+		GET_TRANSFORM_3D(gameObject)->SetPosition(trans->GetPosition());
 	}
 
 	void GameCharecter::LateUpdate()

@@ -140,7 +140,7 @@ namespace CompEngine
 		return isInit;
 	}
 
-	void Skybox::Render(/*GameObject* cameraaObject*/)
+	void Skybox::Render()
 	{
 		if (isInit)
 		{
@@ -153,9 +153,6 @@ namespace CompEngine
 			DeviceMgr->GetDevice()->SetSamplerState(7, D3DSAMP_MAGFILTER, D3DTEXF_ANISOTROPIC);
 			DeviceMgr->GetDevice()->SetSamplerState(7, D3DSAMP_MINFILTER, D3DTEXF_ANISOTROPIC);
 
-			// 디버깅용 와이어프레임 모드
-			//DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
-
 			if (VtxBufr != nullptr && IdxBufr != nullptr)
 			{
 				//스카이 박스를 그린후 월드 행렬을 다시 초기화 시킴.
@@ -165,10 +162,7 @@ namespace CompEngine
 
 				//스카이 박스 이동.
 				GameObject* cameraObject = SceneMgr->CurrentScene()->GetCurrentCamera();
-				D3DXVECTOR3 vPos = ((Transform3D*)cameraObject->GetComponent("Transform3D"))->GetPosition();
-
-				//cout << "vPos : " << vPos.x << ", " << vPos.y << ", " << vPos.z << endl;
-				//cout << cameraObject->GetName() << endl;
+				D3DXVECTOR3 vPos = GET_TRANSFORM_3D(cameraObject)->GetPosition();
 
 				D3DXMatrixIdentity(&matWrd);
 				D3DXMatrixTranslation(&matWrd, vPos.x, vPos.y, vPos.z);
@@ -204,7 +198,7 @@ namespace CompEngine
 			}
 
 			//DeviceMgr->GetDevice()->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE); // disable alpha blend
-			//DeviceMgr->GetDevice()->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE); // i am not sure maybie this one needs to be disabled also
+			//DeviceMgr->GetDevice()->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE); // i am not sure maybe this one needs to be disabled also
 		}
 	}
 

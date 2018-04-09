@@ -26,9 +26,7 @@ namespace CompEngine
 
 	private:
 		btRigidBody* rigidBody;
-		//btBroadphaseInterface* g_broadphase = nullptr;
 		btDiscreteDynamicsWorld* m_dynamicsWorld;
-		//btAlignedObjectArray<btCollisionShape*>	m_collisionShapes;
 
 	public:
 		RigidBody();
@@ -37,8 +35,8 @@ namespace CompEngine
 		btRigidBody* createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color = btVector4(1, 0, 0, 1));
 		bool SetRigidBody(GameObject* owner, float mass, btCollisionShape* shape);
 
-		void SetBounciness(float value = 0.0f);
-		void SetFrictionCoefficient(float value = 0.2f);
+		//void SetBounciness(float value = 0.0f);
+		//void SetFrictionCoefficient(float value = 0.2f);
 		void SetMass(float mass);
 
 		void SetAngularVelocity(float x, float y, float z);

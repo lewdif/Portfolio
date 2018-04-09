@@ -8,9 +8,9 @@ namespace CompEngine
 		forward(Vec3(0, 0, -1)), up(Vec3(0, 1, 0)), parent(nullptr), combineMatrix(nullptr)
 	{
 		D3DXMatrixIdentity(&transform);
-		D3DXMatrixIdentity(&scaleTransform);
 		D3DXMatrixIdentity(&rotationTransform);
 		D3DXMatrixIdentity(&translationTransform);
+		D3DXMatrixIdentity(&scaleTransform);
 
 		SetComponentName("Transform3D");
 	}
@@ -281,6 +281,10 @@ namespace CompEngine
 		Vec3 Posit = position;
 		Quater RotAngle = rotAngle;
 
+		/*cout << "Scale : (" << Scale.x << ", " << Scale.y << ", " << Scale.z << ")" << endl
+			<< "Position : (" << Posit.x << ", " << Posit.y << " , " << Posit.z << ")" << endl
+			<< "Rotation Angle : (" << RotAngle.x << ", " << RotAngle.y << ", " << RotAngle.z << endl;
+			*/
 		D3DXMatrixRotationQuaternion(&rotationTransform, &RotAngle);
 		D3DXMatrixTranslation(&translationTransform, Posit.x, Posit.y, Posit.z);
 		D3DXMatrixScaling(&scaleTransform, Scale.x, Scale.y, Scale.z);

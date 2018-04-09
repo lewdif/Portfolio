@@ -9,11 +9,6 @@ namespace CompEngine
 {
 	SkinnedMesh::SkinnedMesh()
 	{
-		D3DXMatrixIdentity(&matWorld);
-		D3DXMatrixIdentity(&transMat);
-		D3DXMatrixIdentity(&scaleMat);
-		D3DXMatrixIdentity(&rotationMat);
-
 		SetComponentName("SkinnedMesh");
 		animationLoop = true;
 	}
@@ -22,19 +17,11 @@ namespace CompEngine
 	{
 	}
 
-	void SkinnedMesh::Render(GameObject* object)
+	void SkinnedMesh::LoadMeshFromX(string fileName)
 	{
-		updateMatrices((Bone*)rootBone, nullptr);
-
-		softwareRender(nullptr, object);
-	}
-
-	void SkinnedMesh::Load(string fileName)
-	{
-		// .x 파일로부터 본 계층 구조를 로드한다.
 		D3DXLoadMeshHierarchyFromX(fileName.c_str(), D3DXMESH_MANAGED, DeviceMgr->GetDevice(),
 			&boneHierarchy, nullptr, &rootBone, &animationController);
-		// 모든 본의 변환 행렬들을 업데이트 한다.
+
 		updateMatrices((Bone *)rootBone, nullptr);
 		setupBoneMatrixPointers(nullptr);
 		GetAnimationSets();
@@ -42,62 +29,11 @@ namespace CompEngine
 		cout << "Mesh is loaded : " + fileName << endl;
 	}
 
-	void SkinnedMesh::softwareRender(Bone* bone, GameObject* object)
+	void SkinnedMesh::Render(GameObject* object)
 	{
-		if (bone == nullptr)
-			bone = (Bone *)rootBone;
+		updateMatrices((Bone*)rootBone, nullptr);
 
-		// 렌더링할 메시가 존재한다면
-		if (bone->pMeshContainer != nullptr)
-		{
-			BoneMesh *boneMesh = (BoneMesh *)bone->pMeshContainer;
-
-			if (boneMesh->pSkinInfo != nullptr)
-			{
-				// 링크된 본들의 변환 행렬을 설정한다. 
-				// 즉, 본의 결합된 변환 행렬과 오프셋 행렬을 결합하여 최종 변환 행렬을 만든다.
-				int numBones = boneMesh->pSkinInfo->GetNumBones();
-
-				for (int i = 0; i < numBones; i++)
-					D3DXMatrixMultiply(&boneMesh->currentBoneMatrices[i], &boneMesh->boneOffsetMatrices[i], boneMesh->boneMatrixPtrs[i]);
-
-				// 스킨드 메시를 갱신한다.
-				void *src = nullptr, *dest = nullptr;
-				boneMesh->OriginalMesh->LockVertexBuffer(D3DLOCK_READONLY, (VOID**)&src);
-				boneMesh->MeshData.pMesh->LockVertexBuffer(0, (VOID**)&dest);
-
-				boneMesh->pSkinInfo->UpdateSkinnedMesh(boneMesh->currentBoneMatrices, nullptr, src, dest);
-
-				boneMesh->MeshData.pMesh->UnlockVertexBuffer();
-				boneMesh->OriginalMesh->UnlockVertexBuffer();
-
-				// scale rotation translation
-				Matrix matWorld, matWorldIT;
-				matWorld = ((Transform3D*)object->transform3D)->GetTransform();
-				D3DXMatrixInverse(&matWorldIT, NULL, &matWorld);
-				D3DXMatrixTranspose(&matWorldIT, &matWorldIT);
-
-				// 메시를 렌더링한다.
-				for (int i = 0; i < boneMesh->NumAttributeGroups; i++)
-				{
-					int mtrl = boneMesh->attributeTable[i].AttribId;
-					DeviceMgr->GetDevice()->SetMaterial(&(boneMesh->materials[mtrl]));
-					DeviceMgr->GetDevice()->SetTexture(0, boneMesh->textures[mtrl]);
-					//cout << "mesh loading" << endl;
-					boneMesh->MeshData.pMesh->DrawSubset(mtrl);
-				}
-			}
-		}
-		
-		// 디버깅용 : 와이어프레임 렌더모드
-		// DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
-
-		// 형제, 자식 본들에 대해서도 렌더링한다.
-		if (bone->pFrameSibling != nullptr)
-			softwareRender((Bone *)bone->pFrameSibling, object);
-
-		if (bone->pFrameFirstChild != nullptr)
-			softwareRender((Bone *)bone->pFrameFirstChild, object);
+		softwareRender(nullptr, object);
 	}
 
 	void SkinnedMesh::UpdateAnimation()
@@ -257,32 +193,83 @@ namespace CompEngine
 		}
 	}
 
-	void SkinnedMesh::setupBoneMatrixPointers(Bone *bone)
+	void SkinnedMesh::softwareRender(Bone* bone, GameObject* object)
 	{
 		if (bone == nullptr)
-			bone = (Bone*)rootBone;
+			bone = (Bone *)rootBone;
 
-		// 메시를 포함하고 있는 모든 본들을 찾는다.
+		// 렌더링할 메시가 존재한다면
 		if (bone->pMeshContainer != nullptr)
 		{
 			BoneMesh *boneMesh = (BoneMesh *)bone->pMeshContainer;
 
-			// 스킨드 메시를 가진 본들에 대해, 행렬 포인터를 설정한다.
 			if (boneMesh->pSkinInfo != nullptr)
 			{
-				// 이 메시와 링크된 본들의 수를 얻는다.
+				// 링크된 본들의 변환 행렬을 설정한다. 
+				// 즉, 본의 결합된 변환 행렬과 오프셋 행렬을 결합하여 최종 변환 행렬을 만든다.
+				int numBones = boneMesh->pSkinInfo->GetNumBones();
+
+				for (int i = 0; i < numBones; i++)
+					D3DXMatrixMultiply(&boneMesh->currentBoneMatrices[i], &boneMesh->boneOffsetMatrices[i], boneMesh->boneMatrixPtrs[i]);
+
+				// 스킨드 메시를 갱신한다.
+				void *src = nullptr, *dest = nullptr;
+				boneMesh->OriginalMesh->LockVertexBuffer(D3DLOCK_READONLY, (VOID**)&src);
+				boneMesh->MeshData.pMesh->LockVertexBuffer(0, (VOID**)&dest);
+
+				boneMesh->pSkinInfo->UpdateSkinnedMesh(boneMesh->currentBoneMatrices, nullptr, src, dest);
+
+				boneMesh->MeshData.pMesh->UnlockVertexBuffer();
+				boneMesh->OriginalMesh->UnlockVertexBuffer();
+
+				// scale rotation translation
+				Matrix matWorld, matWorldIT;
+				matWorld = GET_TRANSFORM_3D(object)->GetTransform();
+
+				D3DXMatrixInverse(&matWorldIT, NULL, &matWorld);
+				D3DXMatrixTranspose(&matWorldIT, &matWorldIT);
+				DeviceMgr->GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
+
+				// 메시를 렌더링한다.
+				for (int i = 0; i < boneMesh->NumAttributeGroups; i++)
+				{
+					int mtrl = boneMesh->attributeTable[i].AttribId;
+					DeviceMgr->GetDevice()->SetMaterial(&(boneMesh->materials[mtrl]));
+					DeviceMgr->GetDevice()->SetTexture(0, boneMesh->textures[mtrl]);
+					//cout << "mesh loading" << endl;
+					boneMesh->MeshData.pMesh->DrawSubset(mtrl);
+				}
+			}
+		}
+
+		// 디버깅용 : 와이어프레임 렌더모드
+		// DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+
+		if (bone->pFrameSibling != nullptr)
+			softwareRender((Bone *)bone->pFrameSibling, object);
+
+		if (bone->pFrameFirstChild != nullptr)
+			softwareRender((Bone *)bone->pFrameFirstChild, object);
+	}
+	
+	void SkinnedMesh::setupBoneMatrixPointers(Bone *bone)
+	{
+		if (bone == nullptr) { bone = (Bone*)rootBone; }
+
+		if (bone->pMeshContainer != nullptr)
+		{
+			BoneMesh *boneMesh = (BoneMesh *)bone->pMeshContainer;
+
+			if (boneMesh->pSkinInfo != nullptr)
+			{
 				int NumBones = boneMesh->pSkinInfo->GetNumBones();
 
-				// 본의 수만큼의 포인터 배열을 만든다.
 				boneMesh->boneMatrixPtrs = new D3DXMATRIX*[NumBones];
 
-				// 배열을 채운다.
 				for (int i = 0; i < NumBones; i++)
 				{
-					// 링크된 본을 이름으로 찾는다.
-					Bone *b = (Bone *)D3DXFrameFind(rootBone,
-						boneMesh->pSkinInfo->GetBoneName(i));
-					// 그리고 그 본의 결합된 변환 행렬의 포인터를 배열에 저장한다.
+					Bone *b = (Bone *)D3DXFrameFind(rootBone, boneMesh->pSkinInfo->GetBoneName(i));
+					
 					if (b != nullptr)
 					{
 						boneMesh->boneMatrixPtrs[i] = &b->CombinedTransformationMatrix;
@@ -295,7 +282,6 @@ namespace CompEngine
 			}
 		}
 
-		// 계층 구조의 나머지를 훑는다.
 		if (bone->pFrameSibling != nullptr)
 			setupBoneMatrixPointers((Bone *)bone->pFrameSibling);
 

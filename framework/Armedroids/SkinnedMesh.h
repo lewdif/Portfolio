@@ -8,7 +8,7 @@ namespace CompEngine
 {
 	typedef struct _KEYFRAMERATE {
 		LPD3DXANIMATIONSET AnimationSet;
-		UINT Vertex_Index;
+		UINT VertexIndex;
 		float AnimationSpeed;
 		bool IsPlay;
 	} KEYFRAMERATE;
@@ -19,12 +19,10 @@ namespace CompEngine
 		SkinnedMesh();
 		~SkinnedMesh();
 
-		//void LoadContent();
+		void AttachObject(GameObject* owner);
 
+		void LoadMeshFromX(string fileName);
 		void Render(GameObject* object);
-
-		void Load(string fileName);
-
 		void UpdateAnimation();
 
 		void SetAnimationLoop(bool loop);
@@ -43,24 +41,20 @@ namespace CompEngine
 
 
 	private:
-		void softwareRender(Bone* bone, GameObject* object);
 		void updateMatrices(Bone* bone, D3DXMATRIX* parentMatrix);
+		void softwareRender(Bone* bone, GameObject* object);
+
 		void setupBoneMatrixPointers(Bone* bone);
 
 	private:
+		D3DXFRAME* rootBone;
+
+		bool animationLoop;
+
 		LPD3DXANIMATIONCONTROLLER animationController;
 		BoneHierarchyLoader boneHierarchy;
 
-		D3DXFRAME* rootBone;
-
-		D3DXMATRIX matWorld;
-		D3DXMATRIX transMat;
-		D3DXMATRIX scaleMat;
-		D3DXMATRIX rotationMat;
-
 		map<string, int> animationSets;
 		string curAnimation;
-
-		bool animationLoop;
 	};
 }

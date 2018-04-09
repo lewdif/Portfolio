@@ -107,7 +107,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;FBXSDK_SHARED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\bullet3-2.87\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -219,13 +219,13 @@
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\bullet\src\BulletCollision\BulletCollision.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\..\bullet\src\BulletCollision\BulletCollision.vcxproj">
       <Project>{fb40785d-77f8-332f-bbd2-bade07d71267}</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\bullet\src\BulletDynamics\BulletDynamics.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\..\bullet\src\BulletDynamics\BulletDynamics.vcxproj">
       <Project>{df59f0f0-1301-3dc1-ad3c-3b757d0ba8cc}</Project>
     </ProjectReference>
-    <ProjectReference Include="C:\bullet\src\LinearMath\LinearMath.vcxproj">
+    <ProjectReference Include="..\..\..\..\..\..\bullet\src\LinearMath\LinearMath.vcxproj">
       <Project>{19cf548f-9bc4-3147-92b1-91c64027a775}</Project>
     </ProjectReference>
   </ItemGroup>

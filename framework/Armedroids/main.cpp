@@ -103,30 +103,19 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		SceneMgr->CurrentScene()->SetGravity(Vec3(0, 0, 0));
 
 		// ---- MAIN CAMERA ------------------------------
-		/*Vec3 mainCamUpVec(0.0f, 1.0f, 0.0f);
-		mainCamTrans3D = new Transform3D;
-		mainCamera = new GameObject;
-		camComp = new Camera(0, PROJECTION_TYPE::PROJECTION_ORTHOGONAL, mainCamUpVec,
-			DeviceMgr->GetWidth(), DeviceMgr->GetHeight(), 3000, 0.1f, D3DX_PI * 0.6f);
-		
-		camComp->SetTargetPosition(0, 0, 0);
-		mainCamTrans3D->SetPosition(-200.0f, 250.0f, -200.0f);
-		//mainCamTrans3D->SetPosition(200.0f, -200.0f, 250.0f);
-
-		mainCamera->AddComponent(dynamic_cast<Component*>(mainCamTrans3D));
-		mainCamera->AddComponent(dynamic_cast<Component*>(camComp));*/
 		camScrpt = new FirstTestCam;
 		camTrans3D = new Transform3D;
 		mainCam = new GameObject;
 
+		camTrans3D->AttachObject(mainCam);
 		camTrans3D->SetPosition(0, 0, 0);
 
 		mainCam->AddComponent(dynamic_cast<Component*>(camTrans3D));
-		mainCam->AddComponent(dynamic_cast<Component*>(camScrpt));
+
 		dynamic_cast<Script*>(camScrpt)->SetInfo(mainCam, "cam01");
+		mainCam->AddComponent(dynamic_cast<Component*>(camScrpt));
 		// -----------------------------------------------
 
-		
 		// ---- CHARACTER --------------------------------
 		Lucy = new GameObject;
 		lucyTrans3D = new Transform3D;
@@ -134,24 +123,38 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		lucyRigidBody = new RigidBody;
 		testScrpt = new GameCharecter;
 
-		btBoxShape* lucyShape = new btBoxShape(btVector3(150, 150, 150));
-		cout << "Lucy scale : (" << lucyTrans3D->GetScale().x << ", " << lucyTrans3D->GetScale().y << ", " << lucyTrans3D->GetScale().z << ")" << endl;
-		lucyMesh->Load(".\\Resources\\Lucy.x");
-		lucyMesh->SetAnimation("Idle");
+		btBoxShape* lucyShape = new btBoxShape(btVector3(150, 250, 150));
+		lucyTrans3D->SetScale(0.5f, 0.5f, 0.5f);
+		lucyMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
+		//lucyMesh->SetAnimation("Idle");
 		lucyTrans3D->SetPosition(0, 0, 0);
-		//lucyTrans3D->SetScale(0.01f, 0.01f, 0.01f);
 		cout << lucyTrans3D->GetComponentName() << endl;
 
 		Lucy->SetName("Main Charecter");
 		Lucy->AddComponent(dynamic_cast<Component*>(lucyMesh));
 		Lucy->AddComponent(dynamic_cast<Component*>(lucyTrans3D));
 		Lucy->AddComponent(dynamic_cast<Component*>(lucyRigidBody));
-		Lucy->AddComponent(dynamic_cast<Component*>(testScrpt));
 		dynamic_cast<Script*>(testScrpt)->SetInfo(Lucy, "test01");
+		Lucy->AddComponent(dynamic_cast<Component*>(testScrpt));
 
 		lucyRigidBody->SetRigidBody(Lucy, 1.0, lucyShape);
+		// -----------------------------------------------
 
-		//camComp->SetTargetPosition(lucyTrans3D->GetPosition());
+		// ---- OBJECT -----------------------------------
+		GameObject* obj;
+		Transform3D* objTr;
+		SkinnedMesh* objMesh;
+
+		obj = new GameObject;
+		objTr = new Transform3D;
+		objMesh = new SkinnedMesh;
+
+		objMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
+		objTr->SetPosition(0, 50, 0);
+		obj->SetName("object");
+
+		obj->AddComponent(dynamic_cast<Component*>(objMesh));
+		obj->AddComponent(dynamic_cast<Component*>(objTr));
 		// -----------------------------------------------
 
 
@@ -159,6 +162,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 		testScene->AddComponent(mainCam, "MainCamera");
 		testScene->AddComponent(Lucy, "Lucy");
+		testScene->AddComponent(obj, "Obj");
 
 		testScene->SetSkybox(".\\Resources\\Skybox", "skySamp01", "png");
 
