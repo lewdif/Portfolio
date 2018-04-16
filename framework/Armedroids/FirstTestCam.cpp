@@ -15,11 +15,11 @@ namespace CompEngine
 	{
 		mainCamObj = new GameObject();
 		Vec3 mainCamUpVec(0.0f, 1.0f, 0.0f);
-		curPos = Vec3(0, 3000, 500);
+		curPos = Vec3(300, 0, 0);
 		curTargetPos = Vec3(0, 0, 0);
 
 		Transform3D* tr = new Transform3D();
-		tr->SetPosition(0.0f, 200.0f, -500.0f);
+		tr->SetPosition(300.0f, 0.0f, 0.0f);
 		mainCamObj->AddComponent(tr);
 		cameraTrans = tr;
 
@@ -128,9 +128,10 @@ namespace CompEngine
 
 	void FirstTestCam::SetTargetPos()
 	{
-		GameObject* lucy = SceneMgr->CurrentScene()->FindObjectByName("Lucy");
-		curTargetPos = ((Transform3D*)lucy->GetComponent("Transform3D"))->GetPosition();
+		//GameObject* lucy = SceneMgr->CurrentScene()->FindObjectByName("Lucy");
+		//curTargetPos = ((Transform3D*)lucy->GetComponent("Transform3D"))->GetPosition();
 
 		//curTargetPos = GET_TRANSFORM_3D(mainCamObj)->GetPosition() - Vec3(10, 50, 50);
+		curTargetPos = Vec3(0, 0, 0);
 	}
 }

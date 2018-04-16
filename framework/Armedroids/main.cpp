@@ -116,6 +116,27 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		mainCam->AddComponent(dynamic_cast<Component*>(camScrpt));
 		// -----------------------------------------------
 
+
+		// ---- GROUND -----------------------------------
+		/*GameObject* TestGround = new GameObject;
+		RigidBody* GroundRigidBody = new RigidBody;
+		Transform3D* GroundTransform = new Transform3D;
+
+		btBoxShape* groundShape = new btBoxShape(btVector3(btScalar(300.), btScalar(10.), btScalar(300.)));
+		testScene->AddCollisionShape(groundShape);
+
+
+		GroundTransform->SetPosition(0, -30, 0);
+
+		TestGround->SetName("Ground");
+		TestGround->AddComponent(dynamic_cast<Component*>(GroundTransform));
+		TestGround->AddComponent(dynamic_cast<Component*>(GroundRigidBody));
+
+		btScalar mass(0.);
+		GroundRigidBody->SetRigidBody(TestGround, mass, groundShape);*/
+		// -----------------------------------------------
+
+
 		// ---- CHARACTER --------------------------------
 		Lucy = new GameObject;
 		lucyTrans3D = new Transform3D;
@@ -123,7 +144,8 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		lucyRigidBody = new RigidBody;
 		testScrpt = new GameCharecter;
 
-		btBoxShape* lucyShape = new btBoxShape(btVector3(150, 250, 150));
+		btBoxShape* lucyShape = new btBoxShape(btVector3(50, 10, 50));
+		
 		lucyTrans3D->SetScale(0.5f, 0.5f, 0.5f);
 		lucyMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
 		//lucyMesh->SetAnimation("Idle");
@@ -163,6 +185,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		testScene->AddComponent(mainCam, "MainCamera");
 		testScene->AddComponent(Lucy, "Lucy");
 		testScene->AddComponent(obj, "Obj");
+		//testScene->AddComponent(TestGround, "Ground");
 
 		testScene->SetSkybox(".\\Resources\\Skybox", "skySamp01", "png");
 

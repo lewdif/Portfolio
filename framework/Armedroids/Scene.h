@@ -24,11 +24,12 @@ namespace CompEngine
 		//btDynamicsWorld* physicsWorld;
 		//PhysicsEventListener physicsEventListner; // maybe add this for any events
 		bool enablePhysics;
-		btDiscreteDynamicsWorld* m_dynamicsWorld;
-		btBroadphaseInterface*	m_broadphase;
-		btCollisionDispatcher*	m_dispatcher;
-		btConstraintSolver*	m_solver;
-		btDefaultCollisionConfiguration* m_collisionConfiguration;
+		btDiscreteDynamicsWorld* dynamicsWorld;
+		btBroadphaseInterface*	broadphase;
+		btCollisionDispatcher*	dispatcher;
+		btConstraintSolver*	solver;
+		btDefaultCollisionConfiguration* collisionConfiguration;
+		btAlignedObjectArray<btCollisionShape*>	collisionShapes;
 
 	private :
 		void createEmptyDynamicsWorld();
@@ -55,9 +56,13 @@ namespace CompEngine
 
 		void Destroy(GameObject* gameObject);
 
-
 		void AddComponent(GameObject* object, string name);
 		// think about : AddComponents( ... );
+
+		void AddCollisionShape(btBoxShape* box);
+		void AddCollisionShape(btSphereShape* sphere);
+		void AddCollisionShape(btCylinderShape* cylinder);
+		void AddCollisionShape(btCapsuleShape* capsule);
 
 		void SetSkybox(string path, string name, string type);
 

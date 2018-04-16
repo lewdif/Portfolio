@@ -9,14 +9,15 @@
 namespace CompEngine
 {
 	Scene::Scene()
-		:name(""), isRunning(false), m_broadphase(0), m_dispatcher(0),
-		m_solver(0), m_collisionConfiguration(0), enablePhysics(true)
+		:name(""), isRunning(false), broadphase(0), dispatcher(0),
+		solver(0), collisionConfiguration(0), enablePhysics(true)
 	{
-		m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
+		dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
 	}
 
 	Scene::~Scene()
 	{
+		// release gameobjects
 		for (auto Iter = objectList.begin(); Iter != objectList.end();)
 		{
 			GameObject* Temp = *Iter;
@@ -31,26 +32,70 @@ namespace CompEngine
 				Iter++;
 			}
 		}
+
+		// release physics
+		if (dynamicsWorld)
+		{
+
+			int i;
+			for (i = dynamicsWorld->getNumConstraints() - 1; i >= 0; i--)
+			{
+				dynamicsWorld->removeConstraint(dynamicsWorld->getConstraint(i));
+			}
+			for (i = dynamicsWorld->getNumCollisionObjects() - 1; i >= 0; i--)
+			{
+				btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
+				btRigidBody* body = btRigidBody::upcast(obj);
+				if (body && body->getMotionState())
+				{
+					delete body->getMotionState();
+				}
+				dynamicsWorld->removeCollisionObject(obj);
+				delete obj;
+			}
+		}
+
+		for (int j = 0; j<collisionShapes.size(); j++)
+		{
+			btCollisionShape* shape = collisionShapes[j];
+			delete shape;
+		}
+		collisionShapes.clear();
+
+		delete dynamicsWorld;
+		dynamicsWorld = 0;
+
+		delete solver;
+		solver = 0;
+
+		delete broadphase;
+		broadphase = 0;
+
+		delete dispatcher;
+		dispatcher = 0;
+
+		delete collisionConfiguration;
+		collisionConfiguration = 0;
 	}
 
 	void  Scene::createEmptyDynamicsWorld()
 	{
 		///collision configuration contains default setup for memory, collision setup
-		m_collisionConfiguration = new btDefaultCollisionConfiguration();
+		collisionConfiguration = new btDefaultCollisionConfiguration();
 		//m_collisionConfiguration->setConvexConvexMultipointIterations();
 
 		///use the default collision dispatcher. For parallel processing you can use a diffent dispatcher (see Extras/BulletMultiThreaded)
-		m_dispatcher = new	btCollisionDispatcher(m_collisionConfiguration);
+		dispatcher = new	btCollisionDispatcher(collisionConfiguration);
 
-		m_broadphase = new btDbvtBroadphase();
+		broadphase = new btDbvtBroadphase();
 
 		///the default constraint solver. For parallel processing you can use a different solver (see Extras/BulletMultiThreaded)
 		btSequentialImpulseConstraintSolver* sol = new btSequentialImpulseConstraintSolver;
-		m_solver = sol;
+		solver = sol;
 
-		m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
+		dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
 
-		m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
+		dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
 		cout << "Dynamics world is successfully created." << endl;
 	}
@@ -116,9 +161,17 @@ namespace CompEngine
 
 	void Scene::PhysicsUpdate(double deltaTime)
 	{
+		for (auto Iter = objectList.begin(); Iter != objectList.end(); Iter++)
+		{
+			if (GET_RIGIDBODY((*Iter)) != nullptr)
+			{
+				GET_RIGIDBODY((*Iter))->LockUpdate();
+			}
+		}
+
 		if (enablePhysics)
 		{
-			m_dynamicsWorld->stepSimulation(deltaTime);
+			dynamicsWorld->stepSimulation(deltaTime);
 		}
 	}
 
@@ -151,6 +204,26 @@ namespace CompEngine
 		object->SetName(name);
 
 		objectList.push_back(object);
+	}
+
+	void Scene::AddCollisionShape(btBoxShape* box)
+	{
+		collisionShapes.push_back(box);
+	}
+
+	void Scene::AddCollisionShape(btSphereShape* sphere)
+	{
+		collisionShapes.push_back(sphere);
+	}
+
+	void Scene::AddCollisionShape(btCylinderShape* cylinder)
+	{
+		collisionShapes.push_back(cylinder);
+	}
+
+	void Scene::AddCollisionShape(btCapsuleShape* capsule)
+	{
+		collisionShapes.push_back(capsule);
 	}
 
 	void Scene::SetSkybox(string path, string name, string type)
@@ -236,11 +309,11 @@ namespace CompEngine
 
 	void Scene::SetGravity(Vec3 vec3)
 	{
-		m_dynamicsWorld->setGravity(btVector3(vec3.x, vec3.y, vec3.z));
+		dynamicsWorld->setGravity(btVector3(vec3.x, vec3.y, vec3.z));
 	}
 
 	btDiscreteDynamicsWorld* Scene::GetDiscreteDynamicsWorld()
 	{
-		return m_dynamicsWorld;
+		return dynamicsWorld;
 	}
 }

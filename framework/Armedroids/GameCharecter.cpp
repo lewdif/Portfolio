@@ -27,8 +27,8 @@ namespace CompEngine
 	{
 		bool Input = false;
 
-		float rotateYAngle = trans->GetRotationAngle().y;
-		rigidBody->SetTransform(trans->GetPosition(), Vec3(0, rotateYAngle, 0));
+		//float rotateYAngle = trans->GetRotationAngle().y;
+		//rigidBody->SetTransform(trans->GetPosition(), Vec3(0, rotateYAngle, 0));
 
 		static bool I_Key = false;
 		static bool K_Key = false;
@@ -45,7 +45,7 @@ namespace CompEngine
 			Forward *= 5000;
 
 			rigidBody->SetLinearVelocity(Forward.x, Forward.y, -Forward.z);
-			
+
 			I_Key = true;
 		}
 		else if (I_Key)
@@ -53,18 +53,13 @@ namespace CompEngine
 			rigidBody->SetLinearVelocity(0, 0, 0);
 			I_Key = false;
 
-			/*cout << "skinned mesh obj pos : ("
-			<< ((Transform3D*)object->transform3D)->GetPosition().x << ", "
-			<< ((Transform3D*)object->transform3D)->GetPosition().y << ", "
-			<< ((Transform3D*)object->transform3D)->GetPosition().z << ")"
-			<< endl;*/
-
-			cout << "char pos : (" << trans->GetPosition().x << ", "
+			cout << "char pos : (" 
+				<< trans->GetPosition().x << ", "
 				<< trans->GetPosition().y << ", "
 				<< trans->GetPosition().z << ")" << endl;
 		}
 
-		if (InputMgr->KeyDown('K', false))
+		else if (InputMgr->KeyDown('K', false))
 		{
 			Input = true;
 			skinnedMesh->SetAnimation("Walk");
@@ -88,7 +83,7 @@ namespace CompEngine
 				<< trans->GetPosition().z << ")" << endl;
 		}
 
-		if (InputMgr->KeyDown('J', false))
+		else if (InputMgr->KeyDown('J', false))
 		{
 			Input = true;
 			skinnedMesh->SetAnimation("Walk");
@@ -105,7 +100,7 @@ namespace CompEngine
 			J_Key = false;
 		}
 
-		if (InputMgr->KeyDown('L', false))
+		else if (InputMgr->KeyDown('L', false))
 		{
 			Input = true;
 			skinnedMesh->SetAnimation("Walk");
@@ -127,7 +122,7 @@ namespace CompEngine
 			skinnedMesh->SetAnimation("Idle");
 		}
 
-		GET_TRANSFORM_3D(gameObject)->SetPosition(trans->GetPosition());
+		//GET_TRANSFORM_3D(gameObject)->SetPosition(trans->GetPosition());
 	}
 
 	void GameCharecter::LateUpdate()

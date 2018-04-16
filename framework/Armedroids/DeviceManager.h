@@ -18,6 +18,11 @@ namespace CompEngine
 		virtual void ReleaseMembers();
 		D3DXMATRIXA16 GetWorldMat();
 
+		void DrawLine(D3DXMATRIX matrix, D3DXVECTOR3 start, D3DXVECTOR3 end, D3DXCOLOR color);
+		void DrawLine(D3DXVECTOR3 start, D3DXVECTOR3 end, D3DXCOLOR color);
+
+		void DrawBox(D3DXMATRIX transform, D3DXVECTOR3 leftBottom, D3DXVECTOR3 rightTop, D3DXCOLOR color);
+
 	private:
 		HWND					hWnd;
 		IDirect3D9*				d3d9;

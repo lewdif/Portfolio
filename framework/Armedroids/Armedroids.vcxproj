@@ -157,8 +157,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoneHierarchyLoader.cpp" />
-    <ClCompile Include="Bt3dCollision.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
+    <ClCompile Include="DrawShape.cpp" />
     <ClCompile Include="RigidBody.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -187,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoneHierarchyLoader.h" />
-    <ClInclude Include="Bt3dCollision.h" />
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="RigidBody.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

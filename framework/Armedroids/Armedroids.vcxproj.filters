@@ -106,14 +106,14 @@
     <ClCompile Include="FirstTestCam.cpp">
       <Filter>Testing codes</Filter>
     </ClCompile>
-    <ClCompile Include="Bt3dCollision.cpp">
-      <Filter>GameObject\Components\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="RigidBody.cpp">
       <Filter>GameObject\Components\Physics</Filter>
     </ClCompile>
     <ClCompile Include="DebugDraw.cpp">
       <Filter>GameObject\Components\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawShape.cpp">
+      <Filter>Managers\DeviceManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,9 +168,6 @@
     </ClInclude>
     <ClInclude Include="FirstTestCam.h">
       <Filter>Testing codes</Filter>
-    </ClInclude>
-    <ClInclude Include="Bt3dCollision.h">
-      <Filter>GameObject\Components\Physics</Filter>
     </ClInclude>
     <ClInclude Include="RigidBody.h">
       <Filter>GameObject\Components\Physics</Filter>

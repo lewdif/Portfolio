@@ -33,6 +33,15 @@ namespace CompEngine
 	{
 		updateMatrices((Bone*)rootBone, nullptr);
 
+		// scale rotation translation
+		Matrix matWorld;
+		//Matrix matWorldIT;
+		matWorld = GET_TRANSFORM_3D(object)->GetTransform();
+
+		//D3DXMatrixInverse(&matWorldIT, NULL, &matWorld);
+		//D3DXMatrixTranspose(&matWorldIT, &matWorldIT);
+		DeviceMgr->GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
+
 		softwareRender(nullptr, object);
 	}
 
@@ -222,13 +231,6 @@ namespace CompEngine
 				boneMesh->MeshData.pMesh->UnlockVertexBuffer();
 				boneMesh->OriginalMesh->UnlockVertexBuffer();
 
-				// scale rotation translation
-				Matrix matWorld, matWorldIT;
-				matWorld = GET_TRANSFORM_3D(object)->GetTransform();
-
-				D3DXMatrixInverse(&matWorldIT, NULL, &matWorld);
-				D3DXMatrixTranspose(&matWorldIT, &matWorldIT);
-				DeviceMgr->GetDevice()->SetTransform(D3DTS_WORLD, &matWorld);
 
 				// 메시를 렌더링한다.
 				for (int i = 0; i < boneMesh->NumAttributeGroups; i++)
@@ -236,7 +238,6 @@ namespace CompEngine
 					int mtrl = boneMesh->attributeTable[i].AttribId;
 					DeviceMgr->GetDevice()->SetMaterial(&(boneMesh->materials[mtrl]));
 					DeviceMgr->GetDevice()->SetTexture(0, boneMesh->textures[mtrl]);
-					//cout << "mesh loading" << endl;
 					boneMesh->MeshData.pMesh->DrawSubset(mtrl);
 				}
 			}

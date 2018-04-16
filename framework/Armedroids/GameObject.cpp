@@ -239,7 +239,7 @@ namespace CompEngine
 		auto rigidBody = this->GetComponent("RigidBody");
 		if (rigidBody != nullptr)
 		{
-			((RigidBody*)rigidBody)->DrawFunc();
+			//((RigidBody*)rigidBody)->DrawFunc();
 			((RigidBody*)rigidBody)->UpdateTransform();
 		}
 

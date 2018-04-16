@@ -54,7 +54,7 @@ namespace CompEngine
 	void SceneManager::StartScene(string sceneName)
 	{
 		// 디버깅용 와이어프레임 모드
-		//DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+		DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 
 		curScene = sceneName;
 		double lastTime = (double)timeGetTime();
@@ -81,44 +81,44 @@ namespace CompEngine
 			{
 				::TranslateMessage(&msg);
 				::DispatchMessage(&msg);
+				continue;
 			}
-			else
+
+			if (SceneContainer[sceneName]->GetSceneFlag())
 			{
+				double currTime = (double)timeGetTime();
+				double deltaTime = (currTime - lastTime) * 0.001f;
+				timeDelta = deltaTime;
+
+				DeviceMgr->GetDevice()->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, backColor, 1.0f, 0);
+				DeviceMgr->GetDevice()->BeginScene();
+
 				if (SceneContainer[sceneName]->GetSceneFlag())
 				{
-					double currTime = (double)timeGetTime();
-					double deltaTime = (currTime - lastTime) * 0.001f;
-					timeDelta = deltaTime;
-
-					DeviceMgr->GetDevice()->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, backColor, 1.0f, 0);
-					DeviceMgr->GetDevice()->BeginScene();
-
-					if (SceneContainer[sceneName]->GetSceneFlag())
-					{
-						SceneContainer[sceneName]->Update();
-						SceneContainer[sceneName]->PhysicsUpdate(deltaTime);
-						SceneContainer[sceneName]->LateUpdate();
-						SceneContainer[sceneName]->Render();
-					}
-
-					DeviceMgr->GetDevice()->EndScene();
-					DeviceMgr->GetDevice()->Present(0, 0, 0, 0);
-
-					lastTime = currTime;
-
-					OneSecond += deltaTime;
-					Frame++;
-
-					if (OneSecond >= 1.0f)
-					{
-						frame = Frame;
-						Frame = 0;
-						OneSecond = 0;
-					}
+					SceneContainer[sceneName]->Update();
+					SceneContainer[sceneName]->PhysicsUpdate(deltaTime);
+					SceneContainer[sceneName]->LateUpdate();
+					SceneContainer[sceneName]->Render();
 				}
-				else
-					break;
+
+				DeviceMgr->GetDevice()->EndScene();
+				DeviceMgr->GetDevice()->Present(0, 0, 0, 0);
+
+				lastTime = currTime;
+
+				OneSecond += deltaTime;
+				Frame++;
+
+				if (OneSecond >= 1.0f)
+				{
+					frame = Frame;
+					Frame = 0;
+					OneSecond = 0;
+					cout << frame << endl;
+				}
 			}
+			else
+				break;
 		}
 	}
 

@@ -72,6 +72,13 @@ namespace CompEngine
 	void RigidBody::SetLinearVelocity(float x, float y, float z)
 	{
 		rigidBody->setLinearVelocity(btVector3(x, y, z));
+		
+		/*btVector3 temp = rigidBody->getLinearVelocity();
+
+		cout << "linear velocity : ("
+			<< temp.getX() << ", "
+			<< temp.getY() << ", " 
+			<< temp.getZ() << ")" << endl;*/
 	}
 
 	void RigidBody::SetTransform(Vec3 Translate, Vec3 Rotate)
@@ -115,7 +122,8 @@ namespace CompEngine
 			btVector3 Pos = bt3Transform.getOrigin();
 
 			auto CurPos = transform->GetWorldPosition() - transform->GetPosition();
-			transform->SetPosition(Pos.getX() - pos.x - CurPos.x, Pos.getY() - pos.y - CurPos.y, (-Pos.getZ()) - pos.z - CurPos.z);
+			transform->SetPosition( Pos.getX() - pos.x - CurPos.x,
+				Pos.getY() - pos.y - CurPos.y, -Pos.getZ() - pos.z - CurPos.z);
 
 			Quater quater(Rot.getX(), -Rot.getY(), Rot.getZ(), -Rot.getW());
 			//quater.x = Rot.getX;
