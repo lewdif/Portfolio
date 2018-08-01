@@ -105,7 +105,7 @@ namespace CompEngine
 		cout << "Objects in current scene" << endl << "{" << endl;
 		for each(auto obj in objectList)
 		{
-			//obj->Init();
+			obj->Init();
 			cout << "    " << obj->GetName() << endl;
 		}
 		cout << "}" << endl;

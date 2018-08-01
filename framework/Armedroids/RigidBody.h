@@ -43,6 +43,7 @@ namespace CompEngine
 		void SetLinearVelocity(float x, float y, float z);
 
 		void SetTransform(Vec3 Translate, Vec3 Rotate);
+		Transform3D GetTransform();
 		//float GetBounciness();
 		//float GetFrictionCoefficient();
 		//float GetMass();

@@ -32,9 +32,6 @@
     <Filter Include="GameObject\Components\Camera">
       <UniqueIdentifier>{c239d550-9967-4b70-a8ad-b4dc39f5b88b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Components\SkinnedMesh">
-      <UniqueIdentifier>{6765ca18-11f9-4dbf-8806-102c28ed3fc6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject\Components\Transform">
       <UniqueIdentifier>{c4752a94-86d4-411a-ad70-a1b6818fba29}</UniqueIdentifier>
     </Filter>
@@ -52,6 +49,21 @@
     </Filter>
     <Filter Include="GameObject\Components\Physics">
       <UniqueIdentifier>{7dbf0494-5833-4b05-827b-6a41f0c86c50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Image">
+      <UniqueIdentifier>{7a5f41c9-260a-4136-87f7-7cc5d9bf254e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Mesh">
+      <UniqueIdentifier>{164e0e82-0c9a-41ef-8b9a-54cf984d896e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Mesh\SkinnedMesh">
+      <UniqueIdentifier>{6765ca18-11f9-4dbf-8806-102c28ed3fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Mesh\StaticMesh">
+      <UniqueIdentifier>{a50017ed-7956-47ac-a85c-abb5ef0f0cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Button">
+      <UniqueIdentifier>{cdc36d0e-68ed-44ef-a9b4-c04756a6dffc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -71,10 +83,10 @@
       <Filter>Managers\MeshManager</Filter>
     </ClCompile>
     <ClCompile Include="BoneHierarchyLoader.cpp">
-      <Filter>GameObject\Components\SkinnedMesh</Filter>
+      <Filter>GameObject\Components\Mesh\SkinnedMesh</Filter>
     </ClCompile>
     <ClCompile Include="SkinnedMesh.cpp">
-      <Filter>GameObject\Components\SkinnedMesh</Filter>
+      <Filter>GameObject\Components\Mesh\SkinnedMesh</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>GameObject\Components</Filter>
@@ -115,6 +127,15 @@
     <ClCompile Include="DrawShape.cpp">
       <Filter>Managers\DeviceManager</Filter>
     </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>GameObject\Components\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform2D.cpp">
+      <Filter>GameObject\Components\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>GameObject\Components\Button</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -140,10 +161,10 @@
       <Filter>Managers\MeshManager</Filter>
     </ClInclude>
     <ClInclude Include="BoneHierarchyLoader.h">
-      <Filter>GameObject\Components\SkinnedMesh</Filter>
+      <Filter>GameObject\Components\Mesh\SkinnedMesh</Filter>
     </ClInclude>
     <ClInclude Include="SkinnedMesh.h">
-      <Filter>GameObject\Components\SkinnedMesh</Filter>
+      <Filter>GameObject\Components\Mesh\SkinnedMesh</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>GameObject\Components</Filter>
@@ -174,6 +195,15 @@
     </ClInclude>
     <ClInclude Include="DebugDraw.h">
       <Filter>GameObject\Components\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>GameObject\Components\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform2D.h">
+      <Filter>GameObject\Components\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>GameObject\Components\Button</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

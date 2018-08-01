@@ -9,6 +9,7 @@ namespace CompEngine
 		mousePos.y = 300;
 		isLBDown = MOUSE_NONE;
 		isRBDown = MOUSE_NONE;
+		focusedWindow = true;
 
 		for (int i = 0; i < 127; i++)
 			keyStatus[(char)i] = true;
@@ -62,6 +63,11 @@ namespace CompEngine
 		return mousWhlStat;
 	}
 
+	void InputManager::SetMousePosition(POINT mousePosition)
+	{
+		mousePos = mousePosition;
+	}
+
 	void InputManager::SetMouseLBStatus(MOUSE_STATUS isClicked)
 	{
 		isLBDown = isClicked;
@@ -77,9 +83,14 @@ namespace CompEngine
 		mousWhlStat = mouseWheelStatus;
 	}
 
-	void InputManager::SetMousePosition(POINT mousePosition)
+	bool InputManager::IsFocusedWindow()
 	{
-		mousePos = mousePosition;
+		return focusedWindow;
+	}
+
+	void InputManager::SetFocusWindow(bool isFocused)
+	{
+		focusedWindow = isFocused;
 	}
 
 	void InputManager::ReleaseMembers()

@@ -1,6 +1,9 @@
 #include "GameObject.h"
 #include "SceneManager.h"
+#include "Image.h"
+#include "Button.h"
 #include "SkinnedMesh.h"
+#include "Transform2D.h"
 #include "Transform3D.h"
 #include "Script.h"
 #include "RigidBody.h"
@@ -63,7 +66,14 @@ namespace CompEngine
 		this->parent = parent;
 
 		if (((Transform3D*)GetComponent("Transform3D")) != nullptr)
+		{
 			((Transform3D*)GetComponent("Transform3D"))->AttachObject(this->parent);
+		}
+
+		if (((Transform2D*)GetComponent("Transform2D")) != nullptr)
+		{
+			((Transform2D*)GetComponent("Transform2D"))->AttachObject(this->parent);
+		}
 
 		this->parent->AttachChild(this);
 	}
@@ -174,6 +184,11 @@ namespace CompEngine
 		{
 			transform3D = (Transform3D*)component;
 		}
+		else if (component->GetComponentName() == "Transform2D")
+		{
+			transform2D = (Transform2D*)component;
+		}
+
 		componentList.insert(pair<string, Component*>(component->GetComponentName(), component));
 
 		return true;
@@ -249,13 +264,17 @@ namespace CompEngine
 			((SkinnedMesh*)skinnedMesh)->UpdateAnimation();
 		}
 
+		else if (GetComponent("Button") != nullptr)
+		{
+			((Button*)GetComponent("Button"))->Update(this);
+		}
+
 		for each(auto obj in componentList)
 		{
 			if ((obj.second)->IsScript())
 			{
 				((Script*)obj.second)->Update();
 			}
-			
 		}
 		// if any component is added, should add update function of that component too
 	}
@@ -280,11 +299,27 @@ namespace CompEngine
 		*/
 	}
 
+	void GameObject::Render2D()
+	{
+		if (GetComponent("Image") != nullptr)
+		{
+			((Image*)GetComponent("Image"))->Render(this);
+		}
+		else if (GetComponent("Button") != nullptr)
+		{
+			((Image*)GetComponent("Button"))->Render(this);
+		}
+	}
+
 	void GameObject::Render()
 	{
 		if (GetComponent("SkinnedMesh") != nullptr)
 		{
 			((SkinnedMesh*)GetComponent("SkinnedMesh"))->Render(this);
+		}
+		else
+		{	// 셰이더 추가할때 옮기기
+			Render2D();
 		}
 		// for now, there is only skinnedmesh to render.
 		// if any component is added, should add rendering function of that component

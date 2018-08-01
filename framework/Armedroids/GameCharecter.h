@@ -14,6 +14,7 @@ namespace CompEngine
 		Transform3D* trans;
 		SkinnedMesh* skinnedMesh;
 		RigidBody* rigidBody;
+		float zeroMovement;
 
 	public:
 		virtual void Init();

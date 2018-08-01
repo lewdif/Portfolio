@@ -188,16 +188,13 @@ namespace CompEngine
 			);
 		}
 
-		// 동일한 계산을 형제 본에 대해 수행한다.
 		if (bone->pFrameSibling)
 		{
 			updateMatrices((Bone *)bone->pFrameSibling, parentMatrix);
 		}
 
-		// 동일한 계산을 자식 본에 대해 수행한다.
 		if (bone->pFrameFirstChild)
 		{
-			// 형제 본에 전달한 부모 행렬과 다른 행렬을 전달하는 것에 주의!
 			updateMatrices((Bone *)bone->pFrameFirstChild, &bone->CombinedTransformationMatrix);
 		}
 	}
@@ -207,21 +204,17 @@ namespace CompEngine
 		if (bone == nullptr)
 			bone = (Bone *)rootBone;
 
-		// 렌더링할 메시가 존재한다면
 		if (bone->pMeshContainer != nullptr)
 		{
 			BoneMesh *boneMesh = (BoneMesh *)bone->pMeshContainer;
 
 			if (boneMesh->pSkinInfo != nullptr)
 			{
-				// 링크된 본들의 변환 행렬을 설정한다. 
-				// 즉, 본의 결합된 변환 행렬과 오프셋 행렬을 결합하여 최종 변환 행렬을 만든다.
 				int numBones = boneMesh->pSkinInfo->GetNumBones();
 
 				for (int i = 0; i < numBones; i++)
 					D3DXMatrixMultiply(&boneMesh->currentBoneMatrices[i], &boneMesh->boneOffsetMatrices[i], boneMesh->boneMatrixPtrs[i]);
 
-				// 스킨드 메시를 갱신한다.
 				void *src = nullptr, *dest = nullptr;
 				boneMesh->OriginalMesh->LockVertexBuffer(D3DLOCK_READONLY, (VOID**)&src);
 				boneMesh->MeshData.pMesh->LockVertexBuffer(0, (VOID**)&dest);
@@ -231,8 +224,6 @@ namespace CompEngine
 				boneMesh->MeshData.pMesh->UnlockVertexBuffer();
 				boneMesh->OriginalMesh->UnlockVertexBuffer();
 
-
-				// 메시를 렌더링한다.
 				for (int i = 0; i < boneMesh->NumAttributeGroups; i++)
 				{
 					int mtrl = boneMesh->attributeTable[i].AttribId;

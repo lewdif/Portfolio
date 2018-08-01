@@ -1,9 +1,13 @@
 #include "headers.h"
 #include "DeviceManager.h"
-#include "Scene.h"
+#include "InputManager.h"
 #include "SceneManager.h"
+#include "Scene.h"
 #include "SkinnedMesh.h"
+#include "Image.h"
+#include "Button.h"
 #include "Transform3D.h"
+#include "Transform2D.h"
 #include "Camera.h"
 #include "Skybox.h"
 #include "Script.h"
@@ -29,6 +33,10 @@ VOID Cleanup()
 
 LRESULT WINAPI MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	int Active;
+	POINT MousePosition;
+	RECT ClientRect;
+
 	switch (msg)
 	{
 	case WM_DESTROY:
@@ -43,6 +51,71 @@ LRESULT WINAPI MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			PostMessage(hWnd, WM_DESTROY, 0, 0L);
 			break;
 		}
+
+	case WM_MOUSEWHEEL:
+		if (InputMgr->IsFocusedWindow())
+		{
+			if ((SHORT)HIWORD(wParam) > 0)
+				InputMgr->SetMouseWheelStatus(MOUSE_WHEEL_UP);
+			else if (((SHORT)HIWORD(wParam) < 0))
+				InputMgr->SetMouseWheelStatus(MOUSE_WHEEL_DOWN);
+		}
+		break;
+
+	case WM_LBUTTONDOWN:
+		if (InputMgr->IsFocusedWindow())
+			InputMgr->SetMouseLBStatus(MOUSE_LBDOWN);
+		break;
+
+	case WM_LBUTTONUP:
+		if (InputMgr->IsFocusedWindow())
+			InputMgr->SetMouseLBStatus(MOUSE_LBUP);
+		break;
+
+	case WM_ACTIVATE:
+		Active = LOWORD(wParam);
+
+		switch (Active)
+		{
+		case WA_ACTIVE:
+		case WA_CLICKACTIVE:
+			InputMgr->SetFocusWindow(true);
+			break;
+
+		case WA_INACTIVE:
+			MousePosition.y = DeviceMgr->GetHeight() / 2;
+			MousePosition.x = DeviceMgr->GetWidth() / 2;
+			InputMgr->SetMousePosition(MousePosition);
+			InputMgr->SetFocusWindow(false);
+			break;
+		}
+		break;
+
+	case WM_RBUTTONDOWN:
+		if (InputMgr->IsFocusedWindow())
+			InputMgr->SetMouseRBStatus(MOUSE_RBDOWN);
+		break;
+
+	case WM_RBUTTONUP:
+		if (InputMgr->IsFocusedWindow())
+			InputMgr->SetMouseRBStatus(MOUSE_RBUP);
+		break;
+
+	case WM_KEYUP:
+		if (InputMgr->IsFocusedWindow())
+			InputMgr->KeyUp(wParam);
+		break;
+
+	case WM_MOUSEMOVE:
+		if (InputMgr->IsFocusedWindow())
+		{
+			GetWindowRect(hWnd, &ClientRect);
+			MousePosition.y = HIWORD(lParam);
+			MousePosition.x = LOWORD(lParam);
+			InputMgr->SetMousePosition(MousePosition);
+		}
+		break;
+
 
 		break;
 	}
@@ -118,7 +191,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 
 		// ---- GROUND -----------------------------------
-		/*GameObject* TestGround = new GameObject;
+		GameObject* TestGround = new GameObject;
 		RigidBody* GroundRigidBody = new RigidBody;
 		Transform3D* GroundTransform = new Transform3D;
 
@@ -133,7 +206,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		TestGround->AddComponent(dynamic_cast<Component*>(GroundRigidBody));
 
 		btScalar mass(0.);
-		GroundRigidBody->SetRigidBody(TestGround, mass, groundShape);*/
+		GroundRigidBody->SetRigidBody(TestGround, mass, groundShape);
 		// -----------------------------------------------
 
 
@@ -163,20 +236,59 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		// -----------------------------------------------
 
 		// ---- OBJECT -----------------------------------
-		GameObject* obj;
-		Transform3D* objTr;
-		SkinnedMesh* objMesh;
+		/*GameObject* obj = new GameObject;
+		Transform3D* objTr = new Transform3D;
+		SkinnedMesh* objMesh = new SkinnedMesh;
+		RigidBody* objRigidBody = new RigidBody;
 
-		obj = new GameObject;
-		objTr = new Transform3D;
-		objMesh = new SkinnedMesh;
+		btBoxShape* objShape = new btBoxShape(btVector3(50, 10, 50));
 
 		objMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
-		objTr->SetPosition(0, 50, 0);
+		objTr->SetPosition(0, 50, 330);
 		obj->SetName("object");
 
 		obj->AddComponent(dynamic_cast<Component*>(objMesh));
 		obj->AddComponent(dynamic_cast<Component*>(objTr));
+		obj->AddComponent(dynamic_cast<Component*>(objRigidBody));
+
+		objRigidBody->SetRigidBody(obj, 1.0, objShape);*/
+		// -----------------------------------------------
+
+
+		// ---- 2D OBJECT --------------------------------
+		/*
+		GameObject* obj2d = new GameObject;
+		Transform2D* objTr2d = new Transform2D;
+		Image* img = new Image;
+
+		Rect imgRect;
+		imgRect.LeftTop = Vec2(0, 0);
+		imgRect.RightBottom = Vec2(991, 305);
+
+		objTr2d->SetPosition(100, 100, 0);
+		img->SetPath(".\\Resources\\Images\\g28.jpg");
+		img->SetSize(imgRect);
+		obj2d->SetName("img");
+
+		obj2d->AddComponent(objTr2d);
+		obj2d->AddComponent(img);
+		*/
+		GameObject* obj2d = new GameObject;
+		Transform2D* objTr2d = new Transform2D;
+		Button* btn = new Button;
+
+		Rect imgRect;
+		imgRect.LeftTop = Vec2(0, 0);
+		imgRect.RightBottom = Vec2(991, 305);
+
+		objTr2d->SetPosition(100, 100, 0);
+		objTr2d->SetSize(imgRect.RightBottom.x, imgRect.RightBottom.y);
+		btn->SetPath(".\\Resources\\Images\\g28.jpg");
+		btn->SetSize(imgRect);
+		obj2d->SetName("btn");
+
+		obj2d->AddComponent(objTr2d);
+		obj2d->AddComponent(btn);
 		// -----------------------------------------------
 
 
@@ -184,10 +296,13 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 		testScene->AddComponent(mainCam, "MainCamera");
 		testScene->AddComponent(Lucy, "Lucy");
-		testScene->AddComponent(obj, "Obj");
-		//testScene->AddComponent(TestGround, "Ground");
+		//testScene->AddComponent(obj, "Obj");
+		testScene->AddComponent(TestGround, "Ground");
 
 		testScene->SetSkybox(".\\Resources\\Skybox", "skySamp01", "png");
+
+		//testScene->AddComponent(obj2d, "img");
+		testScene->AddComponent(obj2d, "btn");
 
 		SceneMgr->StartScene("testScene");
 		/// ----------------------------------------------- ///

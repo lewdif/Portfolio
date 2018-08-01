@@ -4,6 +4,7 @@
 namespace CompEngine
 {
 	template <typename T>
+
 	class ISingleton
 	{
 	private:

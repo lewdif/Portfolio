@@ -26,14 +26,18 @@ using namespace std;
 #include <btBulletDynamicsCommon.h>
 #include <btBulletCollisionCommon.h>
 
-//static double deltaTime;
-
 #define Mesh						LPD3DXMESH
 #define Color						D3DCOLOR
 #define Matrix						D3DXMATRIX
 #define Vec2						D3DXVECTOR2
 #define Vec3						D3DXVECTOR3
 #define Quater						D3DXQUATERNION
+
+class Rect {
+public:
+	Vec2 LeftTop;
+	Vec2 RightBottom;
+};
 
 #define S_DEL(p)					{ if(p) delete p; p = NULL; }
 #define S_DELS(p)					{ if(p) delete[] p; }
@@ -56,7 +60,8 @@ namespace COLOR {
 #define SceneMgr					SceneManager::GetInstance()
 #define InputMgr					InputManager::GetInstance()
 
+#define GET_TRANSFORM_2D(Object)	((Transform2D*)Object->transform2D)
 #define GET_TRANSFORM_3D(Object)	((Transform3D*)Object->transform3D)
-//#define GET_COLLISION(Object)		((CompEngine::Collision*)Object->GetComponent("Collision"))
 #define GET_RIGIDBODY(Object)		((RigidBody*)Object->GetComponent("RigidBody"))
 #define GET_SKINNED_MESH(Object)	((SkinnedMesh*)Object->GetComponent("SkinnedMesh"))
+

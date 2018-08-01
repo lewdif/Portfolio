@@ -20,22 +20,27 @@ namespace CompEngine
 		MOUSE_STATUS isRBDown;
 		map<char, bool> keyStatus;
 		MOUSE_WHEEL_STATUS mousWhlStat;
+		bool focusedWindow;
 
 	public:
 		void InitializeMembers();
 
 		bool KeyDown(char _key, bool _onlyOne);
+		bool IsFocusedWindow();
+
 		void KeyUp(char _key);
+
 		POINT GetMousePosition();
 		Vec2 GetMousePositionToVector2();
 		MOUSE_STATUS GetMouseLBStatus();
 		MOUSE_STATUS GetMouseRBStatus();
 		MOUSE_WHEEL_STATUS GetMouseWheelStatus();
 
+		void SetMousePosition(POINT mousePosition);
 		void SetMouseLBStatus(MOUSE_STATUS isClicked);
 		void SetMouseRBStatus(MOUSE_STATUS isClicked);
 		void SetMouseWheelStatus(MOUSE_WHEEL_STATUS mouseWheelStatus);
-		void SetMousePosition(POINT mousePosition);
+		void SetFocusWindow(bool isFocused);
 
 		virtual void ReleaseMembers();
 	};

@@ -39,7 +39,7 @@ namespace CompEngine
 		GET_TRANSFORM_3D(gameObject)->SetPosition(cameraTrans->GetPosition());
 		gameObject->AddComponent(dynamic_cast<Component*>(mainCamera));
 
-		gameObject->DebugOut();
+		//gameObject->DebugOut();
 	}
 
 	void FirstTestCam::Update()

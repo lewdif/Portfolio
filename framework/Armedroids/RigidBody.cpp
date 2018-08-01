@@ -38,10 +38,6 @@ namespace CompEngine
 	bool RigidBody::SetRigidBody(GameObject* owner, float mass, btCollisionShape* colShape)
 	{
 		this->owner = owner;
-
-		//if (this->owner->GetComponent("Collision") == nullptr)
-		//	return false;
-
 		this->mass = mass;
 
 		transform = (Transform3D*)this->owner->transform3D;
@@ -54,7 +50,7 @@ namespace CompEngine
 		rigidBody = createRigidBody(mass, InitTransform, colShape);
 		cout << owner->GetName() + " : Rigidbody set." << endl;
 
-		//pos = ((Collision*)this->owner)->GetModelPivot();
+		pos = GET_TRANSFORM_3D(this->owner)->GetPosition();
 
 		return true;
 	}
@@ -91,6 +87,11 @@ namespace CompEngine
 		transform.setRotation(NewQuater);
 
 		rigidBody->setWorldTransform(transform);
+	}
+
+	Transform3D RigidBody::GetTransform()
+	{
+		return *transform;
 	}
 
 	void RigidBody::DrawFunc()
@@ -142,6 +143,8 @@ namespace CompEngine
 			btTransform InitTransform(InitOrientation, InitPosition);
 
 			rigidBody->setWorldTransform(InitTransform);
+
+			cout << "physics initialized" << endl;
 		}
 	}
 }

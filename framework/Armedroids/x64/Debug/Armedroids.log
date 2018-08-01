@@ -1,11 +1,8 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Armedroids.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  GameCharecter.cpp
+  main.cpp
 c:\bullet3-2.87\src\linearmath\btidebugdraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
 c:\bullet3-2.87\src\linearmath\btidebugdraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
 c:\bullet3-2.87\src\linearmath\btidebugdraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
-c:\users\june7\desktop\framework\armedroids\gamecharecter.cpp(43): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\june7\desktop\framework\armedroids\gamecharecter.cpp(67): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\june7\desktop\framework\armedroids\gamecharecter.cpp(91): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\june7\desktop\framework\armedroids\gamecharecter.cpp(108): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\june7\desktop\framework\armedroids\main.cpp(106): warning C4244: '인수': 'WPARAM'에서 'char'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Armedroids.vcxproj -> C:\Users\june7\Desktop\framework\x64\Debug\CompEngine.exe
   Armedroids.vcxproj -> C:\Users\june7\Desktop\framework\x64\Debug\CompEngine.pdb (Full PDB)

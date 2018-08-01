@@ -29,35 +29,30 @@ namespace CompEngine
 		void SetForward(float x, float y, float z);
 		void SetForward(Vec3 forward);
 
+		void SetScale(float x, float y, float z);
+		void SetScale(Vec3 scale);
+		void SetRotation(float x, float y, float z);
+		void SetRotation(Quater rotAngle);
 		void SetPosition(float x, float y, float z);
 		void SetPosition(Vec3 pos);
 
 		void Scale(float x, float y, float z);
-		void SetScale(float x, float y, float z);
 		void Scale(Vec3 scale);
-		void SetScale(Vec3 scale);
-
 		void Rotate(float x, float y, float z);
-		void SetRotation(float x, float y, float z);
 		void Rotate(Quater rotAngle);
-		void SetRotation(Quater rotAngle);
-
 		void Translate(float x, float y, float z);
 		void Translate(Vec3 pos);
 
 		Vec3 GetForward();
 		Vec3 GetLeft();
-
-		Vec3 GetPosition();
-		Vec3 GetWorldPosition();
-
 		Vec3 GetScale();
 		Vec3 GetWolrdScale();
-
 		Vec3 GetRotationAngle();
 		Vec3 GetWorldRotationAngle();
 		Quater GetRotationQuater();
 		Quater GetWorldRotationQuater();
+		Vec3 GetPosition();
+		Vec3 GetWorldPosition();
 
 		void AttachObject(GameObject* parent);
 

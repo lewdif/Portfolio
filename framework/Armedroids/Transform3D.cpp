@@ -40,6 +40,31 @@ namespace CompEngine
 		D3DXVec3Normalize(&this->forward, &this->forward);
 	}
 
+	void Transform3D::SetScale(float x, float y, float z)
+	{
+		scale.x = x;
+		scale.y = y;
+		scale.z = z;
+	}
+
+	void Transform3D::SetScale(Vec3 scale)
+	{
+		this->scale = scale;
+	}
+
+	void Transform3D::SetRotation(float x, float y, float z)
+	{
+		Quater quater;
+		D3DXQuaternionRotationYawPitchRoll(&quater, y, x, z);
+
+		rotAngle = quater;
+	}
+
+	void Transform3D::SetRotation(Quater rotAngle)
+	{
+		this->rotAngle = rotAngle;
+	}
+
 	void Transform3D::SetPosition(float x, float y, float z)
 	{
 		if (position == nullptr)
@@ -65,23 +90,11 @@ namespace CompEngine
 		scale.z += z;
 	}
 
-	void Transform3D::SetScale(float x, float y, float z)
-	{
-		scale.x = x;
-		scale.y = y;
-		scale.z = z;
-	}
-
 	void Transform3D::Scale(Vec3 scale)
 	{
 		this->scale.x += scale.x;
 		this->scale.y += scale.y;
 		this->scale.z += scale.z;
-	}
-
-	void Transform3D::SetScale(Vec3 scale)
-	{
-		this->scale = scale;
 	}
 
 	void Transform3D::Rotate(float x, float y, float z)
@@ -92,22 +105,9 @@ namespace CompEngine
 		D3DXQuaternionMultiply(&rotAngle, &rotAngle, &quater);
 	}
 
-	void Transform3D::SetRotation(float x, float y, float z)
-	{
-		Quater quater;
-		D3DXQuaternionRotationYawPitchRoll(&quater, y, x, z);
-
-		rotAngle = quater;
-	}
-
 	void Transform3D::Rotate(Quater rotAngle)
 	{
 		D3DXQuaternionMultiply(&this->rotAngle, &this->rotAngle, &rotAngle);
-	}
-
-	void Transform3D::SetRotation(Quater rotAngle)
-	{
-		this->rotAngle = rotAngle;
 	}
 
 	void Transform3D::Translate(float x, float y, float z)
@@ -144,43 +144,10 @@ namespace CompEngine
 		D3DXVec3TransformNormal(&thisForward, &thisForward, &transform);
 		D3DXVec3Normalize(&thisForward, &thisForward);
 
-		D3DXVec3Cross(&left, &thisForward, &thisUp);	// 벡터의 외적을 계산하여 Left에 넣어줌
+		D3DXVec3Cross(&left, &thisForward, &thisUp);
 		D3DXVec3Normalize(&left, &left);
 
 		return left;
-	}
-
-	Vec3 Transform3D::GetPosition()
-	{
-		Vec3 resultPos = position;
-
-		if (combineMatrix != nullptr)
-		{
-			// combineMatrix 행렬의 (4, 1), (4, 2), (4, 3) => x, y, z
-			resultPos.x += ((*combineMatrix)._41);
-			resultPos.y += ((*combineMatrix)._42);
-			resultPos.z += ((*combineMatrix)._43);
-		}
-
-		return resultPos;
-	}
-
-	Vec3 Transform3D::GetWorldPosition()
-	{
-		GameObject* parentPtr = parent;
-
-		Vec3 thisPos(0, 0, 0);
-
-		if (combineMatrix != nullptr)
-		{
-			thisPos.x += ((*combineMatrix)._41);
-			thisPos.y += ((*combineMatrix)._42);
-			thisPos.z += ((*combineMatrix)._43);
-		}
-
-		D3DXVec3TransformCoord(&thisPos, &thisPos, &GetTransform());
-
-		return thisPos;
 	}
 
 	Vec3 Transform3D::GetScale()
@@ -266,6 +233,38 @@ namespace CompEngine
 		}
 
 		return result;
+	}
+
+	Vec3 Transform3D::GetPosition()
+	{
+		Vec3 resultPos = position;
+
+		if (combineMatrix != nullptr)
+		{
+			resultPos.x += ((*combineMatrix)._41);
+			resultPos.y += ((*combineMatrix)._42);
+			resultPos.z += ((*combineMatrix)._43);
+		}
+
+		return resultPos;
+	}
+
+	Vec3 Transform3D::GetWorldPosition()
+	{
+		GameObject* parentPtr = parent;
+
+		Vec3 thisPos(0, 0, 0);
+
+		if (combineMatrix != nullptr)
+		{
+			thisPos.x += ((*combineMatrix)._41);
+			thisPos.y += ((*combineMatrix)._42);
+			thisPos.z += ((*combineMatrix)._43);
+		}
+
+		D3DXVec3TransformCoord(&thisPos, &thisPos, &GetTransform());
+
+		return thisPos;
 	}
 
 	void Transform3D::AttachObject(GameObject* parent)

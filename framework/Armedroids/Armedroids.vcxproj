@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoneHierarchyLoader.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="DrawShape.cpp" />
     <ClCompile Include="RigidBody.cpp">
@@ -182,11 +183,14 @@
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="SkinnedMesh.cpp" />
     <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="Transform3D.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoneHierarchyLoader.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="RigidBody.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -214,6 +218,8 @@
     <ClInclude Include="Script.h" />
     <ClInclude Include="SkinnedMesh.h" />
     <ClInclude Include="Skybox.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="Transform2D.h" />
     <ClInclude Include="Transform3D.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>

@@ -20,6 +20,7 @@ namespace CompEngine
 		bool isActive;
 
 	public:
+		Component* transform2D;
 		Component* transform3D;
 
 	public:
@@ -62,7 +63,7 @@ namespace CompEngine
 		//virtual void LateRender();
 
 		void Render();
-		// [NEED TO CONSIDER] do i need to added 2d rendering function for UI components?
+		void Render2D();
 
 		void DebugOut();
 	};

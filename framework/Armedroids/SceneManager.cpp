@@ -54,7 +54,7 @@ namespace CompEngine
 	void SceneManager::StartScene(string sceneName)
 	{
 		// 디버깅용 와이어프레임 모드
-		DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+		//DeviceMgr->GetDevice()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 
 		curScene = sceneName;
 		double lastTime = (double)timeGetTime();
@@ -109,13 +109,13 @@ namespace CompEngine
 				OneSecond += deltaTime;
 				Frame++;
 
-				if (OneSecond >= 1.0f)
+				/*if (OneSecond >= 1.0f)
 				{
 					frame = Frame;
 					Frame = 0;
 					OneSecond = 0;
-					cout << frame << endl;
-				}
+					cout << "Current FPS : " << frame << endl;
+				}*/
 			}
 			else
 				break;
