@@ -23,7 +23,7 @@ namespace CompEngine
 		bool focusedWindow;
 
 	public:
-		void InitializeMembers();
+		void InitMembers();
 
 		bool KeyDown(char _key, bool _onlyOne);
 		bool IsFocusedWindow();

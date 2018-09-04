@@ -3,6 +3,7 @@
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Scene.h"
+#include "SoundManager.h"
 #include "SkinnedMesh.h"
 #include "Image.h"
 #include "Button.h"
@@ -12,6 +13,7 @@
 #include "Skybox.h"
 #include "Script.h"
 #include "RigidBody.h"
+#include "SoundClip.h"
 
 #include "GameCharecter.h"
 #include "FirstTestCam.h"
@@ -21,6 +23,10 @@ using namespace CompEngine;
 HRESULT InitD3D(HWND hWnd)
 {
 	DeviceMgr->InitMembers(hWnd);
+	SceneMgr->InitMembers();
+	InputMgr->InitMembers();
+	SceneMgr->InitMembers();
+	SoundMgr->InitMembers();
 
 	return S_OK;
 }
@@ -29,6 +35,7 @@ VOID Cleanup()
 {
 	DeviceMgr->ReleaseMembers();
 	SceneMgr->ReleaseMembers();
+	SoundMgr->ReleaseMembers();
 }
 
 LRESULT WINAPI MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -149,7 +156,9 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		ShowWindow(hWnd, SW_SHOWDEFAULT);
 		UpdateWindow(hWnd);
 
-		/// ---- TEST SCRIPT ------------------------------ ///
+
+
+		// ---- TEST SCRIPT ------------------------------
 		Scene* testScene;			// 씬에 추가할것 추가(컴포넌트 등)
 
 		//GameObject* mainCamera;
@@ -233,6 +242,12 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		Lucy->AddComponent(dynamic_cast<Component*>(testScrpt));
 
 		lucyRigidBody->SetRigidBody(Lucy, 1.0, lucyShape);
+		// -----------------------------------------------
+
+		// ---- SOUND ------------------------------------
+
+		SoundMgr->Play2D(".\\Resources\\MP3\\SilentNight.mp3", 1.0, true);
+
 		// -----------------------------------------------
 
 		// ---- OBJECT -----------------------------------

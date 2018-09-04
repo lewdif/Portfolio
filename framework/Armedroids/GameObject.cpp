@@ -263,12 +263,12 @@ namespace CompEngine
 		{
 			((SkinnedMesh*)skinnedMesh)->UpdateAnimation();
 		}
-
+		
 		else if (GetComponent("Button") != nullptr)
 		{
 			((Button*)GetComponent("Button"))->Update(this);
 		}
-
+		
 		for each(auto obj in componentList)
 		{
 			if ((obj.second)->IsScript())

@@ -3,6 +3,7 @@
 #include "Transform3D.h"
 #include "SceneManager.h"
 #include "DeviceManager.h"
+#include "SoundManager.h"
 
 namespace CompEngine
 {
@@ -88,6 +89,8 @@ namespace CompEngine
 
 			D3DXMatrixLookAtLH(&viewMatrix, &Position, &targetPosition, &cameraUp);
 			DeviceMgr->GetDevice()->SetTransform(D3DTS_VIEW, &viewMatrix);
+
+			SoundMgr->ListenerUpdate(Position, viewVector, cameraUp);
 
 			if (type == PROJECTION_PERSPACTIVE)
 				D3DXMatrixPerspectiveFovLH(&projectionMatrix, fov, width / height, nearDistance, farDistance);

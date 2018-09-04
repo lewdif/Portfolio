@@ -26,6 +26,10 @@ using namespace std;
 #include <btBulletDynamicsCommon.h>
 #include <btBulletCollisionCommon.h>
 
+// IrrKlang
+#include <irrKlang.h>
+//#pragma comment(lib, "irrKlang.lib")
+
 #define Mesh						LPD3DXMESH
 #define Color						D3DCOLOR
 #define Matrix						D3DXMATRIX
@@ -59,6 +63,7 @@ namespace COLOR {
 #define DeviceMgr					DeviceManager::GetInstance()
 #define SceneMgr					SceneManager::GetInstance()
 #define InputMgr					InputManager::GetInstance()
+#define SoundMgr					SoundManager::GetInstance()
 
 #define GET_TRANSFORM_2D(Object)	((Transform2D*)Object->transform2D)
 #define GET_TRANSFORM_3D(Object)	((Transform3D*)Object->transform3D)

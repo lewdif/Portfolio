@@ -3,7 +3,7 @@
 
 namespace CompEngine
 {
-	void InputManager::InitializeMembers()
+	void InputManager::InitMembers()
 	{
 		mousePos.x = 400;
 		mousePos.y = 300;

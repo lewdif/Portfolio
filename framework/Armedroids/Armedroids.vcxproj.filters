@@ -65,6 +65,18 @@
     <Filter Include="GameObject\Components\Button">
       <UniqueIdentifier>{cdc36d0e-68ed-44ef-a9b4-c04756a6dffc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Components\SoundClip">
+      <UniqueIdentifier>{5b619df4-f837-472f-934c-158ba4fcc8ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SoundManager">
+      <UniqueIdentifier>{2667a416-d820-4135-ae36-d4961b87f1cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Effect">
+      <UniqueIdentifier>{d8d28d50-84a7-497b-a728-acf907f1c43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\Effect\Material">
+      <UniqueIdentifier>{6ba0c7c4-4f22-4ea9-b210-ebd756c779a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -136,6 +148,15 @@
     <ClCompile Include="Button.cpp">
       <Filter>GameObject\Components\Button</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Managers\SoundManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundClip.cpp">
+      <Filter>GameObject\Components\SoundClip</Filter>
+    </ClCompile>
+    <ClCompile Include="IShader.cpp">
+      <Filter>GameObject\Components\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -204,6 +225,15 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>GameObject\Components\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Managers\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundClip.h">
+      <Filter>GameObject\Components\SoundClip</Filter>
+    </ClInclude>
+    <ClInclude Include="IShader.h">
+      <Filter>GameObject\Components\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

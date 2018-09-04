@@ -109,14 +109,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;FBXSDK_SHARED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\bullet3-2.87\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\irrKlang64\include;C:\bullet3-2.87\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>dxguid.lib;d3d9.lib;d3dx9.lib;winmm.lib;d3dxof.lib;BulletDynamics_Debug.lib;BulletCollision_Debug.lib;LinearMath_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\bullet\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dxguid.lib;d3d9.lib;d3dx9.lib;winmm.lib;d3dxof.lib;BulletDynamics_Debug.lib;BulletCollision_Debug.lib;LinearMath_Debug.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\irrKlang64\lib\Winx64-visualStudio;C:\bullet\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -160,6 +160,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="DrawShape.cpp" />
+    <ClCompile Include="IShader.cpp" />
     <ClCompile Include="RigidBody.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -184,6 +185,12 @@
     <ClCompile Include="SkinnedMesh.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="SoundClip.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="Transform3D.cpp" />
     <ClCompile Include="Vertex.cpp" />
@@ -192,6 +199,7 @@
     <ClInclude Include="BoneHierarchyLoader.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="DebugDraw.h" />
+    <ClInclude Include="IShader.h" />
     <ClInclude Include="RigidBody.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -219,6 +227,12 @@
     <ClInclude Include="SkinnedMesh.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="SoundClip.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Transform2D.h" />
     <ClInclude Include="Transform3D.h" />
     <ClInclude Include="Vertex.h" />
