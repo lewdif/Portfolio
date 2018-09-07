@@ -19,7 +19,7 @@ namespace CompEngine
 		Image();
 		~Image();
 
-		LPDIRECT3DTEXTURE9 LoadContent(string fileName);
+		LPDIRECT3DTEXTURE9 LoadContent(string filePath);
 
 		void SetSize(Rect rect);
 		void SetSize(Vec2 leftTop, Vec2 rightBottom);

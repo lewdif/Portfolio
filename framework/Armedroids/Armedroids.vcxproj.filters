@@ -157,6 +157,9 @@
     <ClCompile Include="IShader.cpp">
       <Filter>GameObject\Components\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="UserButton.cpp">
+      <Filter>Testing codes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -234,6 +237,9 @@
     </ClInclude>
     <ClInclude Include="IShader.h">
       <Filter>GameObject\Components\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="UserButton.h">
+      <Filter>Testing codes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,10 +12,10 @@ namespace CompEngine
 		ISoundEngine* soundEngine;
 		map<string, ISound*> soundContainer;
 
-		irrklang::vec3df position;
-		irrklang::vec3df lookDirection;
-		irrklang::vec3df velPerSecond;
-		irrklang::vec3df up;
+		vec3df position;
+		vec3df lookDirection;
+		vec3df velPerSecond;
+		vec3df up;
 
 	public:
 		SoundManager();

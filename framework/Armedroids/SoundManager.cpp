@@ -5,15 +5,18 @@ namespace CompEngine
 {
 	SoundManager::SoundManager()
 	{
-		position = irrklang::vec3df(0, 0, 0);
-		lookDirection = irrklang::vec3df(0, 0, 0);
-		velPerSecond = irrklang::vec3df(0, 0, 0);
-		up = irrklang::vec3df(0, 0, 0);
+		position = vec3df(0, 0, 0);
+		lookDirection = vec3df(0, 0, 0);
+		velPerSecond = vec3df(0, 0, 0);
+		up = vec3df(0, 0, 0);
 	}
 
 	SoundManager::~SoundManager()
 	{
-		soundEngine->drop();
+		if (soundEngine != nullptr)
+		{
+			soundEngine->drop();
+		}
 	}
 
 	void SoundManager::InitMembers()
@@ -26,7 +29,9 @@ namespace CompEngine
 		RemoveAllSounds();
 
 		if (soundEngine != nullptr)
+		{
 			soundEngine->drop();
+		}
 	}
 
 	ISoundSource* SoundManager::AddSoundSource(string name)
@@ -41,9 +46,9 @@ namespace CompEngine
 
 	void SoundManager::ListenerUpdate(Vec3 pos, Vec3 lookDir, Vec3 upVector)
 	{
-		position = irrklang::vec3df(pos.x, pos.y, pos.z);
-		lookDirection = irrklang::vec3df(lookDir.x, lookDir.y, lookDir.z);
-		up = irrklang::vec3df(upVector.x, upVector.y, upVector.z);
+		position = vec3df(pos.x, pos.y, pos.z);
+		lookDirection = vec3df(lookDir.x, lookDir.y, lookDir.z);
+		up = vec3df(upVector.x, upVector.y, upVector.z);
 
 		soundEngine->setListenerPosition(position, lookDirection, velPerSecond, up);
 	}

@@ -17,6 +17,7 @@
 
 #include "GameCharecter.h"
 #include "FirstTestCam.h"
+#include "UserButton.h"
 
 using namespace CompEngine;
 
@@ -168,6 +169,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 		FirstTestCam* camScrpt;
 		GameCharecter* testScrpt;
+		UserButton* userBtn;
 
 		GameObject* mainCam;
 		Transform3D* camTrans3D;
@@ -246,7 +248,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 		// ---- SOUND ------------------------------------
 
-		SoundMgr->Play2D(".\\Resources\\MP3\\SilentNight.mp3", 1.0, true);
+		//SoundMgr->Play2D(".\\Resources\\MP3\\SilentNight.mp3", 1.0, true);
 
 		// -----------------------------------------------
 
@@ -271,39 +273,25 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 
 		// ---- 2D OBJECT --------------------------------
-		/*
-		GameObject* obj2d = new GameObject;
-		Transform2D* objTr2d = new Transform2D;
-		Image* img = new Image;
-
-		Rect imgRect;
-		imgRect.LeftTop = Vec2(0, 0);
-		imgRect.RightBottom = Vec2(991, 305);
-
-		objTr2d->SetPosition(100, 100, 0);
-		img->SetPath(".\\Resources\\Images\\g28.jpg");
-		img->SetSize(imgRect);
-		obj2d->SetName("img");
-
-		obj2d->AddComponent(objTr2d);
-		obj2d->AddComponent(img);
-		*/
 		GameObject* obj2d = new GameObject;
 		Transform2D* objTr2d = new Transform2D;
 		Button* btn = new Button;
+		userBtn = new UserButton;
 
 		Rect imgRect;
 		imgRect.LeftTop = Vec2(0, 0);
-		imgRect.RightBottom = Vec2(991, 305);
+		imgRect.RightBottom = Vec2(128, 128);
 
 		objTr2d->SetPosition(100, 100, 0);
 		objTr2d->SetSize(imgRect.RightBottom.x, imgRect.RightBottom.y);
-		btn->SetPath(".\\Resources\\Images\\g28.jpg");
+		btn->SetPath(".\\Resources\\Images\\Audio_play.png");
 		btn->SetSize(imgRect);
 		obj2d->SetName("btn");
 
 		obj2d->AddComponent(objTr2d);
 		obj2d->AddComponent(btn);
+		dynamic_cast<Script*>(userBtn)->SetInfo(obj2d, "userBtn");
+		Lucy->AddComponent(dynamic_cast<Component*>(userBtn));
 		// -----------------------------------------------
 
 

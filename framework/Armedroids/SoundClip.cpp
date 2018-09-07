@@ -68,7 +68,9 @@ namespace CompEngine
 			return;
 
 		if (item->second.sound != nullptr)
+		{
 			item->second.sound->drop();
+		}
 
 		item->second.sound = nullptr;
 

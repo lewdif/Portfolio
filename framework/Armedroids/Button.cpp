@@ -10,7 +10,7 @@ namespace CompEngine
 	{
 		SetComponentName("Button");
 
-		btnStatus = BUTTON_STATUS::NORMAL;
+		btnStatus = NORMAL;
 
 		D3DXCreateSprite(DeviceMgr->GetDevice(), &btnSprite);
 	}
@@ -37,9 +37,8 @@ namespace CompEngine
 
 	void Button::Update(GameObject* owner)
 	{
-		// check here if wrong
-		Transform2D* transform2d = ((Transform2D*)owner->GetComponent("Transform2D"));
-		//Transform2D* transform2d = GET_TRANSFORM_2D(owner);
+		//Transform2D* transform2d = ((Transform2D*)owner->GetComponent("Transform2D"));
+		Transform2D* transform2d = GET_TRANSFORM_2D(owner);
 
 		int width = transform2d->GetSize().x;
 		int height = transform2d->GetSize().y;
@@ -57,36 +56,40 @@ namespace CompEngine
 
 		POINT temp = InputMgr->GetMousePosition();
 
-		/*if (InputMgr->GetMouseLBStatus() == MOUSE_LBDOWN)
-		{
-			cout << "mouse pos : (" << temp.x << ", " << temp.y << ")" << endl;
-
-			cout  << "button pos : (" << position.x << ", " << position.y << ")" << endl;
-
-			cout << "width : " << width << endl;
-			cout << "height : " << height << endl;
-		}*/
-
 		if (temp.x <= position.x + width && temp.x >= position.x)
 		{
 			if (temp.y <= position.y + height && temp.y >= position.y)
 			{
 				if (InputMgr->GetMouseLBStatus() == MOUSE_LBDOWN)
 				{
-					cout << "click" << endl;
+					btnStatus = ON_CLICK;
 
-					btnStatus = BUTTON_STATUS::ON_CLICK;
+					//cout << "click"  << endl;
 				}
 				else
 				{
-					cout << "highlite" << endl;
+					if (btnStatus == ON_CLICK)
+					{
+						btnStatus = BUTTON_UP;
+						//cout << btnStatus << endl;
+					}
 
-					btnStatus = BUTTON_STATUS::HIGHLIGHT;
+					btnStatus = HIGHLIGHT;
+
+					//cout << "highlite" << endl;
 				}
 			}
+			else
+			{
+				btnStatus = NORMAL;
+				//cout << "normal" << endl;
+			}
 		}
-
-		btnStatus = BUTTON_STATUS::NORMAL;
+		else 
+		{
+			btnStatus = NORMAL;
+			//cout << "normal" << endl;
+		}
 	}
 
 	void Button::SetPath(std::string fileName)
@@ -142,18 +145,18 @@ namespace CompEngine
 			<< rect.right << ", "
 			<< rect.bottom << endl;*/
 
-
 		switch (btnStatus)
 		{
 		case NORMAL:
+			//cout << "0!" << endl;
 			break;
 
 		case ON_CLICK:
-			cout << "pressed!" << endl;
+			//cout << "1!" << endl;
 			break;
 
 		case HIGHLIGHT:
-			cout << "highlighted!" << endl;
+			//cout << "2!" << endl;
 			break;
 		}
 

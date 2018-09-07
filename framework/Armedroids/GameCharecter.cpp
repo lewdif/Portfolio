@@ -20,6 +20,7 @@ namespace CompEngine
 		rigidBody = GET_RIGIDBODY(gameObject);
 		trans = GET_TRANSFORM_3D(gameObject);
 		//gameObject->DebugOut();
+		//rigidBody->set
 
 		rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
 	}

@@ -8,20 +8,20 @@ namespace CompEngine
 	class IShader : public Component
 	{
 	protected:
-		LPD3DXEFFECT* shader;
-		string address;
+		LPD3DXEFFECT shader;
+		string filePath;
 
-		void SetAddress(string address);
+		void SetPath(string filePath);
 
 	public:
 		IShader();
 		virtual ~IShader();
 
-		void LoadContent();
+		LPD3DXEFFECT LoadShader();
 
-		string GetAddress();
+		string GetPath();
 
-		virtual void Render(int index, vector<LPDIRECT3DTEXTURE9> textures, GameObject* parent) {}
+		virtual void Render(int index, GameObject* parent, vector<LPDIRECT3DTEXTURE9> textures) = 0;
 		virtual void Render(int index, GameObject* parent) = 0;
 
 		LPD3DXEFFECT GetShader();

@@ -19,15 +19,15 @@ namespace CompEngine
 		sprite->Release();
 	}
 
-	LPDIRECT3DTEXTURE9 Image::LoadContent(string fileName)
+	LPDIRECT3DTEXTURE9 Image::LoadContent(string filePath)
 	{
 			LPDIRECT3DTEXTURE9 Temp;
 
-			if (FAILED(D3DXCreateTextureFromFileEx(DeviceMgr->GetDevice(), fileName.c_str(),
+			if (FAILED(D3DXCreateTextureFromFileEx(DeviceMgr->GetDevice(), filePath.c_str(),
 				D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 1, 0, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT,
 				D3DX_DEFAULT, 0, 0, 0, 0, &Temp)))
 			{
-				cout << fileName << " - load failure" << endl;
+				cout << filePath << " - load failure" << endl;
 				return nullptr;
 			}
 

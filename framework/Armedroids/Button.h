@@ -8,7 +8,7 @@ namespace CompEngine
 	class Button : public Component
 	{
 	public:
-		enum BUTTON_STATUS { NORMAL, ON_CLICK, HIGHLIGHT };
+		enum BUTTON_STATUS { NORMAL, ON_CLICK, HIGHLIGHT, BUTTON_UP };
 
 	protected:
 		BUTTON_STATUS btnStatus;
