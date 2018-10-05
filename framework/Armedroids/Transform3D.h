@@ -54,7 +54,14 @@ namespace CompEngine
 		Vec3 GetPosition();
 		Vec3 GetWorldPosition();
 
-		void AttachObject(GameObject* parent);
+		Quater Slerp(Quater &from, Quater &to, float &f);
+
+		Quater LookAt(Vec3 from,Vec3 to);
+		Quater CreateFromAxisAngle(Vec3 axis, float angle);
+
+		Quater LookAt2(Vec3 from, Vec3 to);
+
+		void AddParent(GameObject* parent);
 
 		Matrix GetTransform();
 		void CombineMatrix(Matrix* matrix);

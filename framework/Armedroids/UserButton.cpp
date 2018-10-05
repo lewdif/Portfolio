@@ -9,6 +9,7 @@ namespace CompEngine
 	void UserButton::Init()
 	{
 		gameObject->AddTag("UserBtn");
+		btnCounter = false;
 	}
 
 	void UserButton::Reference()
@@ -21,16 +22,25 @@ namespace CompEngine
 	{
 		if (userButton->GetStatus() == userButton->ON_CLICK)
 		{
-			if (SoundMgr->IsPlaying2D(".\\Resources\\MP3\\SilentNight.mp3") == false)
+			if (btnCounter == false)
 			{
-				SoundMgr->Play2D(".\\Resources\\MP3\\SilentNight.mp3", 1.0, true);
-				cout << "Play the BGM" << endl;
+				if (SoundMgr->IsPlaying2D(".\\Resources\\MP3\\SilentNight.mp3") == true)
+				{
+					SoundMgr->Stop2D(".\\Resources\\MP3\\SilentNight.mp3");
+					cout << "Stop the BGM" << endl;
+				}
+				else if (SoundMgr->IsPlaying2D(".\\Resources\\MP3\\SilentNight.mp3") == false)
+				{
+					SoundMgr->Play2D(".\\Resources\\MP3\\SilentNight.mp3", 1.0, true);
+					cout << "Play the BGM" << endl;
+				}
 			}
-			else if(SoundMgr->IsPlaying2D(".\\Resources\\MP3\\SilentNight.mp3") == true)
-			{
-				SoundMgr->Stop2D(".\\Resources\\MP3\\SilentNight.mp3");
-				cout << "Stop the BGM" << endl;
-			}
+
+			btnCounter = true;
+		}
+		else if (userButton->GetStatus() == userButton->HIGHLIGHT)
+		{
+			btnCounter = false;
 		}
 	}
 

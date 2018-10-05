@@ -10,20 +10,15 @@ namespace CompEngine
 	{
 	private:
 		Camera* mainCamera;
-		GameObject* mainCamObj;
 		Transform3D* cameraTrans;
-		float mouseX;
-		float mouseY;
-		Vec3 curPos;
-		Vec3 curTargetPos;
+		Transform3D* TargetTrans;
+
+		Vec3 mainCamUpVec;
 
 	public:
 		virtual void Init();
 		virtual void Reference();
 		virtual void Update();
 		virtual void LateUpdate();
-
-	public:
-		void SetTargetPos();
 	};
 }

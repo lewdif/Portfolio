@@ -18,9 +18,9 @@ namespace CompEngine
 
 		Vec3 pos;
 
-		bool lockRotateX;
-		bool lockRotateY;
-		bool lockRotateZ;
+		bool lockRotationX;
+		bool lockRotationY;
+		bool lockRotationZ;
 
 		float mass;
 
@@ -46,10 +46,15 @@ namespace CompEngine
 		Transform3D GetTransform();
 		//float GetBounciness();
 		//float GetFrictionCoefficient();
-		//float GetMass();
+		float GetMass();
+		btMotionState* GetMotionState();
+		btCollisionShape* GetCollisionShape();
+		btRigidBody* GetBtRigidBody();
+
 		void DrawFunc();
 
 		void LockUpdate();
+		void LockRotation(bool x, bool y, bool z);
 
 		void UpdateTransform();
 	};

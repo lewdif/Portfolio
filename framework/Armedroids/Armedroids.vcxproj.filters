@@ -77,6 +77,21 @@
     <Filter Include="GameObject\Components\Effect\Material">
       <UniqueIdentifier>{6ba0c7c4-4f22-4ea9-b210-ebd756c779a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Testing codes\TestScene">
+      <UniqueIdentifier>{391d667c-0d0a-4a1f-8148-15307eaf02d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\InGame">
+      <UniqueIdentifier>{11951606-208d-4cf6-a9ec-9c100bb94d53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\InGame\Player">
+      <UniqueIdentifier>{2cee1369-9556-426a-9803-4e1ee5487d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\InGame\Scene">
+      <UniqueIdentifier>{d651012c-db16-45ae-9f34-e5394fa04999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\InGame\Objects">
+      <UniqueIdentifier>{5da5ffce-7433-41c4-b39f-1daeb9064058}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -118,17 +133,8 @@
     <ClCompile Include="Script.cpp">
       <Filter>GameObject\Components\Script</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Testing codes</Filter>
-    </ClCompile>
-    <ClCompile Include="GameCharecter.cpp">
-      <Filter>Testing codes</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Managers\InputManager</Filter>
-    </ClCompile>
-    <ClCompile Include="FirstTestCam.cpp">
-      <Filter>Testing codes</Filter>
     </ClCompile>
     <ClCompile Include="RigidBody.cpp">
       <Filter>GameObject\Components\Physics</Filter>
@@ -157,8 +163,45 @@
     <ClCompile Include="IShader.cpp">
       <Filter>GameObject\Components\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="UserButton.cpp">
+    <ClCompile Include="StaticMesh.cpp">
+      <Filter>GameObject\Components\Mesh\StaticMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestScene.cpp">
+      <Filter>Testing codes\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCam.cpp">
+      <Filter>Testing codes\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Testing codes\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="refTemp.cpp">
       <Filter>Testing codes</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCharecter.cpp">
+      <Filter>Testing codes\InGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="InGame.cpp">
+      <Filter>Testing codes\InGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstTestCam.cpp">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="UserButton.cpp">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Shark.cpp">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Bowgun.cpp">
+      <Filter>Testing codes\InGame\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,14 +248,8 @@
     <ClInclude Include="Script.h">
       <Filter>GameObject\Components\Script</Filter>
     </ClInclude>
-    <ClInclude Include="GameCharecter.h">
-      <Filter>Testing codes</Filter>
-    </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Managers\InputManager</Filter>
-    </ClInclude>
-    <ClInclude Include="FirstTestCam.h">
-      <Filter>Testing codes</Filter>
     </ClInclude>
     <ClInclude Include="RigidBody.h">
       <Filter>GameObject\Components\Physics</Filter>
@@ -238,8 +275,41 @@
     <ClInclude Include="IShader.h">
       <Filter>GameObject\Components\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="StaticMesh.h">
+      <Filter>GameObject\Components\Mesh\StaticMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>Testing codes\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TestCam.h">
+      <Filter>Testing codes\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Testing codes\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCharecter.h">
+      <Filter>Testing codes\InGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="InGame.h">
+      <Filter>Testing codes\InGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstTestCam.h">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClInclude>
     <ClInclude Include="UserButton.h">
-      <Filter>Testing codes</Filter>
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Shark.h">
+      <Filter>Testing codes\InGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Bowgun.h">
+      <Filter>Testing codes\InGame\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

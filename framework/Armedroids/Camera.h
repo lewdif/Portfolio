@@ -59,6 +59,8 @@ namespace CompEngine
 		Vec3 GetViewVector();
 		Vec3 GetCrossVector();
 
+		//Vec3 GetPickRay(float mouseX, float mouseY);
+
 		void FixedUpdate(GameObject* owner, Vec3 tagert);
 		virtual void FixedUpdate(GameObject* owner);
 	};

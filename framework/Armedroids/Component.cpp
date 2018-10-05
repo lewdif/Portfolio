@@ -6,7 +6,7 @@ namespace CompEngine
 	{
 	}
 
-	void Component::SetComponentName(std::string ComponentName)
+	void Component::SetComponentName(string ComponentName)
 	{
 		this->componentName = ComponentName;
 	}

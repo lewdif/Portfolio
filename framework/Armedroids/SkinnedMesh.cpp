@@ -86,7 +86,7 @@ namespace CompEngine
 		SetAnimation(animationSets.begin()->first);
 	}
 
-	void SkinnedMesh::SetAnimation(std::string name)
+	void SkinnedMesh::SetAnimation(string name)
 	{
 		if (name == curAnimation)
 			return;
@@ -115,7 +115,7 @@ namespace CompEngine
 		return curAnimation;
 	}
 
-	D3DXMATRIX* SkinnedMesh::GetBoneMatrix(std::string name, Bone* bone, D3DXMATRIX* mat)
+	D3DXMATRIX* SkinnedMesh::GetBoneMatrix(string name, Bone* bone, D3DXMATRIX* mat)
 	{
 		static D3DXMATRIX* result = nullptr;
 
@@ -162,8 +162,6 @@ namespace CompEngine
 
 		double result = Track.Position / pAnim->GetPeriod();
 
-		//cout << "result : " << deltaTime << endl;
-
 		if (result >= 0.99f && animationLoop == false)
 		{
 			result = 1.0f;
@@ -171,6 +169,59 @@ namespace CompEngine
 		}
 
 		return result;
+	}
+
+	bool SkinnedMesh::IsRayHit(RAY* ray, Bone* bone, float& curDist)
+	{
+		if (bone == nullptr)
+			bone = (Bone*)rootBone;
+
+		static bool exist = false;
+		/*
+		float Temp = -1;
+
+		if (bone->pMeshContainer != nullptr)
+		{
+			BoneMesh *boneMesh = (BoneMesh*)bone->pMeshContainer;
+
+			if (boneMesh->pSkinInfo != nullptr)
+			{
+				int numBones = boneMesh->pSkinInfo->GetNumBones();
+
+				for (int i = 0; i < numBones; i++)
+					D3DXMatrixMultiply(&boneMesh->currentBoneMatrices[i], &boneMesh->boneOffsetMatrices[i], boneMesh->boneMatrixPtrs[i]);
+
+				void* *src = nullptr, *dest = nullptr;
+
+				boneMesh->OriginalMesh->LockVertexBuffer(D3DLOCK_READONLY, (VOID**)&src);
+				boneMesh->MeshData.pMesh->LockVertexBuffer(0, (VOID**)&dest);
+
+				boneMesh->pSkinInfo->UpdateSkinnedMesh(boneMesh->currentBoneMatrices, nullptr, src, dest);
+
+				boneMesh->MeshData.pMesh->UnlockVertexBuffer();
+				boneMesh->OriginalMesh->UnlockVertexBuffer();
+
+				for (UINT i = 0; i < boneMesh->NumAttributeGroups; i++)
+				{
+					Matrix matIden;
+					D3DXMatrixIdentity(&matIden);
+					if (DeviceMgr->IsRayInMesh(matIden, boneMesh->MeshData.pMesh, &Temp))
+						if (Temp <= curDist)
+						{
+							exist = true;
+							curDist = Temp;
+						}
+				}
+			}
+		}
+
+		if (bone->pFrameSibling != nullptr)
+			IsRayHit(ray, (Bone*)bone->pFrameSibling, curDist);
+
+		if (bone->pFrameFirstChild != nullptr)
+			IsRayHit(ray, (Bone*)bone->pFrameFirstChild, curDist);
+			*/
+		return exist;
 	}
 
 	void SkinnedMesh::updateMatrices(Bone* bone, D3DXMATRIX *parentMatrix)

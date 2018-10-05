@@ -72,7 +72,7 @@ namespace CompEngine
 		void SetCameraIndex(int index);
 		int GetCameraIndex();
 
-		void SetName(std::string name);
+		void SetName(string name);
 		string GetName();
 
 		GameObject* FindObjectByTag(string tag);

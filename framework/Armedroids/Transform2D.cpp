@@ -121,8 +121,8 @@ namespace CompEngine
 		return transformMat;
 	}
 
-	void Transform2D::AttachObject(GameObject* _parent)
+	void Transform2D::AddParent(GameObject* parent)
 	{
-		this->parent = _parent;
+		this->parent = parent;
 	}
 }

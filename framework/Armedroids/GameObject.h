@@ -48,9 +48,9 @@ namespace CompEngine
 		list<string> GetScript();
 
 		Component* GetComponent(string componentName);
-		map<std::string, Component*> GetComponentList();
+		map<string, Component*> GetComponentList();
 		bool AddComponent(Component* component);
-		bool RemoveComponent(std::string typeName);
+		bool RemoveComponent(string typeName);
 
 		void SetIsActive(bool active);
 		bool GetIsActive();

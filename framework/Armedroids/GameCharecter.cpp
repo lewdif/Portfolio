@@ -2,6 +2,7 @@
 #include "InputManager.h"
 #include "Transform3D.h"
 #include "RigidBody.h"
+#include "SceneManager.h"
 
 
 namespace CompEngine
@@ -9,41 +10,68 @@ namespace CompEngine
 	void GameCharecter::Init()
 	{
 		gameObject->AddTag("Player");
-		//GET_TRANSFORM_3D(gameObject)->SetScale(0.1f, 0.1f, 0.1f);
-		//GET_TRANSFORM_3D(gameObject)->SetPosition(0, 0, 0);
-		zeroMovement = 1.0f;
+		zeroMovement = 1.f;
+		mass = 10;
+
+		//playerMesh = new SkinnedMesh();
+		boatMesh = new StaticMesh();
+		rigidBody = new RigidBody();
+		playerTrans3D = new Transform3D();
+
+		gameObject->AddComponent(dynamic_cast<Component*>(playerTrans3D));
+
+		bowgun = new GameObject;
+		bowgunScript = new Bowgun;
+
+		this->gameObject->AttachChild(bowgun);
+		//bowgun->AttachParent(this->gameObject);
+
+		dynamic_cast<Script*>(bowgunScript)->SetInfo(bowgun, "bowgunScrpt");
+		bowgun->AddComponent(dynamic_cast<Component*>(bowgunScript));
+
+		SceneMgr->CurrentScene()->AddComponent(bowgun, "Bowgun");
 	}
 
 	void GameCharecter::Reference()
 	{
-		skinnedMesh = GET_SKINNED_MESH(gameObject);
-		rigidBody = GET_RIGIDBODY(gameObject);
-		trans = GET_TRANSFORM_3D(gameObject);
-		//gameObject->DebugOut();
-		//rigidBody->set
+		playerTrans3D->SetPosition(0, 0, 0);
 
+		colShape = new btBoxShape(btVector3(50 * playerTrans3D->GetScale().x,
+			100 * playerTrans3D->GetScale().y, 65 * playerTrans3D->GetScale().z));
+
+		//playerMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
+		//gameObject->AddComponent(dynamic_cast<Component*>(playerMesh));
+
+		boatMesh->SetFilePath(".\\Resources\\boat.x");
+		gameObject->AddComponent(dynamic_cast<Component*>(boatMesh));
+
+		rigidBody->SetRigidBody(gameObject, mass, colShape);
 		rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
+		rigidBody->LockRotation(true, false, true);
+		gameObject->AddComponent(dynamic_cast<Component*>(rigidBody));
 	}
 
 	void GameCharecter::Update()
 	{
-		bool Input = false;
+		//Vec3 rightTop =  Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
+		//Vec3 leftBottom =  -Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
+		//DeviceMgr->DrawBox(playerTrans3D->GetTransform(), leftBottom/10, rightTop/10, COLOR::GREEN);
 
-		Vec3 curPos = trans->GetPosition();
+		bool Input = false;
 
 		static bool I_Key = false;
 		static bool K_Key = false;
 		static bool J_Key = false;
 		static bool L_Key = false;
 
-		if (InputMgr->KeyDown('I', false))
+		if (InputMgr->KeyDown(VK_UP, false))
 		{
 			Input = true;
-			skinnedMesh->SetAnimation("Walk");
+			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			Forward *= 5000;
+			Forward *= 50000;
 
 			rigidBody->SetLinearVelocity(Forward.x, Forward.y, -Forward.z);
 
@@ -55,19 +83,19 @@ namespace CompEngine
 			I_Key = false;
 
 			cout << "char pos : (" 
-				<< trans->GetPosition().x << ", "
-				<< trans->GetPosition().y << ", "
-				<< trans->GetPosition().z << ")" << endl;
+				<< playerTrans3D->GetPosition().x << ", "
+				<< playerTrans3D->GetPosition().y << ", "
+				<< playerTrans3D->GetPosition().z << ")" << endl;
 		}
 
-		if (InputMgr->KeyDown('K', false))
+		if (InputMgr->KeyDown(VK_DOWN, false))
 		{
 			Input = true;
-			skinnedMesh->SetAnimation("Walk");
+			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Backword = -GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			Backword *= 5000;
+			Backword *= 50000;
 
 
 			rigidBody->SetLinearVelocity(Backword.x, Backword.y, -Backword.z);
@@ -79,19 +107,19 @@ namespace CompEngine
 			rigidBody->SetLinearVelocity(0, 0, zeroMovement);
 			K_Key = false;
 
-			cout << "char pos : (" << trans->GetPosition().x << ", "
-				<< trans->GetPosition().y << ", "
-				<< trans->GetPosition().z << ")" << endl;
+			cout << "char pos : (" << playerTrans3D->GetPosition().x << ", "
+				<< playerTrans3D->GetPosition().y << ", "
+				<< playerTrans3D->GetPosition().z << ")" << endl;
 		}
 
-		if (InputMgr->KeyDown('J', false))
+		if (InputMgr->KeyDown(VK_LEFT, false))
 		{
 			Input = true;
-			skinnedMesh->SetAnimation("Walk");
+			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			rigidBody->SetAngularVelocity(0, -1.0f, 0);
+			rigidBody->SetAngularVelocity(0, -5.8f, 0);
 
 			J_Key = true;
 		}
@@ -101,14 +129,14 @@ namespace CompEngine
 			J_Key = false;
 		}
 
-		if (InputMgr->KeyDown('L', false))
+		if (InputMgr->KeyDown(VK_RIGHT, false))
 		{
 			Input = true;
-			skinnedMesh->SetAnimation("Walk");
+			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			rigidBody->SetAngularVelocity(0, 1.0f, 0);
+			rigidBody->SetAngularVelocity(0, 5.8f, 0);
 
 			L_Key = true;
 		}
@@ -120,10 +148,8 @@ namespace CompEngine
 
 		if (Input == false)
 		{
-			skinnedMesh->SetAnimation("Idle");
+			//playerMesh->SetAnimation("Idle");
 		}
-
-		//GET_TRANSFORM_3D(gameObject)->SetPosition(trans->GetPosition());
 	}
 
 	void GameCharecter::LateUpdate()

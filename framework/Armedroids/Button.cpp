@@ -92,7 +92,7 @@ namespace CompEngine
 		}
 	}
 
-	void Button::SetPath(std::string fileName)
+	void Button::SetPath(string fileName)
 	{
 		this->fileName = fileName;
 		btnSpriteTexture = LoadContent(this->fileName);

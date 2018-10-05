@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "Transform3D.h"
 #include "RigidBody.h"
+#include "DebugDraw.h"
 
 namespace CompEngine
 {
@@ -97,6 +98,9 @@ namespace CompEngine
 
 		dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
+		if (dynamicsWorld->getDebugDrawer())
+			dynamicsWorld->getDebugDrawer()->setDebugMode(btIDebugDraw::DBG_DrawWireframe + btIDebugDraw::DBG_DrawContactPoints);
+		
 		cout << "Dynamics world is successfully created." << endl;
 	}
 
@@ -122,6 +126,8 @@ namespace CompEngine
 		{
 			obj->Reference();
 		}
+
+		cout << "current camera : " << GetCurrentCamera()->GetName() << endl;
 	}
 
 	void Scene::Update()
@@ -139,6 +145,7 @@ namespace CompEngine
 
 	void Scene::Render()
 	{
+		dynamicsWorld->debugDrawWorld();
 		for each(auto obj in objectList)
 		{
 			if (obj->GetIsActive())
@@ -199,7 +206,7 @@ namespace CompEngine
 		return enablePhysics;
 	}
 
-	void Scene::AddComponent(GameObject* object, std::string name)
+	void Scene::AddComponent(GameObject* object, string name)
 	{
 		object->SetName(name);
 
@@ -251,7 +258,7 @@ namespace CompEngine
 		return cameraIndex;
 	}
 
-	void Scene::SetName(std::string name)
+	void Scene::SetName(string name)
 	{
 		this->name = name;
 	}

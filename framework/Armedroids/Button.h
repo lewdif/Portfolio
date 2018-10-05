@@ -26,7 +26,7 @@ namespace CompEngine
 
 		void Update(GameObject* owner);
 
-		void SetPath(std::string fileName);
+		void SetPath(string fileName);
 		void SetAlpha(float alpha);
 		void SetSize(Rect sizeRect);
 		void SetSize(Vec2 leftTop, Vec2 rightBottom);

@@ -229,4 +229,24 @@ namespace CompEngine
 	{
 		return crossVector;
 	}
+
+	/*Vec3 Camera::GetPickRay(float x, float y)
+	{
+		D3DXVECTOR3 coord;
+		coord.x = (((2.0f * x) / width) - 1);
+		coord.y = -(((2.0f * y) / height) - 1);
+		coord.z = 1.0f;
+
+		coord.x /= projectionMatrix._11;
+		coord.y /= projectionMatrix._22;
+
+		D3DXMATRIX inverseMatrix;
+		D3DXMatrixInverse(&inverseMatrix, NULL, &viewMatrix);
+
+		//coord *= FAR_CLIP;
+		coord *= 3000;
+		D3DXVec3TransformCoord(&coord, &coord, &inverseMatrix);
+
+		return coord;
+	}*/
 }

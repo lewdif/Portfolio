@@ -29,7 +29,7 @@ namespace CompEngine
 		bool GetAnimationLoop();
 
 		void GetAnimationSets();
-		void SetAnimation(std::string name);
+		void SetAnimation(string name);
 
 		map<string, int> GetAnmimationSet();
 		string GetCurrentAnimation();
@@ -39,6 +39,7 @@ namespace CompEngine
 		void ResetTime();
 		double GetAnimationRate();
 
+		bool IsRayHit(RAY *ray, Bone* bone, float& curDist);
 
 	private:
 		void updateMatrices(Bone* bone, D3DXMATRIX* parentMatrix);

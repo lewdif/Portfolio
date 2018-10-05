@@ -17,7 +17,7 @@ namespace CompEngine
 		IDirect3DDevice9* device;
 	public:
 		int m_debugMode;
-		std::vector< VCol > m_vertices;
+		vector< VCol > m_vertices;
 
 		DebugDraw();
 

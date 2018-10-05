@@ -1,5 +1,5 @@
 #include "Transform3D.h"
-
+#include "DeviceManager.h"
 
 namespace CompEngine
 {
@@ -222,6 +222,7 @@ namespace CompEngine
 	Quater Transform3D::GetWorldRotationQuater()
 	{
 		GameObject* parentPtr = parent;
+		//cout << "parent : " << parentPtr->GetName() << endl;
 
 		Quater result = rotAngle;
 
@@ -267,7 +268,77 @@ namespace CompEngine
 		return thisPos;
 	}
 
-	void Transform3D::AttachObject(GameObject* parent)
+	Quater Transform3D::Slerp(Quater &from, Quater &to, float &t)
+	{
+		btQuaternion btFrom = btQuaternion(from.x, from.y, from.z, from.w);
+		btQuaternion btTo = btQuaternion(to.x, to.y, to.z, to.w);
+		btQuaternion btRes = slerp(btFrom, btTo, t);
+
+		Quater result;
+		result = Quater(btRes.getX(), btRes.getY(), btRes.getZ(), btRes.getW());
+
+		return result;
+	}
+
+	Quater Transform3D::LookAt(Vec3 from, Vec3 to)
+	{
+		Vec3 forwardVec;
+		Vec3 calculateVec = (to - from);
+
+		D3DXVec3Normalize(&forwardVec, &calculateVec);
+
+		float dot = D3DXVec3Dot(&forward, &forwardVec);
+
+		if (fabs(dot - (-1.0f)) < 0.000001f)
+		{
+			return Quater(up.x, up.y, up.z, 3.1415926535897932f);
+		}
+		if (fabs(dot - (1.0f)) < 0.000001f)
+		{
+			return GetWorldRotationQuater();
+		}
+
+		float rotAngle = acos(dot);
+		Vec3 rotAxis;
+		Vec3 resAxis;
+
+		D3DXVec3Cross(&rotAxis, &forwardVec, &forward);
+		D3DXVec3Normalize(&resAxis, &rotAxis);
+		return CreateFromAxisAngle(resAxis, rotAngle);
+	}
+
+	Quater Transform3D::CreateFromAxisAngle(Vec3 axis, float angle)
+	{
+		float halfAngle = angle * .5f;
+		float s = sin(halfAngle);
+		
+		Quater q;
+		q.x = (axis.x * s);
+		q.y = (axis.y * s);
+		q.z = (axis.z * s);
+		q.w = cos(halfAngle);
+		return q;
+	}
+
+	Quater Transform3D::LookAt2(Vec3 from, Vec3 to)
+	{
+		Vec3 forwardVector;
+		D3DXVec3Normalize(&forwardVector, &(to - from));
+
+		Vec3 rotAxis;
+		D3DXVec3Cross(&rotAxis, &forward, &forwardVector);
+		float dot = D3DXVec3Dot(&forward, &forwardVector);
+
+		Quater q;
+		q.x = -rotAxis.x;
+		q.y = -rotAxis.y;
+		q.z = -rotAxis.z;
+		q.w = dot + 1;
+
+		return *D3DXQuaternionNormalize(&q, &q);
+	}
+
+	void Transform3D::AddParent(GameObject* parent)
 	{
 		this->parent = parent;
 	}
@@ -275,7 +346,7 @@ namespace CompEngine
 	Matrix Transform3D::GetTransform()
 	{
 		GameObject* parentPtr = parent;
-
+		
 		Vec3 Scale = scale;
 		Vec3 Posit = position;
 		Quater RotAngle = rotAngle;

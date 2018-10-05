@@ -4,14 +4,6 @@
 
 namespace CompEngine
 {
-	MeshManager::MeshManager()
-	{
-	}
-
-	MeshManager::~MeshManager()
-	{
-	}
-
 	void MeshManager::InitMembers()
 	{
 	}
@@ -32,78 +24,39 @@ namespace CompEngine
 		}
 	}
 
-	string MeshManager::GetPath()
+	MESHINFO* MeshManager::LoadMesh(string filePath)
 	{
-		return fullPath;
-	}
-
-	MESH_INFO* MeshManager::LoadMesh(string name)
-	{
-		if (staticMeshList.find(name) == staticMeshList.end())
+		if (staticMeshList.find(filePath) == staticMeshList.end())
 		{
-			MESH_INFO Temp;
+			MESHINFO Temp;
 
-			if (FAILED(D3DXLoadMeshFromX(fullPath.c_str(),
-				0, DeviceMgr->GetDevice(),
-				0, &Temp.buffer,
-				0, (DWORD*)&Temp.numMaterials,
-				&Temp.mesh)))
-			{
+			if (FAILED(D3DXLoadMeshFromX(filePath.c_str(), 0, DeviceMgr->GetDevice(), 0, &Temp.buffer, 0, (DWORD*)&Temp.numMaterials, &Temp.mesh)))
 				return nullptr;
-			}
 
-			staticMeshList.insert(pair<string, MESH_INFO>(name, Temp));
+			vector<DWORD> faces(Temp.mesh->GetNumFaces() * 3);
+			Temp.mesh->GenerateAdjacency(0.0f, &faces[0]);
 
-			char log[MAX_PATH] = "";
-			strcpy_s(log, name.c_str());
-			strcat_s(log, "- is loaded.");
+			Temp.mesh->OptimizeInplace(
+				D3DXMESHOPT_ATTRSORT | D3DXMESHOPT_COMPACT |
+				D3DXMESHOPT_VERTEXCACHE, &faces[0], 0, 0, 0);
 
-			return &(staticMeshList.find(name)->second);
+			staticMeshList.insert(pair<string, MESH_INFO>(filePath, Temp));
+
+			cout << filePath << " is loaded." << endl;
+
+			return &(staticMeshList.find(filePath)->second);
 		}
 		else
-			return &(staticMeshList.find(name)->second);
+			return &(staticMeshList.find(filePath)->second);
 	}
 
-	MESH_INFO* MeshManager::FindMesh(string name)
+	MESHINFO* MeshManager::FindMesh(string filePath)
 	{
-		if (staticMeshList.find(name) != staticMeshList.end())
-			return &(staticMeshList.find(name)->second);
+		if (staticMeshList.find(filePath) != staticMeshList.end())
+			return &(staticMeshList.find(filePath)->second);
 		else
 		{
-			return LoadMesh(name);
-		}
-
-	}
-
-	LPDIRECT3DTEXTURE9 MeshManager::LoadTexture(string name)
-	{
-		if (textureList.find(name) == textureList.end())
-		{
-			LPDIRECT3DTEXTURE9 Temp;
-
-			if (FAILED(D3DXCreateTextureFromFileEx(DeviceMgr->GetDevice(),
-				fullPath.c_str(),
-				D3DX_DEFAULT_NONPOW2,
-				D3DX_DEFAULT_NONPOW2,
-				1, 0,
-				D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT,
-				D3DX_DEFAULT,
-				0, 0, 0, 0, &Temp)))
-			{
-				return nullptr;
-			}
-
-			textureList.insert(pair<string, LPDIRECT3DTEXTURE9>(name, Temp));
-
-			char log[MAX_PATH] = "";
-			strcpy_s(log, name.c_str());
-			strcat_s(log, "- is loaded.");
-
-			return textureList.find(name)->second;
-		}
-		else
-		{
-			return textureList.find(name)->second;
+			return LoadMesh(filePath);
 		}
 	}
 
@@ -118,16 +71,7 @@ namespace CompEngine
 		}
 	}
 
-	void MeshManager::ReleaseTexture(string name)
-	{
-		if (textureList.find(name) != textureList.end())
-		{
-			textureList.find(name)->second->Release();
-			textureList.erase(textureList.find(name));
-		}
-	}
-
-	void MeshManager::ReleaseMesh(MESH_INFO* meshInfo)
+	void MeshManager::ReleaseMesh(MESHINFO* meshInfo)
 	{
 		for (auto Iter = staticMeshList.begin(); Iter != staticMeshList.end(); Iter++)
 		{
@@ -138,6 +82,39 @@ namespace CompEngine
 				meshInfo->buffer->Release();
 				break;
 			}
+		}
+	}
+
+	LPDIRECT3DTEXTURE9 MeshManager::LoadTexture(string fileName)
+	{
+		string path = ".\\Resources\\";
+		string fullPath = path + fileName;
+
+		if (textureList.find(fileName) == textureList.end())
+		{
+			LPDIRECT3DTEXTURE9 Temp;
+
+			if (FAILED(D3DXCreateTextureFromFileEx(DeviceMgr->GetDevice(), fullPath.c_str(),
+				D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 1, 0, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT,
+				D3DX_DEFAULT, 0, 0, 0, 0, &Temp)))
+				return nullptr;
+
+			textureList.insert(pair<string, LPDIRECT3DTEXTURE9>(fileName, Temp));
+
+			return textureList.find(fileName)->second;
+		}
+		else
+		{
+			return textureList.find(fileName)->second;
+		}
+	}
+
+	void MeshManager::ReleaseTexture(string name)
+	{
+		if (textureList.find(name) != textureList.end())
+		{
+			textureList.find(name)->second->Release();
+			textureList.erase(textureList.find(name));
 		}
 	}
 

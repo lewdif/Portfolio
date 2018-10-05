@@ -1,23 +1,7 @@
 #include "headers.h"
-#include "DeviceManager.h"
-#include "InputManager.h"
-#include "SceneManager.h"
-#include "Scene.h"
-#include "SoundManager.h"
-#include "SkinnedMesh.h"
-#include "Image.h"
-#include "Button.h"
-#include "Transform3D.h"
-#include "Transform2D.h"
-#include "Camera.h"
-#include "Skybox.h"
-#include "Script.h"
-#include "RigidBody.h"
-#include "SoundClip.h"
 
-#include "GameCharecter.h"
-#include "FirstTestCam.h"
-#include "UserButton.h"
+#include "InGame.h"
+#include "TestScene.h"
 
 using namespace CompEngine;
 
@@ -156,159 +140,13 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 	{
 		ShowWindow(hWnd, SW_SHOWDEFAULT);
 		UpdateWindow(hWnd);
-
-
-
-		// ---- TEST SCRIPT ------------------------------
-		Scene* testScene;			// 씬에 추가할것 추가(컴포넌트 등)
-
-		//GameObject* mainCamera;
-		//Transform3D* mainCamTrans3D;
-		//Camera* camComp;
-		//Skybox* testSky;
-
-		FirstTestCam* camScrpt;
-		GameCharecter* testScrpt;
-		UserButton* userBtn;
-
-		GameObject* mainCam;
-		Transform3D* camTrans3D;
-
-		GameObject* Lucy;
-		Transform3D* lucyTrans3D;
-		SkinnedMesh* lucyMesh;
-		RigidBody* lucyRigidBody;
-
-		testScene = new Scene;
-		testScene->SetName("testScene");
-		SceneMgr->AddScene("testScene", testScene);
-		SceneMgr->SetCurrentScene(testScene->GetName());
-		SceneMgr->CurrentScene()->createEmptyDynamicsWorld_Debug();
-		SceneMgr->CurrentScene()->SetGravity(Vec3(0, 0, 0));
-
-		// ---- MAIN CAMERA ------------------------------
-		camScrpt = new FirstTestCam;
-		camTrans3D = new Transform3D;
-		mainCam = new GameObject;
-
-		camTrans3D->AttachObject(mainCam);
-		camTrans3D->SetPosition(0, 0, 0);
-
-		mainCam->AddComponent(dynamic_cast<Component*>(camTrans3D));
-
-		dynamic_cast<Script*>(camScrpt)->SetInfo(mainCam, "cam01");
-		mainCam->AddComponent(dynamic_cast<Component*>(camScrpt));
-		// -----------------------------------------------
-
-
-		// ---- GROUND -----------------------------------
-		GameObject* TestGround = new GameObject;
-		RigidBody* GroundRigidBody = new RigidBody;
-		Transform3D* GroundTransform = new Transform3D;
-
-		btBoxShape* groundShape = new btBoxShape(btVector3(btScalar(300.), btScalar(10.), btScalar(300.)));
-		testScene->AddCollisionShape(groundShape);
-
-
-		GroundTransform->SetPosition(0, -30, 0);
-
-		TestGround->SetName("Ground");
-		TestGround->AddComponent(dynamic_cast<Component*>(GroundTransform));
-		TestGround->AddComponent(dynamic_cast<Component*>(GroundRigidBody));
-
-		btScalar mass(0.);
-		GroundRigidBody->SetRigidBody(TestGround, mass, groundShape);
-		// -----------------------------------------------
-
-
-		// ---- CHARACTER --------------------------------
-		Lucy = new GameObject;
-		lucyTrans3D = new Transform3D;
-		lucyMesh = new SkinnedMesh;
-		lucyRigidBody = new RigidBody;
-		testScrpt = new GameCharecter;
-
-		btBoxShape* lucyShape = new btBoxShape(btVector3(50, 10, 50));
 		
-		lucyTrans3D->SetScale(0.5f, 0.5f, 0.5f);
-		lucyMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
-		//lucyMesh->SetAnimation("Idle");
-		lucyTrans3D->SetPosition(0, 0, 0);
-		cout << lucyTrans3D->GetComponentName() << endl;
+		InGame *inGame = new InGame();
 
-		Lucy->SetName("Main Charecter");
-		Lucy->AddComponent(dynamic_cast<Component*>(lucyMesh));
-		Lucy->AddComponent(dynamic_cast<Component*>(lucyTrans3D));
-		Lucy->AddComponent(dynamic_cast<Component*>(lucyRigidBody));
-		dynamic_cast<Script*>(testScrpt)->SetInfo(Lucy, "test01");
-		Lucy->AddComponent(dynamic_cast<Component*>(testScrpt));
+		inGame->Update();
+		/*TestScene* test = new TestScene();
 
-		lucyRigidBody->SetRigidBody(Lucy, 1.0, lucyShape);
-		// -----------------------------------------------
-
-		// ---- SOUND ------------------------------------
-
-		//SoundMgr->Play2D(".\\Resources\\MP3\\SilentNight.mp3", 1.0, true);
-
-		// -----------------------------------------------
-
-		// ---- OBJECT -----------------------------------
-		/*GameObject* obj = new GameObject;
-		Transform3D* objTr = new Transform3D;
-		SkinnedMesh* objMesh = new SkinnedMesh;
-		RigidBody* objRigidBody = new RigidBody;
-
-		btBoxShape* objShape = new btBoxShape(btVector3(50, 10, 50));
-
-		objMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
-		objTr->SetPosition(0, 50, 330);
-		obj->SetName("object");
-
-		obj->AddComponent(dynamic_cast<Component*>(objMesh));
-		obj->AddComponent(dynamic_cast<Component*>(objTr));
-		obj->AddComponent(dynamic_cast<Component*>(objRigidBody));
-
-		objRigidBody->SetRigidBody(obj, 1.0, objShape);*/
-		// -----------------------------------------------
-
-
-		// ---- 2D OBJECT --------------------------------
-		GameObject* obj2d = new GameObject;
-		Transform2D* objTr2d = new Transform2D;
-		Button* btn = new Button;
-		userBtn = new UserButton;
-
-		Rect imgRect;
-		imgRect.LeftTop = Vec2(0, 0);
-		imgRect.RightBottom = Vec2(128, 128);
-
-		objTr2d->SetPosition(100, 100, 0);
-		objTr2d->SetSize(imgRect.RightBottom.x, imgRect.RightBottom.y);
-		btn->SetPath(".\\Resources\\Images\\Audio_play.png");
-		btn->SetSize(imgRect);
-		obj2d->SetName("btn");
-
-		obj2d->AddComponent(objTr2d);
-		obj2d->AddComponent(btn);
-		dynamic_cast<Script*>(userBtn)->SetInfo(obj2d, "userBtn");
-		Lucy->AddComponent(dynamic_cast<Component*>(userBtn));
-		// -----------------------------------------------
-
-
-		testScene->SetSceneFlag(true);
-
-		testScene->AddComponent(mainCam, "MainCamera");
-		testScene->AddComponent(Lucy, "Lucy");
-		//testScene->AddComponent(obj, "Obj");
-		testScene->AddComponent(TestGround, "Ground");
-
-		testScene->SetSkybox(".\\Resources\\Skybox", "skySamp01", "png");
-
-		//testScene->AddComponent(obj2d, "img");
-		testScene->AddComponent(obj2d, "btn");
-
-		SceneMgr->StartScene("testScene");
-		/// ----------------------------------------------- ///
+		test->Update();*/
 	}
 
 	UnregisterClass("Armedroids", wc.hInstance);

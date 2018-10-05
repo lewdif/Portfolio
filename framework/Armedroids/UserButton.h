@@ -15,7 +15,7 @@ namespace CompEngine
 	private:
 		Button* userButton;
 		Transform2D* trans;
-		bool isPlaying;
+		bool btnCounter;
 
 	public:
 		virtual void Init();

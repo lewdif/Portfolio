@@ -46,6 +46,6 @@ namespace CompEngine
 		Vec2 GetSize();
 		Matrix GetTransformMatrix();
 
-		void AttachObject(GameObject* parent);
+		void AddParent(GameObject* parent);
 	};
 }

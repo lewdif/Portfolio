@@ -4,7 +4,7 @@ namespace CompEngine
 {
 	RigidBody::RigidBody()
 		:rigidBody(nullptr), owner(nullptr), transform(nullptr), pos(0, 0, 0),
-		lockRotateX(false), lockRotateY(false), lockRotateZ(false), mass(0)
+		lockRotationX(false), lockRotationY(false), lockRotationZ(false), mass(0)
 	{
 		SetComponentName("RigidBody");
 		debugDrawer = new DebugDraw();
@@ -17,8 +17,8 @@ namespace CompEngine
 
 	btRigidBody* RigidBody::createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color)
 	{
-		m_dynamicsWorld->setDebugDrawer(debugDrawer);
-		m_dynamicsWorld->getDebugDrawer()->setDebugMode(btIDebugDraw::DBG_DrawAabb);
+		//m_dynamicsWorld->setDebugDrawer(debugDrawer);
+		//m_dynamicsWorld->getDebugDrawer()->setDebugMode(btIDebugDraw::DBG_DrawAabb);
 
 		bool isDynamic = (mass != 0.f);
 
@@ -94,6 +94,26 @@ namespace CompEngine
 		return *transform;
 	}
 
+	float RigidBody::GetMass()
+	{
+		return mass;
+	}
+
+	btMotionState* RigidBody::GetMotionState()
+	{
+		return rigidBody->getMotionState();
+	}
+
+	btCollisionShape* RigidBody::GetCollisionShape()
+	{
+		return rigidBody->getCollisionShape();
+	}
+
+	btRigidBody* RigidBody::GetBtRigidBody()
+	{
+		return rigidBody;
+	}
+
 	void RigidBody::DrawFunc()
 	{
 		m_dynamicsWorld->debugDrawWorld();
@@ -103,18 +123,26 @@ namespace CompEngine
 	{
 		btVector3 AngularAxis = rigidBody->getAngularVelocity();
 
-		if (lockRotateX) { AngularAxis.setX(0); }
+		if (lockRotationX) { AngularAxis.setX(0); }
 
-		if (lockRotateY) { AngularAxis.setY(0); }
+		if (lockRotationY) { AngularAxis.setY(0); }
 
-		if (lockRotateZ) { AngularAxis.setZ(0); }
+		if (lockRotationZ) { AngularAxis.setZ(0); }
 
 		rigidBody->setAngularVelocity(AngularAxis);
 	}
 
+	void RigidBody::LockRotation(bool x, bool y, bool z)
+	{
+
+		lockRotationX = x;
+		lockRotationY = y;
+		lockRotationZ = z;
+	}
+
 	void RigidBody::UpdateTransform()
 	{
-		//m_dynamicsWorld->debugDrawWorld();
+		m_dynamicsWorld->debugDrawWorld();
 
 		if (SceneMgr->CurrentScene()->IsEnablePhysics())
 		{
@@ -122,9 +150,10 @@ namespace CompEngine
 			btQuaternion Rot = bt3Transform.getRotation();
 			btVector3 Pos = bt3Transform.getOrigin();
 
-			auto CurPos = transform->GetWorldPosition() - transform->GetPosition();
-			transform->SetPosition( Pos.getX() - pos.x - CurPos.x,
-				Pos.getY() - pos.y - CurPos.y, -Pos.getZ() - pos.z - CurPos.z);
+			/// If something goes wrong with rigidbody position, check here!
+			//auto CurPos = transform->GetWorldPosition() - transform->GetPosition();
+			transform->SetPosition( Pos.getX() /*- pos.x - CurPos.x*/,
+				Pos.getY() /*- pos.y - CurPos.y*/, -Pos.getZ() /*- pos.z - CurPos.z*/);
 
 			Quater quater(Rot.getX(), -Rot.getY(), Rot.getZ(), -Rot.getW());
 			//quater.x = Rot.getX;

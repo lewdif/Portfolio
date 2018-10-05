@@ -3,6 +3,7 @@
 #include "Image.h"
 #include "Button.h"
 #include "SkinnedMesh.h"
+#include "StaticMesh.h"
 #include "Transform2D.h"
 #include "Transform3D.h"
 #include "Script.h"
@@ -67,12 +68,12 @@ namespace CompEngine
 
 		if (((Transform3D*)GetComponent("Transform3D")) != nullptr)
 		{
-			((Transform3D*)GetComponent("Transform3D"))->AttachObject(this->parent);
+			((Transform3D*)GetComponent("Transform3D"))->AddParent(this->parent);
 		}
 
 		if (((Transform2D*)GetComponent("Transform2D")) != nullptr)
 		{
-			((Transform2D*)GetComponent("Transform2D"))->AttachObject(this->parent);
+			((Transform2D*)GetComponent("Transform2D"))->AddParent(this->parent);
 		}
 
 		this->parent->AttachChild(this);
@@ -170,7 +171,7 @@ namespace CompEngine
 		return componentList[componentName];
 	}
 
-	map<std::string, Component*> GameObject::GetComponentList()
+	map<string, Component*> GameObject::GetComponentList()
 	{
 		return componentList;
 	}
@@ -317,12 +318,14 @@ namespace CompEngine
 		{
 			((SkinnedMesh*)GetComponent("SkinnedMesh"))->Render(this);
 		}
+		else if (GetComponent("StaticMesh") != nullptr)
+		{
+			((StaticMesh*)GetComponent("StaticMesh"))->Render(this);
+		}
 		else
 		{	// 셰이더 추가할때 옮기기
 			Render2D();
 		}
-		// for now, there is only skinnedmesh to render.
-		// if any component is added, should add rendering function of that component
 	}
 	
 	void GameObject::DebugOut()
