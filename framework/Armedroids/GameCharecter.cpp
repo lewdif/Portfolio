@@ -7,143 +7,86 @@
 
 namespace CompEngine
 {
-	void GameCharecter::Init()
+	void GameCharecter::controll()
 	{
-		gameObject->AddTag("Player");
-		zeroMovement = 1.f;
-		mass = 10;
-
-		//playerMesh = new SkinnedMesh();
-		boatMesh = new StaticMesh();
-		rigidBody = new RigidBody();
-		playerTrans3D = new Transform3D();
-
-		gameObject->AddComponent(dynamic_cast<Component*>(playerTrans3D));
-
-		bowgun = new GameObject;
-		bowgunScript = new Bowgun;
-
-		this->gameObject->AttachChild(bowgun);
-		//bowgun->AttachParent(this->gameObject);
-
-		dynamic_cast<Script*>(bowgunScript)->SetInfo(bowgun, "bowgunScrpt");
-		bowgun->AddComponent(dynamic_cast<Component*>(bowgunScript));
-
-		SceneMgr->CurrentScene()->AddComponent(bowgun, "Bowgun");
-	}
-
-	void GameCharecter::Reference()
-	{
-		playerTrans3D->SetPosition(0, 0, 0);
-
-		colShape = new btBoxShape(btVector3(50 * playerTrans3D->GetScale().x,
-			100 * playerTrans3D->GetScale().y, 65 * playerTrans3D->GetScale().z));
-
-		//playerMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
-		//gameObject->AddComponent(dynamic_cast<Component*>(playerMesh));
-
-		boatMesh->SetFilePath(".\\Resources\\boat.x");
-		gameObject->AddComponent(dynamic_cast<Component*>(boatMesh));
-
-		rigidBody->SetRigidBody(gameObject, mass, colShape);
-		rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
-		rigidBody->LockRotation(true, false, true);
-		gameObject->AddComponent(dynamic_cast<Component*>(rigidBody));
-	}
-
-	void GameCharecter::Update()
-	{
-		//Vec3 rightTop =  Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
-		//Vec3 leftBottom =  -Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
-		//DeviceMgr->DrawBox(playerTrans3D->GetTransform(), leftBottom/10, rightTop/10, COLOR::GREEN);
-
 		bool Input = false;
 
-		static bool I_Key = false;
-		static bool K_Key = false;
-		static bool J_Key = false;
-		static bool L_Key = false;
+		static bool W_Key = false;
+		static bool S_Key = false;
+		static bool A_Key = false;
+		static bool D_Key = false;
 
-		if (InputMgr->KeyDown(VK_UP, false))
+		if (InputMgr->KeyDown('W', false))
 		{
 			Input = true;
 			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			Forward *= 50000;
+			Forward *= 10000;
 
-			rigidBody->SetLinearVelocity(Forward.x, Forward.y, -Forward.z);
+			rigidBody.SetLinearVelocity(Forward.x, Forward.y, -Forward.z);
 
-			I_Key = true;
+			W_Key = true;
 		}
-		else if (I_Key)
+		else if (W_Key)
 		{
-			rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
-			I_Key = false;
-
-			cout << "char pos : (" 
-				<< playerTrans3D->GetPosition().x << ", "
-				<< playerTrans3D->GetPosition().y << ", "
-				<< playerTrans3D->GetPosition().z << ")" << endl;
+			rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
+			W_Key = false;
 		}
 
-		if (InputMgr->KeyDown(VK_DOWN, false))
+		if (InputMgr->KeyDown('S', false))
 		{
 			Input = true;
 			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Backword = -GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			Backword *= 50000;
+			Backword *= 10000;
 
 
-			rigidBody->SetLinearVelocity(Backword.x, Backword.y, -Backword.z);
+			rigidBody.SetLinearVelocity(Backword.x, Backword.y, -Backword.z);
 
-			K_Key = true;
+			S_Key = true;
 		}
-		else if (K_Key)
+		else if (S_Key)
 		{
-			rigidBody->SetLinearVelocity(0, 0, zeroMovement);
-			K_Key = false;
-
-			cout << "char pos : (" << playerTrans3D->GetPosition().x << ", "
-				<< playerTrans3D->GetPosition().y << ", "
-				<< playerTrans3D->GetPosition().z << ")" << endl;
+			rigidBody.SetLinearVelocity(0, 0, zeroMovement);
+			S_Key = false;
 		}
 
-		if (InputMgr->KeyDown(VK_LEFT, false))
+		if (InputMgr->KeyDown('A', false))
 		{
 			Input = true;
 			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			rigidBody->SetAngularVelocity(0, -5.8f, 0);
+			rigidBody.SetAngularVelocity(0, -2.5f, 0);
 
-			J_Key = true;
+			A_Key = true;
 		}
-		else if (J_Key)
+		else if (A_Key)
 		{
-			rigidBody->SetAngularVelocity(0, 0, 0);
-			J_Key = false;
+			rigidBody.SetAngularVelocity(0, 0, 0);
+			A_Key = false;
 		}
 
-		if (InputMgr->KeyDown(VK_RIGHT, false))
+		if (InputMgr->KeyDown('D', false))
 		{
 			Input = true;
 			//playerMesh->SetAnimation("Walk");
 
 			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 
-			rigidBody->SetAngularVelocity(0, 5.8f, 0);
+			rigidBody.SetAngularVelocity(0, 2.5f, 0);
 
-			L_Key = true;
+			D_Key = true;
 		}
-		else if (L_Key)
+		else if (D_Key)
 		{
-			rigidBody->SetAngularVelocity(0, 0, 0);
-			L_Key = false;
+			rigidBody.SetAngularVelocity(0, 0, 0);
+			D_Key = false;
 		}
 
 		if (Input == false)
@@ -152,7 +95,205 @@ namespace CompEngine
 		}
 	}
 
+	void GameCharecter::GainEXP(int amount)
+	{
+		stat.CUR_EXP += amount;
+
+		cout << "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-" << endl;
+		cout << "Gained EXP : " << amount << endl;
+
+		if (stat.CUR_EXP >= stat.EXP)
+		{
+			for (int i = stat.CUR_EXP; i < stat.EXP; )
+			{
+				stat.LV++;
+				stat.CUR_EXP -= stat.EXP;
+				stat.EXP = (stat.LV + 1) * (stat.LV + 1)*(stat.LV + 1);
+				stat.SKL_PNT += 2;
+				cout << "Level up!" << endl;
+			}
+		}
+
+		cout << " ( " << stat.CUR_EXP << " / " << stat.EXP << " ) " << endl;
+		cout << "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-" << endl;
+	}
+
+	void GameCharecter::SetSkill(int num)
+	{
+		switch (num)
+		{
+		case ABLE_SKILLS::HP:
+			stat.HP += 5;
+			stat.REM_HP += 5;
+			stat.SKL_PNT--;
+			break;
+
+		case ABLE_SKILLS::BGUN:
+			stat.BGUN_ATK += 2;
+			stat.SKL_PNT--;
+			break;
+
+		case ABLE_SKILLS::MGUN:
+			stat.MGUN_ATK++;
+			stat.SKL_PNT--;
+			break;
+
+		case ABLE_SKILLS::CANON:
+			stat.CANON_ATK += 3;
+			stat.SKL_PNT--;
+			break;
+
+		case ABLE_SKILLS::DEF:
+			stat.DEF++;
+			stat.SKL_PNT--;
+			break;
+
+		case ABLE_SKILLS::SPD:
+			stat.SPD++;
+			stat.SKL_PNT--;
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	void GameCharecter::Dameged(int damege)
+	{
+		if (stat.REM_HP <= damege)
+		{
+			isDead = true;
+			return;
+		}
+
+		stat.REM_HP = stat.REM_HP - (damege - (stat.DEF * 0.5f));
+		cout << stat.REM_HP << " / " << stat.HP << endl;
+	}
+
+	void GameCharecter::Respawn(Vec3 location)
+	{
+		gameObject->SetIsActive(true);
+		bowgun->SetIsActive(true);
+		SceneMgr->CurrentScene()->FindObjectByName("Arrow")->SetIsActive(true);
+
+		isDead = false;
+
+		stat.REM_HP = stat.HP;
+
+		playerTrans3D.SetPosition(location);	// 리스폰 위치 설정 필요
+		playerTrans3D.SetRotation(0, playerTrans3D.GetRotationAngle().y, 0);
+		rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
+
+		rigidBody.SetTransform(playerTrans3D.GetWorldPosition(), playerTrans3D.GetRotationAngle());
+	}
+
+	int GameCharecter::GetRespawnTime()
+	{
+		return stat.LV + 5;
+	}
+
+	bool GameCharecter::GetIsDead()
+	{
+		return isDead;
+	}
+
+	void GameCharecter::SetPlayerActive(bool value)
+	{
+		gameObject->SetIsActive(value);
+	}
+
+	CHARECTER_STATUS GameCharecter::GetPlayerInfo()
+	{
+		return stat;
+	}
+
+	int GameCharecter::GetWeaponType()
+	{
+		return weaponType;
+	}
+
+	void GameCharecter::Init()
+	{
+		gameObject->AddTag("Player");
+		zeroMovement = 1.f;
+		mass = 5000;
+
+		isDead = false;
+		respawnCounter = 0;
+
+		//playerMesh = new SkinnedMesh();
+		stat = { 1, 15, 15, 4, 1, 8, 1, 8, 8, 0, 0 };
+
+		gameObject->AddComponent(dynamic_cast<Component*>(&playerTrans3D));
+
+		bowgun = new GameObject;
+		bowgunScript = new Bowgun;
+
+		weaponType = WEAPON_TYPE::BOWGUN;
+
+		this->gameObject->AttachChild(bowgun);
+
+		dynamic_cast<Script*>(bowgunScript)->SetInfo(bowgun, "bowgunScrpt");
+		bowgun->AddComponent(dynamic_cast<Component*>(bowgunScript));
+
+		SceneMgr->CurrentScene()->AddObject(bowgun, "Bowgun");
+	}
+
+	void GameCharecter::Reference()
+	{
+		playerTrans3D.SetPosition(0, 0, 0);
+
+		colShape = new btBoxShape(btVector3(50 * playerTrans3D.GetScale().x,
+			50 * playerTrans3D.GetScale().y, 65 * playerTrans3D.GetScale().z));
+
+		//playerMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
+		//gameObject->AddComponent(dynamic_cast<Component*>(playerMesh));
+
+		boatMesh.SetFilePath(".\\Resources\\boat.x");
+		gameObject->AddComponent(dynamic_cast<Component*>(&boatMesh));
+
+		rigidBody.SetRigidBody(gameObject, mass, colShape);
+		rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
+		rigidBody.LockRotation(true, false, true);
+		gameObject->AddComponent(dynamic_cast<Component*>(&rigidBody));
+	}
+
+	void GameCharecter::Update()
+	{
+		/*sec += SceneMgr->GetTimeDelta();
+		if (sec > 2)
+		{
+			cout << playerTrans3D.GetPosition().x << ", "
+				<< playerTrans3D.GetPosition().y << ", "
+				<< playerTrans3D.GetPosition().z << endl;
+
+			sec = 0;
+		}*/
+
+		if (isDead)
+		{
+			gameObject->SetIsActive(false);
+			bowgun->SetIsActive(false);
+			SceneMgr->CurrentScene()->FindObjectByName("Arrow")->SetIsActive(false);
+			return;
+		}
+
+		/*if (playerTrans3D.GetPosition().y != 0)
+		{
+			playerTrans3D.SetRotation(0, playerTrans3D.GetRotationAngle().y, 0);
+			playerTrans3D.SetPosition(playerTrans3D.GetPosition().x, 0, playerTrans3D.GetPosition().z);
+			//rigidBody.SetTransform(playerTrans3D.GetWorldPosition(), playerTrans3D.GetRotationAngle());
+		}*/
+
+		//Vec3 rightTop =  Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
+		//Vec3 leftBottom =  -Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
+		//DeviceMgr->DrawBox(playerTrans3D->GetTransform(), leftBottom/10, rightTop/10, COLOR::GREEN);
+		controll();
+
+	}
+
 	void GameCharecter::LateUpdate()
 	{
+		
 	}
 }

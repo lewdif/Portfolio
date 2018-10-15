@@ -18,12 +18,14 @@
 #include "RigidBody.h"
 #include "SoundClip.h"
 
+#include "GameManager.h"
 #include "GameCharecter.h"
 #include "FirstTestCam.h"
 #include "UserButton.h"
 #include "Block.h"
 #include "Plane.h"
 #include "Shark.h"
+#include "ProjectileArrow.h"
 
 namespace CompEngine
 {
@@ -36,19 +38,26 @@ namespace CompEngine
 		GameObject* mainCam;
 		Transform3D* camTrans3D;
 
-		GameCharecter* playerScrpt;
+		GameObject* gameManager;
+		GameManager* gameMgrScript;
+
 		GameObject* player;
+		GameCharecter* playerScrpt;
+
+		GameObject* projectileArrow;
+		ProjectileArrow* projArrowScript;
+
 		//Transform3D* playerTrans3D;
 		//SkinnedMesh* playerMesh;
 		//RigidBody* playerRigidBody;
 
 		GameObject* block;
-		Transform3D* blockTrans3D;
 		Block* blockScript;
+		//Transform3D* blockTrans3D;
 
 		GameObject* shark;
-		Transform3D* sharkTrans3D;
 		Shark* sharkScript;
+		//Transform3D* sharkTrans3D;
 
 		GameObject* water;
 		Transform3D* waterTrans3D;

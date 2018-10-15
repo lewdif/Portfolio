@@ -67,11 +67,11 @@ namespace CompEngine
 
 	void Transform3D::SetPosition(float x, float y, float z)
 	{
-		if (position == nullptr)
+		/*if (position == nullptr)
 		{
 			cout << "position equals nullptr!" << endl << "Initialized by (0, 0, 0)" << endl;
 			position = Vec3(0, 0, 0);
-		}
+		}*/
 
 		position.x = x;
 		position.y = y;
@@ -280,6 +280,19 @@ namespace CompEngine
 		return result;
 	}
 
+	Vec3 Transform3D::Lerp(Vec3 &from, Vec3 &to, float &t)
+	{
+		btVector3 btFrom = btVector3(from.x, from.y, from.z);
+		btVector3 btTo = btVector3(to.x, to.y, to.z);
+		btVector3 btRes = lerp(btFrom, btTo, t);
+
+		Vec3 result;
+		result = Vec3(btRes.getX(), btRes.getY(), btRes.getZ());
+
+		return result;
+	}
+
+
 	Quater Transform3D::LookAt(Vec3 from, Vec3 to)
 	{
 		Vec3 forwardVec;
@@ -302,8 +315,10 @@ namespace CompEngine
 		Vec3 rotAxis;
 		Vec3 resAxis;
 
-		D3DXVec3Cross(&rotAxis, &forwardVec, &forward);
+		D3DXVec3Cross(&rotAxis, &forward, &forwardVec);
 		D3DXVec3Normalize(&resAxis, &rotAxis);
+
+		//forward = forwardVec;
 		return CreateFromAxisAngle(resAxis, rotAngle);
 	}
 
@@ -317,25 +332,27 @@ namespace CompEngine
 		q.y = (axis.y * s);
 		q.z = (axis.z * s);
 		q.w = cos(halfAngle);
+
 		return q;
 	}
 
-	Quater Transform3D::LookAt2(Vec3 from, Vec3 to)
+	void Transform3D::MoveTowards(Vec3 to, float speed, float deltaTime)
 	{
-		Vec3 forwardVector;
-		D3DXVec3Normalize(&forwardVector, &(to - from));
+		Vec3 directionToTarget = to - position;
 
-		Vec3 rotAxis;
-		D3DXVec3Cross(&rotAxis, &forward, &forwardVector);
-		float dot = D3DXVec3Dot(&forward, &forwardVector);
+		if (D3DXVec3Length(&directionToTarget) <= speed * deltaTime)
+		{
+			position = to;
+		}
+		else
+		{
+			D3DXVec3Normalize(&directionToTarget, &directionToTarget);
 
-		Quater q;
-		q.x = -rotAxis.x;
-		q.y = -rotAxis.y;
-		q.z = -rotAxis.z;
-		q.w = dot + 1;
-
-		return *D3DXQuaternionNormalize(&q, &q);
+			position += speed * directionToTarget * deltaTime;
+			/*cout << "cur pos : " << position.x << ", "
+				<< position.y << ", "
+				<< position.z << endl;*/
+		}
 	}
 
 	void Transform3D::AddParent(GameObject* parent)
@@ -351,10 +368,6 @@ namespace CompEngine
 		Vec3 Posit = position;
 		Quater RotAngle = rotAngle;
 
-		/*cout << "Scale : (" << Scale.x << ", " << Scale.y << ", " << Scale.z << ")" << endl
-			<< "Position : (" << Posit.x << ", " << Posit.y << " , " << Posit.z << ")" << endl
-			<< "Rotation Angle : (" << RotAngle.x << ", " << RotAngle.y << ", " << RotAngle.z << endl;
-			*/
 		D3DXMatrixRotationQuaternion(&rotationTransform, &RotAngle);
 		D3DXMatrixTranslation(&translationTransform, Posit.x, Posit.y, Posit.z);
 		D3DXMatrixScaling(&scaleTransform, Scale.x, Scale.y, Scale.z);
@@ -368,12 +381,24 @@ namespace CompEngine
 			transform *= *combineMatrix;
 		}
 
+		if (parentPtr != nullptr)
+		{
+			transform *= ((Transform3D*)parentPtr->transform3D)->GetTransform();
+
+			parentPtr = parentPtr->GetParent();
+		}
+
+		/*
+		// Convertered to upper [if(parentPtr != nullptr)] statement.
+		// Because in this statement, child is moving twice more
+		// position of parent's movement.
 		while (parentPtr != nullptr)
 		{
 			transform *= ((Transform3D*)parentPtr->transform3D)->GetTransform();
 
 			parentPtr = parentPtr->GetParent();
 		}
+		*/
 
 		return transform;
 	}

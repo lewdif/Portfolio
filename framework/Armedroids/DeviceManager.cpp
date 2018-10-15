@@ -251,8 +251,8 @@ namespace CompEngine
 		Matrix projMat;
 		D3D_DEVICE->GetTransform(D3DTS_PROJECTION, &projMat);
 
-		float vx = (+2.0f * cursor.x / view.Width - 1.0f) / projMat._11;
-		float vy = (-2.0f * cursor.y / view.Height + 1.0f) / projMat._22;
+		/*float vx = (+2.0f * cursor.x / view.Width - 1.0f) / projMat._11;
+		float vy = (-2.0f * cursor.y / view.Height + 1.0f) / projMat._22;*/
 
 		D3DXVECTOR3 Origin(cursor.x, cursor.y, 0.0f);
 		D3DXVECTOR3 Direction(cursor.x, cursor.y, 1.0f);
@@ -270,6 +270,46 @@ namespace CompEngine
 		BOOL isHit = FALSE;
 
 		D3DXIntersect(mesh, &vOrg, &vDir, &isHit, nullptr, nullptr, nullptr, dist, nullptr, nullptr);
+
+		return isHit;
+	}
+
+	bool DeviceManager::RayTo(const D3DXMATRIX& matWorld, LPD3DXMESH mesh, float* dist, Vec3 curPos)
+	{
+		POINT cursor;
+
+		GetCursorPos(&cursor);
+		ScreenToClient(hWnd, &cursor);
+
+		D3DVIEWPORT9 view;
+		D3D_DEVICE->GetViewport(&view);
+
+		Matrix projMat;
+		D3D_DEVICE->GetTransform(D3DTS_PROJECTION, &projMat);
+
+		/*float vx = (+2.0f * cursor.x / view.Width - 1.0f) / projMat._11;
+		float vy = (-2.0f * cursor.y / view.Height + 1.0f) / projMat._22;*/
+
+		D3DXVECTOR3 Origin(curPos.x, curPos.y, curPos.z);
+		D3DXVECTOR3 Direction(cursor.x, cursor.y, 1.0f);
+
+
+		Matrix viewMat;
+		D3D_DEVICE->GetTransform(D3DTS_VIEW, &viewMat);
+
+		D3DXVECTOR3 vtemp;
+		//D3DXVec3Unproject(&vOrg, &Origin, &view, &projMat, &viewMat, &matWorld);
+		//D3DXVec3Unproject(&vtemp, &Direction, &view, &projMat, &viewMat, &matWorld);
+
+		vDir = vtemp - vOrg;
+		D3DXVec3Normalize(&vDir, &vDir);
+
+		BOOL isHit = FALSE;
+		//DrawLine(Origin, vDir, COLOR::RED);
+
+		//cout << vDir.x << ", " << vDir.y << ", " << vDir.z << endl;
+
+		D3DXIntersect(mesh, &Origin, &vDir, &isHit, nullptr, nullptr, nullptr, dist, nullptr, nullptr);
 
 		return isHit;
 	}

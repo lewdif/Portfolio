@@ -99,7 +99,11 @@ namespace CompEngine
 		if (child != nullptr)
 		{
 			if (child->GetParent() == nullptr)
+			{
 				child->AttachParent(this);
+
+				cout << "<" << child->GetName() << "> is attached to <" << this->GetName() << ">." << endl;
+			}
 
 			bool Flag = false;
 
@@ -125,6 +129,7 @@ namespace CompEngine
 			{
 				childList.erase(Iter);
 				child->DetachParent();
+				cout << "<" << child->GetName() << "> is detached from <" << this->GetName() << ">." << endl;
 				break;
 			}
 		}
@@ -153,7 +158,7 @@ namespace CompEngine
 		}
 	}
 
-	void GameObject::AddScript(string name)
+	/*void GameObject::AddScript(string name)
 	{
 		scriptList.push_back(name);
 	}
@@ -161,7 +166,7 @@ namespace CompEngine
 	list<string> GameObject::GetScript()
 	{
 		return scriptList;
-	}
+	}*/
 
 	Component* GameObject::GetComponent(string componentName)
 	{

@@ -12,7 +12,7 @@ namespace CompEngine
 		//	Vec3(0, 1, 0), DeviceMgr->GetWidth(), DeviceMgr->GetHeight(), 2000, 0.1f, D3DX_PI * 0.6f);
 		
 		mainCamera = new Camera(0, PROJECTION_TYPE::PROJECTION_ORTHOGONAL, mainCamUpVec,
-			DeviceMgr->GetWidth(), DeviceMgr->GetHeight(), 3000, -250, D3DX_PI * 0.6f);
+			DeviceMgr->GetWidth(), DeviceMgr->GetHeight(), 3000, -300, D3DX_PI * 0.6f);
 	}
 
 	void FirstTestCam::Reference()
@@ -36,8 +36,9 @@ namespace CompEngine
 	void FirstTestCam::LateUpdate()
 	{
 		// Eye
-		cameraTrans->SetPosition(TargetTrans->GetPosition() + Vec3(300, 300, 0));
+		cameraTrans->SetPosition(TargetTrans->GetPosition() + Vec3(0, 300, -300));
 		// Target
+		//mainCamera->SetTargetPosition(Vec3(0,0,0));
 		mainCamera->SetTargetPosition(TargetTrans->GetPosition());
 
 		mainCamera->FixedUpdate(gameObject);

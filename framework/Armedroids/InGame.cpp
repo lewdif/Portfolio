@@ -17,12 +17,27 @@ namespace CompEngine
 		SceneMgr->CurrentScene()->createEmptyDynamicsWorld_Debug();
 		SceneMgr->CurrentScene()->SetGravity(Vec3(0, 0, 0));
 
+		// ---- GAME MANAGER -----------------------------
+		gameManager = new GameObject();
+		gameMgrScript = new GameManager();
+
+		dynamic_cast<Script*>(gameMgrScript)->SetInfo(gameManager, "gameMgrScript");
+		gameManager->AddComponent(dynamic_cast<Component*>(gameMgrScript));
+		cout << "gameManager initialized completed" << endl;
+		// -----------------------------------------------
+
 		// ---- CHARACTER --------------------------------
 		player = new GameObject();
 		playerScrpt = new GameCharecter;
 
+		projectileArrow = new GameObject;
+		projArrowScript = new ProjectileArrow;
+
 		dynamic_cast<Script*>(playerScrpt)->SetInfo(player, "playerScrpt");
 		player->AddComponent(dynamic_cast<Component*>(playerScrpt));
+
+		dynamic_cast<Script*>(projArrowScript)->SetInfo(projectileArrow, "projArrowScript");
+		projectileArrow->AddComponent(dynamic_cast<Component*>(projArrowScript));
 
 		cout << "player initialized completed" << endl;
 		// -----------------------------------------------
@@ -41,10 +56,10 @@ namespace CompEngine
 
 		// ---- OBJECT -----------------------------------
 		block = new GameObject;
-		blockTrans3D = new Transform3D;
+		//blockTrans3D = new Transform3D;
 		blockScript = new Block;
 
-		block->AddComponent(dynamic_cast<Component*>(blockTrans3D));
+		//block->AddComponent(dynamic_cast<Component*>(blockTrans3D));
 		dynamic_cast<Script*>(blockScript)->SetInfo(block, "blockScript");
 		block->AddComponent(dynamic_cast<Component*>(blockScript));
 
@@ -53,10 +68,10 @@ namespace CompEngine
 
 		// ---- SHARK ------------------------------------
 		shark = new GameObject;
-		sharkTrans3D = new Transform3D;
+		//sharkTrans3D = new Transform3D;
 		sharkScript = new Shark;
 
-		shark->AddComponent(dynamic_cast<Component*>(sharkTrans3D));
+		//shark->AddComponent(dynamic_cast<Component*>(sharkTrans3D));
 		dynamic_cast<Script*>(sharkScript)->SetInfo(shark, "sharkScript");
 		shark->AddComponent(dynamic_cast<Component*>(sharkScript));
 
@@ -105,11 +120,13 @@ namespace CompEngine
 
 		inGameScene->SetSceneFlag(true);
 
-		inGameScene->AddComponent(mainCam, "MainCamera");
-		inGameScene->AddComponent(player, "Player");
-		inGameScene->AddComponent(block, "Block");
-		inGameScene->AddComponent(water, "Water");
-		inGameScene->AddComponent(shark, "Shark");
+		inGameScene->AddObject(mainCam, "MainCamera");
+		inGameScene->AddObject(gameManager, "GameManager");
+		inGameScene->AddObject(player, "Player");
+		inGameScene->AddObject(projectileArrow, "ProjectileArrow");
+		inGameScene->AddObject(block, "Block");
+		inGameScene->AddObject(water, "Water");
+		inGameScene->AddObject(shark, "Shark");
 
 		inGameScene->SetSkybox(".\\Resources\\Skybox", "skySamp01", "png");
 	}

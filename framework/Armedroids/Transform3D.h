@@ -55,11 +55,12 @@ namespace CompEngine
 		Vec3 GetWorldPosition();
 
 		Quater Slerp(Quater &from, Quater &to, float &f);
+		Vec3 Lerp(Vec3 &from, Vec3 &to, float &f);
 
 		Quater LookAt(Vec3 from,Vec3 to);
 		Quater CreateFromAxisAngle(Vec3 axis, float angle);
 
-		Quater LookAt2(Vec3 from, Vec3 to);
+		void MoveTowards(Vec3 to, float speed, float deltaTime);
 
 		void AddParent(GameObject* parent);
 

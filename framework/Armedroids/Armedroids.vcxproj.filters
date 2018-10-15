@@ -92,6 +92,21 @@
     <Filter Include="Testing codes\InGame\Objects">
       <UniqueIdentifier>{5da5ffce-7433-41c4-b39f-1daeb9064058}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Testing codes\Managers">
+      <UniqueIdentifier>{14b0f6a8-5c48-4746-b160-21f60e8b42f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Components\CollisionEventShape">
+      <UniqueIdentifier>{fbb56287-afbd-425d-9f9f-bd8df2c73e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\InGame\Objects\Enemy">
+      <UniqueIdentifier>{d19a6dce-976e-4aa9-b2c2-e16753e967a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\InGame\Objects\Enemy\Shark">
+      <UniqueIdentifier>{2da82c97-08dd-4d63-aeac-84cab1439d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\InGame\Objects\Enemy\Shark\State">
+      <UniqueIdentifier>{4239f46d-dad6-4c7c-b0e9-bf62fe924343}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -176,9 +191,6 @@
     <ClCompile Include="Box.cpp">
       <Filter>Testing codes\TestScene</Filter>
     </ClCompile>
-    <ClCompile Include="refTemp.cpp">
-      <Filter>Testing codes</Filter>
-    </ClCompile>
     <ClCompile Include="GameCharecter.cpp">
       <Filter>Testing codes\InGame\Player</Filter>
     </ClCompile>
@@ -197,11 +209,32 @@
     <ClCompile Include="Plane.cpp">
       <Filter>Testing codes\InGame\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Shark.cpp">
-      <Filter>Testing codes\InGame\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Bowgun.cpp">
       <Filter>Testing codes\InGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Testing codes\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>Testing codes\InGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileArrow.cpp">
+      <Filter>Testing codes\InGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionEventSphere.cpp">
+      <Filter>GameObject\Components\CollisionEventShape</Filter>
+    </ClCompile>
+    <ClCompile Include="Shark.cpp">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark</Filter>
+    </ClCompile>
+    <ClCompile Include="SharkAttackState.cpp">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SharkChaseState.cpp">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SharkPatrolState.cpp">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,11 +338,35 @@
     <ClInclude Include="Plane.h">
       <Filter>Testing codes\InGame\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Shark.h">
-      <Filter>Testing codes\InGame\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Bowgun.h">
       <Filter>Testing codes\InGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrow.h">
+      <Filter>Testing codes\InGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileArrow.h">
+      <Filter>Testing codes\InGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionEventSphere.h">
+      <Filter>GameObject\Components\CollisionEventShape</Filter>
+    </ClInclude>
+    <ClInclude Include="Shark.h">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark</Filter>
+    </ClInclude>
+    <ClInclude Include="SharkAttackState.h">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SharkChaseState.h">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+    </ClInclude>
+    <ClInclude Include="SharkPatrolState.h">
+      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState.h">
+      <Filter>Testing codes\InGame\Objects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Testing codes\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

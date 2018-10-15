@@ -206,7 +206,7 @@ namespace CompEngine
 		return enablePhysics;
 	}
 
-	void Scene::AddComponent(GameObject* object, string name)
+	void Scene::AddObject(GameObject* object, string name)
 	{
 		object->SetName(name);
 

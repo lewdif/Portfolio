@@ -1,0 +1,43 @@
+#pragma once
+#include "Script.h"
+#include "Transform3D.h"
+#include "SceneManager.h"
+#include "headers.h"
+
+#include "SceneManager.h"
+#include "GameObject.h"
+
+//#include "GameCharecter.h"
+
+namespace CompEngine
+{
+	class GameManager : public Script
+	{
+	private:
+		Vec3 arrowPos;
+		Quater arrowRot;
+
+		Vec3 rayHitPos;
+		//GameCharecter* player;
+		Vec3 playerRespawnPos;
+		float playerRespawnTime;
+
+	private:
+		void playerRespawn();
+
+	public:
+		void SetArrowPos(Vec3 pos);
+		Vec3 GetArrowPos();
+		void SetArrowRot(Quater rot);
+		Quater GetArrowRot();
+
+		void SetRayHitPos(Vec3 pos);
+		Vec3 GetRayHitPos();
+
+	public:
+		virtual void Init();
+		virtual void Reference();
+		virtual void Update();
+		virtual void LateUpdate();
+	};
+}

@@ -12,9 +12,9 @@ namespace CompEngine
 	class Block : public Script
 	{
 	private:
-		Transform3D* blockTrans3D;
-		StaticMesh* blockMesh;
-		RigidBody* rigidBody;
+		Transform3D blockTrans3D;
+		StaticMesh blockMesh;
+		RigidBody rigidBody;
 		btBoxShape* colShape;
 
 		float mass;

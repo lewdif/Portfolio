@@ -1,6 +1,5 @@
 #include "SceneManager.h"
 
-
 namespace CompEngine
 {
 	SceneManager::SceneManager()

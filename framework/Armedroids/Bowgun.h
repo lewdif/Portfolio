@@ -5,15 +5,16 @@
 #include "SceneManager.h"
 #include "RigidBody.h"
 
+#include "Arrow.h"
+#include "ProjectileArrow.h"
 
 namespace CompEngine
 {
 	class Bowgun : public Script
 	{
 	private:
-		Transform3D* trans;
-		StaticMesh* bowgunMesh;
-		VERTEXINFO* verInfo;
+		Transform3D trans;
+		StaticMesh bowgunMesh;
 		
 		Vec3 parentPos;
 		
@@ -21,13 +22,24 @@ namespace CompEngine
 		float rayDist;
 		StaticMesh* waterMesh;
 		Transform3D* waterTrans3D;
-		Matrix viewMatrix;
-		Vec3 upVec;
+		StaticMesh* blockMesh;
+		Transform3D* blockTrans3D;
 
 		Quater curRot;
 		Quater destRot;
 		Quater resRot;
-		float t = 0.1f;
+		float rotSpeed = 0.1f;
+
+		GameObject* arrow;
+		Arrow* arrowScript;
+		double arrowCoolTimeCount;
+
+		bool mouseClicker;
+
+		GameManager* GameMgr;
+		GameObject* projArrow;
+		Transform3D* projArrowTrans;
+		ProjectileArrow* projArrowScript;
 
 	public:
 		virtual void Init();

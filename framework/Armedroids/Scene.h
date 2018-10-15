@@ -56,8 +56,8 @@ namespace CompEngine
 
 		void Destroy(GameObject* gameObject);
 
-		void AddComponent(GameObject* object, string name);
-		// think about : AddComponents( ... );
+		void AddObject(GameObject* object, string name);
+		// think about : AddObjects( ... );
 
 		void AddCollisionShape(btBoxShape* box);
 		void AddCollisionShape(btSphereShape* sphere);

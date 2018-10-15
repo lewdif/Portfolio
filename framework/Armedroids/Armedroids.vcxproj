@@ -156,20 +156,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BoneHierarchyLoader.cpp" />
     <ClCompile Include="Bowgun.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CollisionEventSphere.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="DrawShape.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InGame.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="IShader.cpp" />
     <ClCompile Include="Plane.cpp" />
-    <ClCompile Include="refTemp.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    <ClCompile Include="ProjectileArrow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="RigidBody.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -193,6 +196,9 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="Shark.cpp" />
+    <ClCompile Include="SharkAttackState.cpp" />
+    <ClCompile Include="SharkChaseState.cpp" />
+    <ClCompile Include="SharkPatrolState.cpp" />
     <ClCompile Include="SkinnedMesh.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -211,17 +217,24 @@
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arrow.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BoneHierarchyLoader.h" />
     <ClInclude Include="Bowgun.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CollisionEventSphere.h" />
     <ClInclude Include="DebugDraw.h" />
+    <ClInclude Include="EnemyState.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="InGame.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="IShader.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="ProjectileArrow.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="RigidBody.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -247,6 +260,9 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="Shark.h" />
+    <ClInclude Include="SharkAttackState.h" />
+    <ClInclude Include="SharkChaseState.h" />
+    <ClInclude Include="SharkPatrolState.h" />
     <ClInclude Include="SkinnedMesh.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Image.h" />

@@ -115,4 +115,22 @@ namespace CompEngine
 		this->DrawLine(transform, Vertex[1], Vertex[4], color);
 		this->DrawLine(transform, Vertex[3], Vertex[6], color);
 	}
+
+	void DeviceManager::DrawSphere(D3DXMATRIX transform, float radius, D3DXCOLOR color)
+	{
+		LPD3DXMESH mesh;
+		D3DXCreateSphere(D3D_DEVICE, radius, 12, 12, &mesh, 0);
+
+		D3D_DEVICE->SetTransform(D3DTS_WORLD, &transform);
+		DWORD RenderState;
+		D3D_DEVICE->GetRenderState(D3DRS_FILLMODE, &RenderState);
+		D3D_DEVICE->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+
+		D3D_DEVICE->SetTexture(0, NULL);
+		mesh->DrawSubset(0);
+
+		D3D_DEVICE->SetRenderState(D3DRS_FILLMODE, RenderState);
+
+		mesh->Release();
+	}
 }

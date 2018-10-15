@@ -47,8 +47,8 @@ namespace CompEngine
 
 		testScene->SetSceneFlag(true);
 
-		testScene->AddComponent(testCam, "MainCamera");
-		testScene->AddComponent(boxObj, "Box");
+ 		testScene->AddObject(testCam, "MainCamera");
+		testScene->AddObject(boxObj, "Box");
 	}
 
 	void TestScene::Update()

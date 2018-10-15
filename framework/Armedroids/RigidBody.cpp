@@ -13,6 +13,7 @@ namespace CompEngine
 
 	RigidBody::~RigidBody()
 	{
+		//rigidBody->
 	}
 
 	btRigidBody* RigidBody::createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color)
@@ -33,6 +34,8 @@ namespace CompEngine
 		body->setUserIndex(-1);
 		m_dynamicsWorld->addRigidBody(body);
 		return body;
+
+		//body->checkCollideWith(shape);
 	}
 
 	bool RigidBody::SetRigidBody(GameObject* owner, float mass, btCollisionShape* colShape)
@@ -50,9 +53,18 @@ namespace CompEngine
 		rigidBody = createRigidBody(mass, InitTransform, colShape);
 		cout << owner->GetName() + " : Rigidbody set." << endl;
 
-		pos = GET_TRANSFORM_3D(this->owner)->GetPosition();
+		//pos = GET_TRANSFORM_3D(this->owner)->GetPosition();
 
 		return true;
+	}
+
+	void RigidBody::SetWorldTransform()
+	{
+		btVector3 InitPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y, transform->GetWorldPosition().z);
+		btQuaternion InitOrientation(transform->GetWorldRotationAngle().x, transform->GetWorldRotationAngle().y, transform->GetWorldRotationAngle().z);
+		btTransform InitTransform(InitOrientation, InitPosition);
+
+		rigidBody->setWorldTransform(InitTransform);
 	}
 
 	void RigidBody::SetMass(float mass)
@@ -68,20 +80,13 @@ namespace CompEngine
 	void RigidBody::SetLinearVelocity(float x, float y, float z)
 	{
 		rigidBody->setLinearVelocity(btVector3(x, y, z));
-		
-		/*btVector3 temp = rigidBody->getLinearVelocity();
-
-		cout << "linear velocity : ("
-			<< temp.getX() << ", "
-			<< temp.getY() << ", " 
-			<< temp.getZ() << ")" << endl;*/
 	}
 
 	void RigidBody::SetTransform(Vec3 Translate, Vec3 Rotate)
 	{
 		btTransform transform;
 
-		transform.setOrigin(btVector3(Translate.x, Translate.y, -Translate.z));
+		transform.setOrigin(btVector3(Translate.x, Translate.y, Translate.z));
 
 		btQuaternion NewQuater(Rotate.x, Rotate.y, Rotate.z);
 		transform.setRotation(NewQuater);
@@ -112,6 +117,11 @@ namespace CompEngine
 	btRigidBody* RigidBody::GetBtRigidBody()
 	{
 		return rigidBody;
+	}
+
+	bool RigidBody::CheckCollideWith(btCollisionObject colObj)
+	{
+		return rigidBody->checkCollideWith(&colObj);
 	}
 
 	void RigidBody::DrawFunc()

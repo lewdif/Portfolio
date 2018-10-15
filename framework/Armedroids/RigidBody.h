@@ -8,6 +8,26 @@
 
 namespace CompEngine
 {
+	/*struct ResultCallback : public btDynamicsWorld::ContactResultCallback
+	{
+		btScalar addSingleResult(btManifoldPoint& cp,
+			const btCollisionObjectWrapper* colObj0Wrap,
+			int partId0, int index0,
+			const btCollisionObjectWrapper* colObj1Wrap,
+			int partId1, int index1)
+		{
+			btVector3 ptA = cp.getPositionWorldOnA();
+			btVector3 ptB = cp.getPositionWorldOnB();
+			cout << "!!colide!!" << endl;
+			cout << "col obj A : (" << (int)ptA.getX() << ", "
+				<< (int)ptA.getY() << ", " << (int)ptA.getZ() << ") " << endl;
+			cout << "col obj B : (" << (int)ptB.getX() << ", "
+				<< (int)ptB.getY() << ", " << (int)ptB.getX() << ") " << endl;
+
+			return 0;
+		}
+	};*/
+
 	class RigidBody : public Component
 	{
 	private:
@@ -37,6 +57,7 @@ namespace CompEngine
 
 		//void SetBounciness(float value = 0.0f);
 		//void SetFrictionCoefficient(float value = 0.2f);
+		void SetWorldTransform();
 		void SetMass(float mass);
 
 		void SetAngularVelocity(float x, float y, float z);
@@ -50,6 +71,7 @@ namespace CompEngine
 		btMotionState* GetMotionState();
 		btCollisionShape* GetCollisionShape();
 		btRigidBody* GetBtRigidBody();
+		bool CheckCollideWith(btCollisionObject colObj);
 
 		void DrawFunc();
 

@@ -44,8 +44,8 @@ namespace CompEngine
 		void DetachChildByTag(string tag);
 		GameObject* FindChildByTag(string tag);
 
-		void AddScript(string name);
-		list<string> GetScript();
+		/*void AddScript(string name);
+		list<string> GetScript();*/
 
 		Component* GetComponent(string componentName);
 		map<string, Component*> GetComponentList();

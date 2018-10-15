@@ -12,7 +12,6 @@ namespace CompEngine
 	{
 	private:
 		MESHINFO* meshInfo;
-		VERTEXINFO* vertexInfo;
 		D3DMATERIAL9* meshMaterials;
 
 		string fileName;
@@ -24,11 +23,6 @@ namespace CompEngine
 		bool show;
 
 		D3DXCOLOR color;
-
-		// only for this game.
-		// this method and values must be refactored.
-		void getVertexInfo(Matrix meshTrans);
-
 
 	public:
 		enum RENDER_MODE { RENDER_STENCIL, RENDER_ALPHA, RENDER_DEFAULT };
@@ -52,6 +46,13 @@ namespace CompEngine
 		string GetFilePath();
 
 		bool IsRayHit(Transform3D* tr, float *dist);
+		bool RayTo(Transform3D* tr, float *dist, Vec3 curPos);
 		D3DXVECTOR3 GetRayHitPoint(Matrix meshTrans);
+
+		// only for this game.
+		// this method and values must be refactored.
+		VERTEXINFO* VertexInfo;
+		void GetVertexInfo(Matrix meshTrans);
+		LPD3DXMESH GetMeshInfo();
 	};
 }

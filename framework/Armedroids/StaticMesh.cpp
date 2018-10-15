@@ -24,36 +24,6 @@ namespace CompEngine
 			}
 	}
 
-	void StaticMesh::getVertexInfo(Matrix meshTrans)
-	{
-		LPD3DXMESH pMesh = meshInfo->mesh;
-		DWORD dwVertexNum = pMesh->GetNumVertices();
-
-		LPDIRECT3DVERTEXBUFFER9 pVB;
-		pMesh->GetVertexBuffer(&pVB);
-
-		VOID* pVertices;
-
-		pVB->Lock(0, sizeof(VERTEXINFO) * pMesh->GetNumVertices(), (void**)&pVertices, 0);
-
-		vertexInfo = (VERTEXINFO*)pVertices;
-
-		Matrix translationTransform;
-		D3DXMatrixIdentity(&translationTransform);
-
-		pVB->Unlock();
-
-		/*for (DWORD i = 0; i < dwVertexNum; ++i)
-		{
-			D3DXMatrixTranslation(&translationTransform, vertexInfo[i].position.x, vertexInfo[i].position.y, vertexInfo[i].position.z);
-			translationTransform *= *meshTrans;
-
-			vertexInfo[i].position.x = translationTransform._41;
-			vertexInfo[i].position.y = translationTransform._42;
-			vertexInfo[i].position.z = translationTransform._43;
-		}*/
-	}
-
 	void StaticMesh::LoadContent()
 	{
 		try {
@@ -204,12 +174,19 @@ namespace CompEngine
 
 		return result;
 	}
-	
+
+	bool StaticMesh::RayTo(Transform3D* tr, float *dist, Vec3 curPos)
+	{
+		bool result = DeviceMgr->RayTo(tr->GetTransform(), MeshMgr->FindMesh(fileName)->mesh, dist, curPos);
+
+		return result;
+	}
+
 	D3DXVECTOR3 StaticMesh::GetRayHitPoint(Matrix meshTrans)
 	{
-		if (!vertexInfo)
+		if (!VertexInfo)
 		{
-			getVertexInfo(meshTrans);
+			GetVertexInfo(meshTrans);
 			cout << "got vertex information." << endl;
 		}
 
@@ -224,31 +201,54 @@ namespace CompEngine
 		DeviceMgr->GetDevice()->GetTransform(D3DTS_WORLD, &matWorld);
 
 		D3DXVECTOR3 Temp[3];
-
-		Temp[0] = vertexInfo[2].position;
-		Temp[1] = vertexInfo[0].position;
-		Temp[2] = vertexInfo[3].position;
+		
+		Temp[0] = VertexInfo[3].position;
+		Temp[1] = VertexInfo[1].position;
+		Temp[2] = VertexInfo[2].position;
 		
 		if (DeviceMgr->IsRayInTriangle(&ray, matWorld, Temp[0], Temp[1], Temp[2], &u, &v, &dist))
 		{
-			D3DXVECTOR3 Result = Temp[0] + v *(Temp[1] - Temp[0]) + u * (Temp[2] - Temp[0]);
+			D3DXVECTOR3 Result = Temp[0] + u *(Temp[1] - Temp[0]) + v * (Temp[2] - Temp[0]);
 			LastPick = Result;
-
 			return Result;
 		}
 
-		Temp[0] = vertexInfo[1].position;
-		Temp[1] = vertexInfo[0].position;
-		Temp[2] = vertexInfo[3].position;
+		Temp[0] = VertexInfo[0].position;
+		Temp[1] = VertexInfo[2].position;
+		Temp[2] = VertexInfo[1].position;
 
 		if (DeviceMgr->IsRayInTriangle(&ray, matWorld, Temp[0], Temp[1], Temp[2], &u, &v, &dist))
 		{
-			D3DXVECTOR3 Result = Temp[0] + v *(Temp[1] - Temp[0]) + u * (Temp[2] - Temp[0]);
+			D3DXVECTOR3 Result = Temp[0] + u *(Temp[1] - Temp[0]) + v * (Temp[2] - Temp[0]);
 			LastPick = Result;
-
 			return Result;
 		}
 
 		return LastPick;
+	}
+
+	void StaticMesh::GetVertexInfo(Matrix meshTrans)
+	{
+		LPD3DXMESH pMesh = meshInfo->mesh;
+		DWORD dwVertexNum = pMesh->GetNumVertices();
+
+		LPDIRECT3DVERTEXBUFFER9 pVB;
+		pMesh->GetVertexBuffer(&pVB);
+
+		VOID* pVertices;
+
+		pVB->Lock(0, sizeof(VERTEXINFO) * pMesh->GetNumVertices(), (void**)&pVertices, 0);
+
+		VertexInfo = (VERTEXINFO*)pVertices;
+		/*
+		Matrix translationTransform;
+		D3DXMatrixIdentity(&translationTransform);
+		*/
+		pVB->Unlock();
+	}
+
+	LPD3DXMESH StaticMesh::GetMeshInfo()
+	{
+		return meshInfo->mesh;
 	}
 }

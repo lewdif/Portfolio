@@ -29,6 +29,7 @@ namespace CompEngine
 		void DrawLine(D3DXVECTOR3 start, D3DXVECTOR3 end, D3DXCOLOR color);
 
 		void DrawBox(D3DXMATRIX transform, D3DXVECTOR3 leftBottom, D3DXVECTOR3 rightTop, D3DXCOLOR color);
+		void DrawSphere(D3DXMATRIX transform, float radius, D3DXCOLOR color);
 
 		RAY GetPickRayToView();
 		RAY GetPickRayToViewOrtho();
@@ -36,6 +37,7 @@ namespace CompEngine
 		bool IsRayInMesh(const D3DXMATRIX& matWorld, LPD3DXMESH mesh, float* dist = nullptr);
 		bool IsRayInMeshOrtho(const D3DXMATRIX& matWorld, LPD3DXMESH mesh, float* dist);
 
+		bool RayTo(const D3DXMATRIX& matWorld, LPD3DXMESH mesh, float* dist, Vec3 curPos);
 		bool IsRayInTriangle(RAY* ray, const D3DXMATRIX& matWorld, D3DXVECTOR3 Vec3_1, D3DXVECTOR3 Vec3_2, D3DXVECTOR3 Vec3_3, float* u, float* v, float* dist = nullptr);
 		void SetHitPos(Vec3 pos);
 		Vec3 GetHitPos();
