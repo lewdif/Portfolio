@@ -18,9 +18,6 @@ namespace CompEngine
 
 	btRigidBody* RigidBody::createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color)
 	{
-		//m_dynamicsWorld->setDebugDrawer(debugDrawer);
-		//m_dynamicsWorld->getDebugDrawer()->setDebugMode(btIDebugDraw::DBG_DrawAabb);
-
 		bool isDynamic = (mass != 0.f);
 
 		btVector3 localInertia(0, 0, 0);
@@ -34,8 +31,6 @@ namespace CompEngine
 		body->setUserIndex(-1);
 		m_dynamicsWorld->addRigidBody(body);
 		return body;
-
-		//body->checkCollideWith(shape);
 	}
 
 	bool RigidBody::SetRigidBody(GameObject* owner, float mass, btCollisionShape* colShape)
@@ -49,23 +44,20 @@ namespace CompEngine
 		btQuaternion InitOrientation(transform->GetWorldRotationAngle().x, transform->GetWorldRotationAngle().y, transform->GetWorldRotationAngle().z);
 		btTransform InitTransform(InitOrientation, InitPosition);
 
-		//rigidBody = SceneMgr->CurrentScene()->GetPhysicsWorld()->createRigidBody();
 		rigidBody = createRigidBody(mass, InitTransform, colShape);
 		cout << owner->GetName() + " : Rigidbody set." << endl;
-
-		//pos = GET_TRANSFORM_3D(this->owner)->GetPosition();
 
 		return true;
 	}
 
-	void RigidBody::SetWorldTransform()
+	/*void RigidBody::SetWorldTransform()
 	{
 		btVector3 InitPosition(transform->GetWorldPosition().x, transform->GetWorldPosition().y, transform->GetWorldPosition().z);
 		btQuaternion InitOrientation(transform->GetWorldRotationAngle().x, transform->GetWorldRotationAngle().y, transform->GetWorldRotationAngle().z);
 		btTransform InitTransform(InitOrientation, InitPosition);
 
 		rigidBody->setWorldTransform(InitTransform);
-	}
+	}*/
 
 	void RigidBody::SetMass(float mass)
 	{
@@ -163,7 +155,7 @@ namespace CompEngine
 			/// If something goes wrong with rigidbody position, check here!
 			//auto CurPos = transform->GetWorldPosition() - transform->GetPosition();
 			transform->SetPosition( Pos.getX() /*- pos.x - CurPos.x*/,
-				Pos.getY() /*- pos.y - CurPos.y*/, -Pos.getZ() /*- pos.z - CurPos.z*/);
+				Pos.getY() /*- pos.y - CurPos.y*/, Pos.getZ() /*- pos.z - CurPos.z*/);
 
 			Quater quater(Rot.getX(), -Rot.getY(), Rot.getZ(), -Rot.getW());
 			//quater.x = Rot.getX;

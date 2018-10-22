@@ -22,10 +22,11 @@
 #include "GameCharecter.h"
 #include "FirstTestCam.h"
 #include "UserButton.h"
-#include "Block.h"
 #include "Plane.h"
 #include "Shark.h"
 #include "ProjectileArrow.h"
+#include "TutorialMap.h"
+#include "WeaponImage.h"
 
 namespace CompEngine
 {
@@ -34,33 +35,34 @@ namespace CompEngine
 	private:
 		Scene* inGameScene;
 
-		FirstTestCam* camScrpt;
+		FirstTestCam* camScript;
 		GameObject* mainCam;
-		Transform3D* camTrans3D;
 
 		GameObject* gameManager;
 		GameManager* gameMgrScript;
 
 		GameObject* player;
-		GameCharecter* playerScrpt;
+		GameCharecter* playerScript;
 
 		GameObject* projectileArrow;
 		ProjectileArrow* projArrowScript;
 
-		//Transform3D* playerTrans3D;
-		//SkinnedMesh* playerMesh;
-		//RigidBody* playerRigidBody;
+		GameObject* tutorialMap;
+		TutorialMap* tutorialMapScript;
 
-		GameObject* block;
-		Block* blockScript;
-		//Transform3D* blockTrans3D;
+		GameObject* weaponImg;
+		WeaponImage* weaponImgScript;
 
-		GameObject* shark;
-		Shark* sharkScript;
-		//Transform3D* sharkTrans3D;
+		GameObject* sharkA_2;
+		Shark* sharkScriptA;
+
+		GameObject* sharkB_2;
+		Shark* sharkScriptB;
+
+		GameObject* sharkC_4;
+		Shark* sharkScriptC;
 
 		GameObject* water;
-		Transform3D* waterTrans3D;
 		Plane* waterScript;
 
 	public:

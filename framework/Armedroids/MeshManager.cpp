@@ -97,8 +97,12 @@ namespace CompEngine
 			if (FAILED(D3DXCreateTextureFromFileEx(DeviceMgr->GetDevice(), fullPath.c_str(),
 				D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 1, 0, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT,
 				D3DX_DEFAULT, 0, 0, 0, 0, &Temp)))
+			{
+				cout << "THERE IS NO TEXTURFILE OR WRONG PATH : " << fullPath << endl;
 				return nullptr;
+			}
 
+			cout << fullPath << " - completely loaded!" << endl;
 			textureList.insert(pair<string, LPDIRECT3DTEXTURE9>(fileName, Temp));
 
 			return textureList.find(fileName)->second;

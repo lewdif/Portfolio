@@ -18,6 +18,7 @@ namespace CompEngine
 		list<string> scriptList;
 
 		bool isActive;
+		bool isStatic;
 
 	public:
 		Component* transform2D;
@@ -54,6 +55,8 @@ namespace CompEngine
 
 		void SetIsActive(bool active);
 		bool GetIsActive();
+		void SetIsStatic(bool isStatic);
+		bool GetIsStatic();
 
 		virtual void Init();
 		virtual void Awake();

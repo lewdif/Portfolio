@@ -3,6 +3,7 @@
 #include "DeviceManager.h"
 #include "Transform2D.h"
 #include "InputManager.h"
+#include "MeshManager.h"
 
 namespace CompEngine
 {
@@ -22,7 +23,7 @@ namespace CompEngine
 
 	LPDIRECT3DTEXTURE9 Button::LoadContent(string fileName)
 	{
-		LPDIRECT3DTEXTURE9 Temp;
+		/*LPDIRECT3DTEXTURE9 Temp;
 
 		if (FAILED(D3DXCreateTextureFromFileEx(DeviceMgr->GetDevice(), fileName.c_str(),
 			D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 1, 0, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT,
@@ -32,7 +33,11 @@ namespace CompEngine
 			return nullptr;
 		}
 
-		return Temp;
+		return Temp;*/
+
+		string newName = "Images\\" + fileName;
+
+		return MeshMgr->LoadTexture(newName);
 	}
 
 	void Button::Update(GameObject* owner)

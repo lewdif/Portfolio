@@ -3,8 +3,6 @@
 #include "Transform3D.h"
 #include "SceneManager.h"
 #include "headers.h"
-
-#include "SceneManager.h"
 #include "GameObject.h"
 
 //#include "GameCharecter.h"
@@ -22,8 +20,12 @@ namespace CompEngine
 		Vec3 playerRespawnPos;
 		float playerRespawnTime;
 
+		double arrowCooltime;
+		double bulletCooltime;
+
 	private:
 		void playerRespawn();
+		void weaponReload();
 
 	public:
 		void SetArrowPos(Vec3 pos);

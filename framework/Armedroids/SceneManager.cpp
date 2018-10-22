@@ -26,6 +26,7 @@ namespace CompEngine
 
 	void SceneManager::AddScene(string sceneName, Scene* scene)
 	{
+		scene->SetName(sceneName);
 		SceneContainer.insert(ScenePair(sceneName, scene));
 	}
 

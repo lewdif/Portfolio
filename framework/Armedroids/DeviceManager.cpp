@@ -337,4 +337,9 @@ namespace CompEngine
 	{
 		return hitPos;
 	}
+
+	void DeviceManager::ExitWindow()
+	{
+		DestroyWindow(hWnd);
+	}
 }

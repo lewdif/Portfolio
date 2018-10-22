@@ -3,7 +3,6 @@
 #include "Transform3D.h"
 #include "StaticMesh.h"
 #include "SceneManager.h"
-#include "RigidBody.h"
 
 #include "Arrow.h"
 #include "ProjectileArrow.h"
@@ -22,17 +21,19 @@ namespace CompEngine
 		float rayDist;
 		StaticMesh* waterMesh;
 		Transform3D* waterTrans3D;
-		StaticMesh* blockMesh;
-		Transform3D* blockTrans3D;
-
+		
+		Vec3 curPos;
+		Vec3 targetPos;
 		Quater curRot;
 		Quater destRot;
 		Quater resRot;
-		float rotSpeed = 0.1f;
+		float rotSpeed;
+		float maximumRange;
 
 		GameObject* arrow;
 		Arrow* arrowScript;
-		double arrowCoolTimeCount;
+		double cooltimeCount;
+		bool arrowLoaded;
 
 		bool mouseClicker;
 
@@ -40,6 +41,15 @@ namespace CompEngine
 		GameObject* projArrow;
 		Transform3D* projArrowTrans;
 		ProjectileArrow* projArrowScript;
+
+	private:
+		void lookAtMouseCoord();
+		void fire();
+
+	public:
+		bool GetArrowStatus();
+		void SetArrowStatus(bool value);
+		float GetMaxiumunRange();
 
 	public:
 		virtual void Init();

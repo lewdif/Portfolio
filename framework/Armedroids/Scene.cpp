@@ -136,7 +136,7 @@ namespace CompEngine
 
 		for each(auto obj in objectList)
 		{
-			if (obj->GetIsActive())
+			if (obj->GetIsActive() && !obj->GetIsStatic())
 			{
 				obj->Update();
 			}

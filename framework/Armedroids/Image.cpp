@@ -10,6 +10,7 @@ namespace CompEngine
 		SetComponentName("Image");
 
 		alpha = 255;
+		isActive = true;
 
 		D3DXCreateSprite(DeviceMgr->GetDevice(), &sprite);
 	}
@@ -19,19 +20,11 @@ namespace CompEngine
 		sprite->Release();
 	}
 
-	LPDIRECT3DTEXTURE9 Image::LoadContent(string filePath)
+	LPDIRECT3DTEXTURE9 Image::LoadContent(string fileName)
 	{
-			LPDIRECT3DTEXTURE9 Temp;
+			string newName = "Images\\" + fileName;
 
-			if (FAILED(D3DXCreateTextureFromFileEx(DeviceMgr->GetDevice(), filePath.c_str(),
-				D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2, 1, 0, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT,
-				D3DX_DEFAULT, 0, 0, 0, 0, &Temp)))
-			{
-				cout << filePath << " - load failure" << endl;
-				return nullptr;
-			}
-
-			return Temp;
+			return MeshMgr->LoadTexture(newName);
 	}
 
 	void Image::SetSize(Rect rect)
@@ -50,10 +43,10 @@ namespace CompEngine
 		return sizeRect;
 	}
 
-	void Image::SetPath(string filePath)
+	void Image::SetPath(string fileName)
 	{
-		this->filePath = filePath;
-		spriteTexture = LoadContent(this->filePath);
+		this->fileName = fileName;
+		spriteTexture = LoadContent(this->fileName);
 	}
 
 	void Image::SetAlpha(float alpha)
@@ -63,7 +56,7 @@ namespace CompEngine
 
 	void Image::Render(GameObject* owner)
 	{
-		if (owner->GetIsActive())
+		if (owner->GetIsActive() && isActive)
 		{
 			Matrix matrix = GET_TRANSFORM_2D(owner)->GetTransformMatrix();
 			Vec3 position = GET_TRANSFORM_2D(owner)->GetPosition();
@@ -98,5 +91,15 @@ namespace CompEngine
 	float Image::GetAlpha()
 	{
 		return alpha;
+	}
+
+	void Image::SetIsActive(bool isActive)
+	{
+		this->isActive = isActive;
+	}
+
+	bool Image::GetIsActive()
+	{
+		return isActive;
 	}
 }

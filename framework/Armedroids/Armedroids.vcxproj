@@ -157,23 +157,37 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arrow.cpp" />
-    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="BackBtn.cpp" />
+    <ClCompile Include="Basin.cpp" />
+    <ClCompile Include="BasinBtn.cpp" />
+    <ClCompile Include="BasinMap.cpp" />
     <ClCompile Include="BoneHierarchyLoader.cpp" />
     <ClCompile Include="Bowgun.cpp" />
     <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CloseBtn.cpp" />
     <ClCompile Include="CollisionEventSphere.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="DrawShape.cpp" />
+    <ClCompile Include="EnterBtn.cpp" />
+    <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="InGame.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="InGameBasin.cpp" />
     <ClCompile Include="IShader.cpp" />
+    <ClCompile Include="Machinegun.cpp" />
+    <ClCompile Include="MapImg.cpp" />
+    <ClCompile Include="MapSeclect.cpp" />
+    <ClCompile Include="NoBtn.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="ProjectileArrow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="QuitBtn.cpp" />
+    <ClCompile Include="QuitWindow.cpp" />
     <ClCompile Include="RigidBody.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -195,10 +209,13 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Script.cpp" />
+    <ClCompile Include="SettingBtn.cpp" />
     <ClCompile Include="Shark.cpp" />
     <ClCompile Include="SharkAttackState.cpp" />
     <ClCompile Include="SharkChaseState.cpp" />
     <ClCompile Include="SharkPatrolState.cpp" />
+    <ClCompile Include="Sink.cpp" />
+    <ClCompile Include="SinkBtn.cpp" />
     <ClCompile Include="SkinnedMesh.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -208,33 +225,56 @@
     <ClCompile Include="SoundManager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="StartBtn.cpp" />
     <ClCompile Include="StaticMesh.cpp" />
+    <ClCompile Include="Target.cpp" />
     <ClCompile Include="TestCam.cpp" />
     <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TitleCamera.cpp" />
     <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="Transform3D.cpp" />
+    <ClCompile Include="TutorialMap.cpp" />
     <ClCompile Include="UserButton.cpp" />
     <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WeaponImage.cpp" />
+    <ClCompile Include="WeaponSelector.cpp" />
+    <ClCompile Include="YesBtn.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
-    <ClInclude Include="Block.h" />
+    <ClInclude Include="BackBtn.h" />
+    <ClInclude Include="Basin.h" />
+    <ClInclude Include="BasinBtn.h" />
+    <ClInclude Include="BasinMap.h" />
     <ClInclude Include="BoneHierarchyLoader.h" />
     <ClInclude Include="Bowgun.h" />
     <ClInclude Include="Box.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CloseBtn.h" />
     <ClInclude Include="CollisionEventSphere.h" />
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="EnemyState.h" />
+    <ClInclude Include="EnterBtn.h" />
+    <ClInclude Include="GameMain.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="InGame.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="InGameBasin.h" />
     <ClInclude Include="IShader.h" />
+    <ClInclude Include="Machinegun.h" />
+    <ClInclude Include="MapImg.h" />
+    <ClInclude Include="MapSeclect.h" />
+    <ClInclude Include="NoBtn.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="ProjectileArrow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="QuitBtn.h" />
+    <ClInclude Include="QuitWindow.h" />
     <ClInclude Include="RigidBody.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -259,10 +299,13 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Script.h" />
+    <ClInclude Include="SettingBtn.h" />
     <ClInclude Include="Shark.h" />
     <ClInclude Include="SharkAttackState.h" />
     <ClInclude Include="SharkChaseState.h" />
     <ClInclude Include="SharkPatrolState.h" />
+    <ClInclude Include="Sink.h" />
+    <ClInclude Include="SinkBtn.h" />
     <ClInclude Include="SkinnedMesh.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Image.h" />
@@ -272,13 +315,22 @@
     <ClInclude Include="SoundManager.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="StartBtn.h" />
     <ClInclude Include="StaticMesh.h" />
+    <ClInclude Include="Target.h" />
     <ClInclude Include="TestCam.h" />
     <ClInclude Include="TestScene.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="TitleCamera.h" />
     <ClInclude Include="Transform2D.h" />
     <ClInclude Include="Transform3D.h" />
+    <ClInclude Include="TutorialMap.h" />
     <ClInclude Include="UserButton.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="WeaponImage.h" />
+    <ClInclude Include="WeaponSelector.h" />
+    <ClInclude Include="YesBtn.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\bullet\src\BulletCollision\BulletCollision.vcxproj">

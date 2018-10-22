@@ -8,6 +8,7 @@
 #include "RigidBody.h"
 
 #include "Bowgun.h"
+#include "Machinegun.h"
 
 namespace CompEngine
 {
@@ -46,6 +47,11 @@ namespace CompEngine
 		GameObject* bowgun;
 		Bowgun* bowgunScript;
 
+		GameObject* machinegun;
+		Machinegun* machinegunScript;
+
+		GameObject* bullet;
+
 		int weaponType;
 
 		float sec = 0;
@@ -55,6 +61,7 @@ namespace CompEngine
 
 	private:
 		void controll();
+		void setWeapon();
 
 	public:
 		void GainEXP(int amount);

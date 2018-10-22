@@ -11,20 +11,24 @@
 
 namespace CompEngine
 {
-	void Shark::dameged()
+	void Shark::dameged(int weaponType)
 	{
 		int damege = 0;
 
-		if (playerScript->GetWeaponType() == WEAPON_TYPE::BOWGUN)
+		if (weaponType == WEAPON_TYPE::BOWGUN)
 		{
 			damege = playerScript->GetPlayerInfo().BGUN_ATK - stat.DEF;
 		}
-
+		else if (weaponType == WEAPON_TYPE::MACHINEGUN)
+		{
+			damege = playerScript->GetPlayerInfo().MGUN_ATK - stat.DEF;
+		}
 
 		if (damege <= 0)
 		{
 			damege = 1;
 		}
+		cout << "Damege : " << damege << endl;
 
 		stat.REM_HP -= damege;
 
@@ -61,15 +65,15 @@ namespace CompEngine
 		atkTimer += SceneMgr->GetTimeDelta();
 
 		if (atkTimer > 2.5f && !((GameCharecter*)SceneMgr->CurrentScene()->
-			FindObjectByTag("Player")->GetComponent("playerScrpt"))->GetIsDead())
+			FindObjectByTag("Player")->GetComponent("playerScript"))->GetIsDead())
 		{
 			((GameCharecter*)SceneMgr->CurrentScene()->FindObjectByTag("Player")
-				->GetComponent("playerScrpt"))->Dameged(stat.ATK);
+				->GetComponent("playerScript"))->Dameged(stat.ATK);
 			cout << "Attack!" << endl;
 			atkTimer = 0;
 		}
 
-		rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
+		rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
 
 		trans.SetRotation(trans.LookAt(trans.GetWorldPosition(), playerTrans->GetWorldPosition()));
 	}
@@ -83,13 +87,13 @@ namespace CompEngine
 		
 		Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 		Forward *= 11000;
-		rigidBody.SetLinearVelocity(Forward.x, Forward.y, -Forward.z);
+		rigidBody->SetLinearVelocity(Forward.x, Forward.y, Forward.z);
 	}
 
 	void Shark::Patrol()
 	{
 		//cout << "Patrol!" << endl;
-		rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
+		rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
 	}
 
 	float Shark::GetDistToPlayer()
@@ -109,11 +113,15 @@ namespace CompEngine
 		stat.SPD = spd;
 
 		trans.SetPosition(location);
+		rigidBody->SetTransform(trans.GetWorldPosition(), trans.GetRotationAngle());
+
 
 		stat.ATK = lv + (int)sqrt((double)(lv));
 		stat.HP = lv * 2 + 15 ;
 		stat.REM_HP = stat.HP;
 		stat.DEF = (int)sqrt((double)(lv));
+
+		cout << stat.LV << ". hp : " << stat.REM_HP << " / " << stat.HP << endl;
 	}
 
 	void Shark::Init()
@@ -126,6 +134,14 @@ namespace CompEngine
 		mass = 10;
 		atkTimer = 0;
 		stat = { 1, 1, 1, 3, 1 };
+
+		colShape = new btBoxShape(btVector3(40 * trans.GetScale().x,
+			100 * trans.GetScale().y, 60 * trans.GetScale().z));
+
+		rigidBody = new RigidBody;
+		rigidBody->SetRigidBody(gameObject, mass, colShape);
+		rigidBody->LockRotation(true, false, true);
+		gameObject->AddComponent(dynamic_cast<Component*>(rigidBody));
 
 		evntSphere = new CollisionEventSphere;
 		gameObject->AddComponent(dynamic_cast<Component*>(evntSphere));
@@ -140,10 +156,7 @@ namespace CompEngine
 	{
 		trans.SetPosition(400, 0, -400);
 
-		evntSphere->Init(trans.GetWorldPosition(), 30.0f);
-
-		colShape = new btBoxShape(btVector3(40 * trans.GetScale().x,
-			100 * trans.GetScale().y, 60 * trans.GetScale().z));
+		evntSphere->Init(trans.GetWorldPosition(), 50.0f);
 
 		sharkMesh.SetFilePath(".\\Resources\\Shark.x");
 		gameObject->AddComponent(dynamic_cast<Component*>(&sharkMesh));
@@ -151,38 +164,44 @@ namespace CompEngine
 		playerTrans = GET_TRANSFORM_3D(SceneMgr->CurrentScene()->FindObjectByTag("Player"));
 		arrowCollider = (CollisionEventSphere*)(SceneMgr->CurrentScene()->
 			FindObjectByName("ProjectileArrow")->GetComponent("CollisionEventSphere"));
-
-		rigidBody.SetRigidBody(gameObject, mass, colShape);
-		rigidBody.LockRotation(true, false, true);
-		gameObject->AddComponent(dynamic_cast<Component*>(&rigidBody));
+		bulletCollider = (CollisionEventSphere*)(SceneMgr->CurrentScene()->
+			FindObjectByName("Bullet")->GetComponent("CollisionEventSphere"));
 
 		sharkState = dynamic_cast<IEnemyState*>(ptlState);
 
 		projArrow = SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow");
 		projArrowScript = (ProjectileArrow*)(projArrow->GetComponent("projArrowScript"));
 
-		playerScript = (GameCharecter*)(SceneMgr->CurrentScene()->FindObjectByName("Player")->GetComponent("playerScrpt"));
+		bullet = SceneMgr->CurrentScene()->FindObjectByName("Bullet");
+
+		playerScript = (GameCharecter*)(SceneMgr->CurrentScene()->FindObjectByName("Player")->GetComponent("playerScript"));
 	}
 
 	void Shark::Update()
 	{
 		evntSphere->Update(trans.GetWorldPosition());
-		evntSphere->Render(trans.GetTransform(), COLOR::RED);
+		//evntSphere->Render(trans.GetTransform(), COLOR::RED);
 
 		sharkState->UpdateState();
 
-		if (evntSphere->Collide(arrowCollider))
+		if (evntSphere->Collide(arrowCollider) && projArrow->GetIsActive())
 		{
 			// 플레이어로부터 작살 공격력 받아와서 방어력과 차이 계산및 적용
 			// REM_HP <= 0 일때 죽음값 반환
-			cout << "collide" << endl;
+			//cout << "collide" << endl;
 
-			dameged();
+			dameged(WEAPON_TYPE::BOWGUN);
 
 			if (projArrow->GetIsActive())
 			{
 				projArrow->SetIsActive(false);
 			}
+		}
+		else if (evntSphere->Collide(bulletCollider))
+		{
+			dameged(WEAPON_TYPE::MACHINEGUN);
+			//GET_TRANSFORM_3D(bullet)->SetPosition(0, 0, 0);
+			cout << "bullet hit" << endl;
 		}
 	}
 

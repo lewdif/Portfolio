@@ -28,7 +28,7 @@ namespace CompEngine
 	public:
 		Scene* testScene;
 
-		TestCam* camScrpt;
+		TestCam* camScript;
 		GameObject* testCam;
 		Transform3D* camTrans3D;
 

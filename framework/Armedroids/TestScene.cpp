@@ -22,13 +22,13 @@ namespace CompEngine
 		SceneMgr->CurrentScene()->SetGravity(Vec3(0, 0, 0));
 
 		// ---- MAIN CAMERA ------------------------------
-		camScrpt = new TestCam;
+		camScript = new TestCam;
 		camTrans3D = new Transform3D;
 		testCam = new GameObject;
 
 		testCam->AddComponent(dynamic_cast<Component*>(camTrans3D));
-		dynamic_cast<Script*>(camScrpt)->SetInfo(testCam, "camScrpt");
-		testCam->AddComponent(dynamic_cast<Component*>(camScrpt));
+		dynamic_cast<Script*>(camScript)->SetInfo(testCam, "camScript");
+		testCam->AddComponent(dynamic_cast<Component*>(camScript));
 
 		cout << "mainCam initialized" << endl;
 		// -----------------------------------------------

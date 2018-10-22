@@ -10,9 +10,6 @@
 
 #include "GameCharecter.h"
 #include "ProjectileArrow.h"
-//#include "SharkAttackState.h"
-//#include "SharkChaseState.h"
-//#include "SharkPatrolState.h"
 
 namespace CompEngine
 {
@@ -26,7 +23,7 @@ namespace CompEngine
 		Transform3D trans;
 		//SkinnedMesh* playerMesh;
 		StaticMesh sharkMesh;
-		RigidBody rigidBody;
+		RigidBody* rigidBody;
 		btBoxShape* colShape;
 		CollisionEventSphere* evntSphere;
 		float zeroMovement;
@@ -34,7 +31,9 @@ namespace CompEngine
 		float atkTimer;
 
 		Transform3D* playerTrans;
+
 		CollisionEventSphere* arrowCollider;
+		CollisionEventSphere* bulletCollider;
 
 		IEnemyState* sharkState;
 		SharkAttackState* atkState;
@@ -46,10 +45,12 @@ namespace CompEngine
 		GameObject* projArrow;
 		ProjectileArrow* projArrowScript;
 
+		GameObject* bullet;
+
 		GameCharecter* playerScript;
 
 	private:
-		void dameged();
+		void dameged(int weaponType);
 
 	public:
 		void ChangeStateTo(int state);

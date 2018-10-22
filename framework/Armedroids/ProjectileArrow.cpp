@@ -5,6 +5,11 @@
 
 namespace CompEngine
 {
+	void ProjectileArrow::ThrowArrow()
+	{
+		arrowTrans.MoveTowards(GameMgr->GetRayHitPos(), 1000, SceneMgr->GetTimeDelta());
+	}
+
 	void ProjectileArrow::Init()
 	{
 		gameObject->AddComponent(dynamic_cast<Component*>(&arrowTrans));
@@ -30,11 +35,6 @@ namespace CompEngine
 	{
 		evntSphere->Update(arrowTrans.GetWorldPosition());
 		evntSphere->Render(arrowTrans.GetTransform(), COLOR::BLUE);
-
-		cout << "Arrow position "
-			<< arrowTrans.GetWorldPosition().x << ", "
-			<< arrowTrans.GetWorldPosition().y << ", "
-			<< arrowTrans.GetWorldPosition().z << endl;
 	}
 
 	void ProjectileArrow::LateUpdate()

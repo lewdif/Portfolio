@@ -12,7 +12,8 @@
 namespace CompEngine
 {
 	GameObject::GameObject()
-		:objectName(""), transform3D(nullptr), parent(nullptr), isActive(true)
+		:objectName(""), transform3D(nullptr), parent(nullptr), isActive(true),
+		isStatic(false)
 	{
 	}
 
@@ -226,6 +227,16 @@ namespace CompEngine
 		return isActive;
 	}
 
+	void GameObject::SetIsStatic(bool isStatic)
+	{
+		this->isStatic = isStatic;
+	}
+
+	bool GameObject::GetIsStatic()
+	{
+		return isStatic;
+	}
+
 	void GameObject::Init()
 	{
 		for each(auto obj in componentList)
@@ -307,13 +318,13 @@ namespace CompEngine
 
 	void GameObject::Render2D()
 	{
-		if (GetComponent("Image") != nullptr)
-		{
-			((Image*)GetComponent("Image"))->Render(this);
-		}
-		else if (GetComponent("Button") != nullptr)
+		if (GetComponent("Button") != nullptr)
 		{
 			((Image*)GetComponent("Button"))->Render(this);
+		}
+		else if (GetComponent("Image") != nullptr)
+		{
+			((Image*)GetComponent("Image"))->Render(this);
 		}
 	}
 

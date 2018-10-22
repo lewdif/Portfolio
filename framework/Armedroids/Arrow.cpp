@@ -2,6 +2,8 @@
 #include "InputManager.h"
 
 #include "ProjectileArrow.h"
+#include "Bowgun.h"
+
 namespace CompEngine
 {
 	void Arrow::Init()
@@ -36,8 +38,9 @@ namespace CompEngine
 		{
 			if (mouseClicker == true)
 			{
-				if (gameObject->GetIsActive())
+				if (((Bowgun*)gameObject->GetParent())->GetArrowStatus())
 				{
+					//cout << ((Bowgun*)gameObject->GetParent())->GetArrowStatus() << endl;
 					//((ProjectileArrow*)(SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow")
 					//	->GetComponent("projArrowScript")))->SetPosToNowhere();
 					SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow")->SetIsActive(true);

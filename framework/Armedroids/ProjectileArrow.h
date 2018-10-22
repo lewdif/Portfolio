@@ -19,6 +19,9 @@ namespace CompEngine
 		GameManager *GameMgr;
 
 	public:
+		void ThrowArrow();
+
+	public:
 		virtual void Init();
 		virtual void Reference();
 		virtual void Update();

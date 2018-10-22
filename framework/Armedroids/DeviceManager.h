@@ -42,6 +42,8 @@ namespace CompEngine
 		void SetHitPos(Vec3 pos);
 		Vec3 GetHitPos();
 
+		void ExitWindow();
+
 	private:
 		HWND					hWnd;
 		IDirect3D9*				d3d9;

@@ -1,7 +1,10 @@
 #include "headers.h"
 
+#include "GameMain.h"
 #include "InGame.h"
-#include "TestScene.h"
+#include "InGameBasin.h"
+//#include "TestScene.h"
+#include "MapSeclect.h"
 
 using namespace CompEngine;
 
@@ -141,9 +144,12 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 		ShowWindow(hWnd, SW_SHOWDEFAULT);
 		UpdateWindow(hWnd);
 		
-		InGame *inGame = new InGame();
+		GameMain* gameMain = new GameMain;
+		MapSeclect* mapSelect = new MapSeclect;
+		InGame* inGame = new InGame();
+		InGameBasin* basin = new InGameBasin();
 
-		inGame->Update();
+		gameMain->Update();
 		/*TestScene* test = new TestScene();
 
 		test->Update();*/

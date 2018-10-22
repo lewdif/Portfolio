@@ -12,12 +12,9 @@ namespace CompEngine
 	class Plane : public Script
 	{
 	private:
-		Transform3D* trans;
+		Transform3D trans;
 		StaticMesh* planeMesh;
-		//RigidBody* rigidBody;
-		//btBoxShape* colShape;
 
-		//float mass;
 		float rayDist;
 		RAY ray;
 

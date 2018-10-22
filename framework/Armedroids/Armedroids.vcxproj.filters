@@ -77,35 +77,89 @@
     <Filter Include="GameObject\Components\Effect\Material">
       <UniqueIdentifier>{6ba0c7c4-4f22-4ea9-b210-ebd756c779a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Testing codes\TestScene">
-      <UniqueIdentifier>{391d667c-0d0a-4a1f-8148-15307eaf02d5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Testing codes\InGame">
-      <UniqueIdentifier>{11951606-208d-4cf6-a9ec-9c100bb94d53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Testing codes\InGame\Player">
-      <UniqueIdentifier>{2cee1369-9556-426a-9803-4e1ee5487d0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Testing codes\InGame\Scene">
-      <UniqueIdentifier>{d651012c-db16-45ae-9f34-e5394fa04999}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Testing codes\InGame\Objects">
-      <UniqueIdentifier>{5da5ffce-7433-41c4-b39f-1daeb9064058}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Testing codes\Managers">
       <UniqueIdentifier>{14b0f6a8-5c48-4746-b160-21f60e8b42f6}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameObject\Components\CollisionEventShape">
       <UniqueIdentifier>{fbb56287-afbd-425d-9f9f-bd8df2c73e14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Testing codes\InGame\Objects\Enemy">
+    <Filter Include="Testing codes\Scene">
+      <UniqueIdentifier>{d651012c-db16-45ae-9f34-e5394fa04999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\TestScene">
+      <UniqueIdentifier>{391d667c-0d0a-4a1f-8148-15307eaf02d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\01.GameMain">
+      <UniqueIdentifier>{b2530286-0b1e-400d-ae48-a831b33cd6c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\01.GameMain\UI">
+      <UniqueIdentifier>{2847b147-70bc-43a1-a7e2-0bc355168af8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\01.GameMain\UI\QuitWindow">
+      <UniqueIdentifier>{4f165742-00b2-4e1e-a864-571ddd62ffbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\01.GameMain\Camera">
+      <UniqueIdentifier>{1304224d-9d3e-44a9-82d7-8fe11381419b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame">
+      <UniqueIdentifier>{11951606-208d-4cf6-a9ec-9c100bb94d53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Player">
+      <UniqueIdentifier>{2cee1369-9556-426a-9803-4e1ee5487d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Player\Weapons">
+      <UniqueIdentifier>{3498ffae-c27c-44f6-9154-ca191e9bef68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Player\Weapons\Bowgun">
+      <UniqueIdentifier>{1c51ea23-6881-4eb5-a67b-ba498a90b076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Player\Weapons\Machinegun">
+      <UniqueIdentifier>{35c29923-c4d8-490e-a6b0-454c22e16e95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Player\Weapons\Canon">
+      <UniqueIdentifier>{8d657cc6-ccc2-4bd8-b51f-2f90d7493388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Objects">
+      <UniqueIdentifier>{5da5ffce-7433-41c4-b39f-1daeb9064058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Enemy">
       <UniqueIdentifier>{d19a6dce-976e-4aa9-b2c2-e16753e967a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Testing codes\InGame\Objects\Enemy\Shark">
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Enemy\Shark">
       <UniqueIdentifier>{2da82c97-08dd-4d63-aeac-84cab1439d74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Testing codes\InGame\Objects\Enemy\Shark\State">
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State">
       <UniqueIdentifier>{4239f46d-dad6-4c7c-b0e9-bf62fe924343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Map">
+      <UniqueIdentifier>{7382f426-cb40-4c5a-bfc7-3c342121d599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Map\Walls">
+      <UniqueIdentifier>{eb23418f-de71-4ab5-b903-63d402fc7dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\UI">
+      <UniqueIdentifier>{3b53aa5a-f044-4429-904a-fec7ee6bfb0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\UI\Weapon">
+      <UniqueIdentifier>{c963a013-c858-444e-9808-e3c13f740808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Basin">
+      <UniqueIdentifier>{9e9c593e-36a4-4675-b108-fa915a1fd776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Sink">
+      <UniqueIdentifier>{9751ac89-b0b8-4bce-bcda-4a008c0c7220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\02.MapSelect">
+      <UniqueIdentifier>{871b927f-0f56-4698-b3e1-049de0f06957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\02.MapSelect\UI">
+      <UniqueIdentifier>{ea081b3d-4e6a-4bce-8761-a40a1ddde792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\02.MapSelect\UI\Button">
+      <UniqueIdentifier>{9e54fe41-0257-48c8-b3d6-1b025a64b515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\02.MapSelect\UI\Image">
+      <UniqueIdentifier>{02c4fada-8b3b-40e3-8877-b08494235d78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -183,58 +237,136 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TestScene.cpp">
-      <Filter>Testing codes\TestScene</Filter>
+      <Filter>Testing codes\Scene\TestScene</Filter>
     </ClCompile>
     <ClCompile Include="TestCam.cpp">
-      <Filter>Testing codes\TestScene</Filter>
+      <Filter>Testing codes\Scene\TestScene</Filter>
     </ClCompile>
     <ClCompile Include="Box.cpp">
-      <Filter>Testing codes\TestScene</Filter>
+      <Filter>Testing codes\Scene\TestScene</Filter>
     </ClCompile>
     <ClCompile Include="GameCharecter.cpp">
-      <Filter>Testing codes\InGame\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="InGame.cpp">
-      <Filter>Testing codes\InGame\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Block.cpp">
-      <Filter>Testing codes\InGame\Objects</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Player</Filter>
     </ClCompile>
     <ClCompile Include="FirstTestCam.cpp">
-      <Filter>Testing codes\InGame\Objects</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClCompile>
     <ClCompile Include="UserButton.cpp">
-      <Filter>Testing codes\InGame\Objects</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
-      <Filter>Testing codes\InGame\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Bowgun.cpp">
-      <Filter>Testing codes\InGame\Player</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Testing codes\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Arrow.cpp">
-      <Filter>Testing codes\InGame\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjectileArrow.cpp">
-      <Filter>Testing codes\InGame\Player</Filter>
     </ClCompile>
     <ClCompile Include="CollisionEventSphere.cpp">
       <Filter>GameObject\Components\CollisionEventShape</Filter>
     </ClCompile>
     <ClCompile Include="Shark.cpp">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark</Filter>
     </ClCompile>
     <ClCompile Include="SharkAttackState.cpp">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State</Filter>
     </ClCompile>
     <ClCompile Include="SharkChaseState.cpp">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State</Filter>
     </ClCompile>
     <ClCompile Include="SharkPatrolState.cpp">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMap.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Map\Walls</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponImage.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Bowgun</Filter>
+    </ClCompile>
+    <ClCompile Include="Bowgun.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Bowgun</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileArrow.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Bowgun</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Machinegun</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Machinegun</Filter>
+    </ClCompile>
+    <ClCompile Include="InGame.cpp">
+      <Filter>Testing codes\Scene\03.InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMain.cpp">
+      <Filter>Testing codes\Scene\01.GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleCamera.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="StartBtn.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingBtn.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitBtn.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitWindow.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI\QuitWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="YesBtn.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI\QuitWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="NoBtn.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI\QuitWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="MapSeclect.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponSelector.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Basin.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="MapImg.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Sink.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="BasinBtn.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="CloseBtn.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="SinkBtn.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="BackBtn.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="EnterBtn.cpp">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="InGameBasin.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Basin</Filter>
+    </ClCompile>
+    <ClCompile Include="BasinMap.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Basin</Filter>
+    </ClCompile>
+    <ClCompile Include="Target.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -312,61 +444,139 @@
       <Filter>GameObject\Components\Mesh\StaticMesh</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
-      <Filter>Testing codes\TestScene</Filter>
+      <Filter>Testing codes\Scene\TestScene</Filter>
     </ClInclude>
     <ClInclude Include="TestCam.h">
-      <Filter>Testing codes\TestScene</Filter>
+      <Filter>Testing codes\Scene\TestScene</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
-      <Filter>Testing codes\TestScene</Filter>
+      <Filter>Testing codes\Scene\TestScene</Filter>
     </ClInclude>
     <ClInclude Include="GameCharecter.h">
-      <Filter>Testing codes\InGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="InGame.h">
-      <Filter>Testing codes\InGame\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Block.h">
-      <Filter>Testing codes\InGame\Objects</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="FirstTestCam.h">
-      <Filter>Testing codes\InGame\Objects</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClInclude>
     <ClInclude Include="UserButton.h">
-      <Filter>Testing codes\InGame\Objects</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>Testing codes\InGame\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Bowgun.h">
-      <Filter>Testing codes\InGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Arrow.h">
-      <Filter>Testing codes\InGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="ProjectileArrow.h">
-      <Filter>Testing codes\InGame\Player</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClInclude>
     <ClInclude Include="CollisionEventSphere.h">
       <Filter>GameObject\Components\CollisionEventShape</Filter>
     </ClInclude>
     <ClInclude Include="Shark.h">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark</Filter>
     </ClInclude>
     <ClInclude Include="SharkAttackState.h">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State</Filter>
     </ClInclude>
     <ClInclude Include="SharkChaseState.h">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State</Filter>
     </ClInclude>
     <ClInclude Include="SharkPatrolState.h">
-      <Filter>Testing codes\InGame\Objects\Enemy\Shark\State</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State</Filter>
     </ClInclude>
     <ClInclude Include="EnemyState.h">
-      <Filter>Testing codes\InGame\Objects\Enemy</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Testing codes\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMap.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Map\Walls</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponImage.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrow.h">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Bowgun</Filter>
+    </ClInclude>
+    <ClInclude Include="Bowgun.h">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Bowgun</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileArrow.h">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Bowgun</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun.h">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Machinegun</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Machinegun</Filter>
+    </ClInclude>
+    <ClInclude Include="InGame.h">
+      <Filter>Testing codes\Scene\03.InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMain.h">
+      <Filter>Testing codes\Scene\01.GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleCamera.h">
+      <Filter>Testing codes\Scene\01.GameMain\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="StartBtn.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingBtn.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitBtn.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitWindow.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI\QuitWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="YesBtn.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI\QuitWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="NoBtn.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI\QuitWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="MapSeclect.h">
+      <Filter>Testing codes\Scene\02.MapSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponSelector.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Basin.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="MapImg.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Sink.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="BasinBtn.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="CloseBtn.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="SinkBtn.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="BackBtn.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="EnterBtn.h">
+      <Filter>Testing codes\Scene\02.MapSelect\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameBasin.h">
+      <Filter>Testing codes\Scene\03.InGame\Basin</Filter>
+    </ClInclude>
+    <ClInclude Include="BasinMap.h">
+      <Filter>Testing codes\Scene\03.InGame\Basin</Filter>
+    </ClInclude>
+    <ClInclude Include="Target.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

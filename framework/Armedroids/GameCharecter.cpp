@@ -4,6 +4,7 @@
 #include "RigidBody.h"
 #include "SceneManager.h"
 
+#include "Bullet.h"
 
 namespace CompEngine
 {
@@ -16,6 +17,10 @@ namespace CompEngine
 		static bool A_Key = false;
 		static bool D_Key = false;
 
+		static bool num1_Key = false;
+		static bool num2_Key = false;
+		static bool num3_Key = false;
+
 		if (InputMgr->KeyDown('W', false))
 		{
 			Input = true;
@@ -25,7 +30,7 @@ namespace CompEngine
 
 			Forward *= 10000;
 
-			rigidBody.SetLinearVelocity(Forward.x, Forward.y, -Forward.z);
+			rigidBody.SetLinearVelocity(Forward.x, Forward.y, Forward.z);
 
 			W_Key = true;
 		}
@@ -33,6 +38,10 @@ namespace CompEngine
 		{
 			rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
 			W_Key = false;
+
+			cout << "Player Pos : " << playerTrans3D.GetWorldPosition().x << ", "
+				<< playerTrans3D.GetWorldPosition().y << ", "
+				<< playerTrans3D.GetWorldPosition().z << endl;
 		}
 
 		if (InputMgr->KeyDown('S', false))
@@ -45,7 +54,7 @@ namespace CompEngine
 			Backword *= 10000;
 
 
-			rigidBody.SetLinearVelocity(Backword.x, Backword.y, -Backword.z);
+			rigidBody.SetLinearVelocity(Backword.x, Backword.y, Backword.z);
 
 			S_Key = true;
 		}
@@ -53,6 +62,10 @@ namespace CompEngine
 		{
 			rigidBody.SetLinearVelocity(0, 0, zeroMovement);
 			S_Key = false;
+
+			cout << "Player Pos : " << playerTrans3D.GetWorldPosition().x << ", "
+				<< playerTrans3D.GetWorldPosition().y << ", "
+				<< playerTrans3D.GetWorldPosition().z << endl;
 		}
 
 		if (InputMgr->KeyDown('A', false))
@@ -89,9 +102,84 @@ namespace CompEngine
 			D_Key = false;
 		}
 
+		if (InputMgr->KeyDown('1', false))
+		{
+			Input = true;
+
+			weaponType = WEAPON_TYPE::BOWGUN;
+
+			num1_Key = true;
+		}
+		else if (num1_Key)
+		{
+			num1_Key = false;
+		}
+
+		if (InputMgr->KeyDown('2', false))
+		{
+			Input = true;
+
+			weaponType = WEAPON_TYPE::MACHINEGUN;
+
+			num2_Key = true;
+		}
+		else if (num2_Key)
+		{
+			num2_Key = false;
+		}
+
+		if (InputMgr->KeyDown('3', false))
+		{
+			Input = true;
+
+			weaponType = WEAPON_TYPE::CANONGUN;
+
+			num3_Key = true;
+		}
+		else if (num3_Key)
+		{
+			num3_Key = false;
+		}
+
 		if (Input == false)
 		{
 			//playerMesh->SetAnimation("Idle");
+		}
+	}
+
+	void GameCharecter::setWeapon()
+	{
+		if (weaponType == WEAPON_TYPE::BOWGUN)
+		{
+			if (!bowgun->GetIsActive())
+			{
+				bowgun->SetIsActive(true);
+
+				if (bowgunScript->GetArrowStatus())
+				{
+					bowgun->FindChildByTag("Arrow")->SetIsActive(true);
+				}
+			}
+			machinegun->SetIsActive(false);
+			bullet->SetIsActive(false);
+		}
+		else if (weaponType == WEAPON_TYPE::MACHINEGUN)
+		{
+			if (!machinegun->GetIsActive())
+			{
+				machinegun->SetIsActive(true);
+				bullet->SetIsActive(true);
+			}
+
+			bowgun->SetIsActive(false);
+			bowgun->FindChildByTag("Arrow")->SetIsActive(false);
+		}
+		else if (weaponType == WEAPON_TYPE::CANONGUN)
+		{
+			bowgun->SetIsActive(false);
+			bowgun->FindChildByTag("Arrow")->SetIsActive(false);
+
+			//machinegun->SetIsActive(false);
 		}
 	}
 
@@ -184,7 +272,7 @@ namespace CompEngine
 		playerTrans3D.SetRotation(0, playerTrans3D.GetRotationAngle().y, 0);
 		rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
 
-		rigidBody.SetTransform(playerTrans3D.GetWorldPosition(), playerTrans3D.GetRotationAngle());
+		rigidBody.SetTransform(playerTrans3D.GetWorldPosition(), Vec3(0,0,0));
 	}
 
 	int GameCharecter::GetRespawnTime()
@@ -229,25 +317,33 @@ namespace CompEngine
 		bowgun = new GameObject;
 		bowgunScript = new Bowgun;
 
+		dynamic_cast<Script*>(bowgunScript)->SetInfo(bowgun, "bowgunScript");
+		bowgun->AddComponent(dynamic_cast<Component*>(bowgunScript));
+
+		machinegun = new GameObject;
+		machinegunScript = new Machinegun;
+
+		dynamic_cast<Script*>(machinegunScript)->SetInfo(machinegun, "machinegunScript");
+		machinegun->AddComponent(dynamic_cast<Component*>(machinegunScript));
+
 		weaponType = WEAPON_TYPE::BOWGUN;
 
 		this->gameObject->AttachChild(bowgun);
 
-		dynamic_cast<Script*>(bowgunScript)->SetInfo(bowgun, "bowgunScrpt");
-		bowgun->AddComponent(dynamic_cast<Component*>(bowgunScript));
-
 		SceneMgr->CurrentScene()->AddObject(bowgun, "Bowgun");
+		SceneMgr->CurrentScene()->AddObject(machinegun, "Machinegun");
 	}
 
 	void GameCharecter::Reference()
 	{
-		playerTrans3D.SetPosition(0, 0, 0);
+		playerTrans3D.SetPosition(-300, 0, -400);
 
 		colShape = new btBoxShape(btVector3(50 * playerTrans3D.GetScale().x,
 			50 * playerTrans3D.GetScale().y, 65 * playerTrans3D.GetScale().z));
 
 		//playerMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
 		//gameObject->AddComponent(dynamic_cast<Component*>(playerMesh));
+		bullet = SceneMgr->CurrentScene()->FindObjectByName("Bullet");
 
 		boatMesh.SetFilePath(".\\Resources\\boat.x");
 		gameObject->AddComponent(dynamic_cast<Component*>(&boatMesh));
@@ -260,36 +356,26 @@ namespace CompEngine
 
 	void GameCharecter::Update()
 	{
-		/*sec += SceneMgr->GetTimeDelta();
-		if (sec > 2)
-		{
-			cout << playerTrans3D.GetPosition().x << ", "
-				<< playerTrans3D.GetPosition().y << ", "
-				<< playerTrans3D.GetPosition().z << endl;
-
-			sec = 0;
-		}*/
+		setWeapon();
 
 		if (isDead)
 		{
 			gameObject->SetIsActive(false);
-			bowgun->SetIsActive(false);
-			SceneMgr->CurrentScene()->FindObjectByName("Arrow")->SetIsActive(false);
+
+			if (weaponType == WEAPON_TYPE::BOWGUN)
+			{
+				bowgun->SetIsActive(false);
+				SceneMgr->CurrentScene()->FindObjectByName("Arrow")->SetIsActive(false);
+			}
+			else if (weaponType == WEAPON_TYPE::MACHINEGUN)
+			{
+				machinegun->SetIsActive(false);
+				SceneMgr->CurrentScene()->FindObjectByName("Bullet")->SetIsActive(false);
+			}
+
 			return;
 		}
-
-		/*if (playerTrans3D.GetPosition().y != 0)
-		{
-			playerTrans3D.SetRotation(0, playerTrans3D.GetRotationAngle().y, 0);
-			playerTrans3D.SetPosition(playerTrans3D.GetPosition().x, 0, playerTrans3D.GetPosition().z);
-			//rigidBody.SetTransform(playerTrans3D.GetWorldPosition(), playerTrans3D.GetRotationAngle());
-		}*/
-
-		//Vec3 rightTop =  Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
-		//Vec3 leftBottom =  -Vec3(colShape->getHalfExtentsWithoutMargin().getX(), colShape->getHalfExtentsWithoutMargin().getY(), colShape->getHalfExtentsWithoutMargin().getZ());
-		//DeviceMgr->DrawBox(playerTrans3D->GetTransform(), leftBottom/10, rightTop/10, COLOR::GREEN);
 		controll();
-
 	}
 
 	void GameCharecter::LateUpdate()
