@@ -2,6 +2,7 @@
 #include "InputManager.h"
 
 #include "GameManager.h"
+#include "G_Val.h"
 
 namespace CompEngine
 {
@@ -28,17 +29,21 @@ namespace CompEngine
 
 	void Bowgun::fire()
 	{
-		if (InputMgr->GetMouseLBStatus() == MOUSE_STATUS::MOUSE_LBDOWN && arrow->GetIsActive())
+		if (InputMgr->GetMouseLBStatus() == MOUSE_STATUS::MOUSE_LBDOWN && /*arrow->GetIsActive()*/
+			arrowLoaded)
 		{
 			mouseClicker = true;
 		}
-		else if (InputMgr->GetMouseLBStatus() == MOUSE_STATUS::MOUSE_LBUP && arrow->GetIsActive())
+		else if (InputMgr->GetMouseLBStatus() == MOUSE_STATUS::MOUSE_LBUP && /*arrow->GetIsActive()*/
+			arrowLoaded)
 		{
 			if (mouseClicker == true)
 			{
 				projArrowScript->SetPosToNowhere();
 				GameMgr->SetRayHitPos(targetPos);
 				arrowLoaded = false;
+
+				SoundMgr->Play2D(".\\Resources\\Sounds\\Bow.wav", 1.0f, false);
 			}
 			mouseClicker = false;
 		}
@@ -61,25 +66,34 @@ namespace CompEngine
 
 	void Bowgun::Init()
 	{
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
-		gameObject->AttachParent(SceneMgr->CurrentScene()->FindObjectByTag("Player"));
-
+		if (!gameObject->GetComponent("Transform3D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+			gameObject->AttachParent(SceneMgr->CurrentScene()->FindObjectByTag("Player"));
+		}
+		
 		rayDist = 1000;
 
 		rotSpeed = 0.1f;
 		maximumRange = 550;
 
-		arrow = new GameObject;
-		arrowScript = new Arrow;
 		arrowLoaded = true;
 		mouseClicker = false;
 
-		arrow->AddTag("Arrow");
-		dynamic_cast<Script*>(arrowScript)->SetInfo(arrow, "arrowScript");
-		arrow->AddComponent(dynamic_cast<Component*>(arrowScript));
+		if (!SceneMgr->CurrentScene()->FindObjectByName("Arrow"))
+		{
+			arrow = new GameObject;
+			arrowScript = new Arrow;
 
-		SceneMgr->CurrentScene()->AddObject(arrow, "Arrow");
-		this->gameObject->AttachChild(arrow);
+			arrow->AddTag("Arrow");
+			dynamic_cast<Script*>(arrowScript)->SetInfo(arrow, "arrowScript");
+			arrow->AddComponent(dynamic_cast<Component*>(arrowScript));
+
+			SceneMgr->CurrentScene()->AddObject(arrow, "Arrow");
+			this->gameObject->AttachChild(arrow);
+		}
+
+		arrow->SetIsActive(true);
 	}
 
 	void Bowgun::Reference()
@@ -87,12 +101,16 @@ namespace CompEngine
 		trans.SetScale(1, 1, 1);
 		trans.SetPosition(0,35,-30);
 
+		//sound.AddSoundClip(".\\Resources\\Sounds\\Bow.wav", 1.0f, 0, 5000, false, 0.0f);
+
 		waterMesh = (StaticMesh*)(SceneMgr->CurrentScene()->FindObjectByTag("Water")->GetComponent("StaticMesh"));
 		waterTrans3D = (Transform3D*)(SceneMgr->CurrentScene()->FindObjectByTag("Water")->GetComponent("Transform3D"));
 
 		bowgunMesh.SetFilePath(".\\Resources\\Bowgun.x");
 		gameObject->AddComponent(dynamic_cast<Component*>(&bowgunMesh));
+		
 		GameMgr = ((GameManager*)SceneMgr->CurrentScene()->FindObjectByTag("GameMgr")->GetComponent("gameMgrScript"));
+		
 		projArrow = SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow");
 		projArrowTrans = GET_TRANSFORM_3D(projArrow);
 		projArrowScript = (ProjectileArrow*)(projArrow->GetComponent("projArrowScript"));
@@ -100,9 +118,11 @@ namespace CompEngine
 
 	void Bowgun::Update()
 	{
-		lookAtMouseCoord();
-
-		fire();
+		if (TUTORIAL_OVER)
+		{
+			lookAtMouseCoord();
+			fire();
+		}
 	}
 
 	void Bowgun::LateUpdate()

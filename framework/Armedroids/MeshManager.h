@@ -24,8 +24,8 @@ namespace CompEngine
 		map<string, LPDIRECT3DTEXTURE9>	textureList;
 
 	public:
-		explicit MeshManager() {};
-		virtual ~MeshManager() {};
+		explicit MeshManager() {}
+		virtual ~MeshManager() {}
 
 		void InitMembers();
 		virtual void ReleaseMembers();

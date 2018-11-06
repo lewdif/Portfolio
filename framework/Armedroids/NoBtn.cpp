@@ -12,8 +12,15 @@ namespace CompEngine
 		imgRect.LeftTop = Vec2(0, 0);
 		imgRect.RightBottom = Vec2(171, 100);
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
-		gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		if (!gameObject->GetComponent("Transform2D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
+
+		if (!gameObject->GetComponent("Button"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		}
 
 		gameObject->SetIsActive(false);
 	}
@@ -47,6 +54,7 @@ namespace CompEngine
 		{
 			if (!sndCounter)
 			{
+				button.SetPath("NoOn.png");
 				SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble1.wav", 1.0, false);
 			}
 
@@ -55,6 +63,7 @@ namespace CompEngine
 		}
 		else if (button.GetStatus() == button.NORMAL)
 		{
+			button.SetPath("No.png");
 			sndCounter = false;
 		}
 	}

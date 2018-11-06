@@ -161,18 +161,27 @@
     <ClCompile Include="Basin.cpp" />
     <ClCompile Include="BasinBtn.cpp" />
     <ClCompile Include="BasinMap.cpp" />
+    <ClCompile Include="BGunMask.cpp" />
     <ClCompile Include="BoneHierarchyLoader.cpp" />
     <ClCompile Include="Bowgun.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Clear.cpp" />
     <ClCompile Include="CloseBtn.cpp" />
     <ClCompile Include="CollisionEventSphere.cpp" />
+    <ClCompile Include="ContinueBtn.cpp" />
+    <ClCompile Include="ControlImg.cpp" />
+    <ClCompile Include="ControlTutorial.cpp" />
+    <ClCompile Include="CreditsWindow.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="DrawShape.cpp" />
     <ClCompile Include="EnterBtn.cpp" />
+    <ClCompile Include="FireImg.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameOverWindow.cpp" />
+    <ClCompile Include="G_Val.cpp" />
     <ClCompile Include="InGame.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -181,13 +190,19 @@
     <ClCompile Include="Machinegun.cpp" />
     <ClCompile Include="MapImg.cpp" />
     <ClCompile Include="MapSeclect.cpp" />
+    <ClCompile Include="MGunMask.cpp" />
     <ClCompile Include="NoBtn.cpp" />
+    <ClCompile Include="Pirate.cpp" />
+    <ClCompile Include="PirateAttackState.cpp" />
+    <ClCompile Include="PirateChaseState.cpp" />
+    <ClCompile Include="PirateHoldState.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="ProjectileArrow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="QuitBtn.cpp" />
     <ClCompile Include="QuitWindow.cpp" />
+    <ClCompile Include="RestartBtn.cpp" />
     <ClCompile Include="RigidBody.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -232,6 +247,8 @@
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleCamera.cpp" />
+    <ClCompile Include="ToMapBtn.cpp" />
+    <ClCompile Include="ToTitleBtn.cpp" />
     <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="Transform3D.cpp" />
     <ClCompile Include="TutorialMap.cpp" />
@@ -248,18 +265,27 @@
     <ClInclude Include="Basin.h" />
     <ClInclude Include="BasinBtn.h" />
     <ClInclude Include="BasinMap.h" />
+    <ClInclude Include="BGunMask.h" />
     <ClInclude Include="BoneHierarchyLoader.h" />
     <ClInclude Include="Bowgun.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Clear.h" />
     <ClInclude Include="CloseBtn.h" />
     <ClInclude Include="CollisionEventSphere.h" />
+    <ClInclude Include="ContinueBtn.h" />
+    <ClInclude Include="ControlImg.h" />
+    <ClInclude Include="ControlTutorial.h" />
+    <ClInclude Include="CreditsWindow.h" />
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="EnemyState.h" />
     <ClInclude Include="EnterBtn.h" />
+    <ClInclude Include="FireImg.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameOverWindow.h" />
+    <ClInclude Include="G_Val.h" />
     <ClInclude Include="InGame.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -268,13 +294,20 @@
     <ClInclude Include="Machinegun.h" />
     <ClInclude Include="MapImg.h" />
     <ClInclude Include="MapSeclect.h" />
+    <ClInclude Include="MGunMask.h" />
     <ClInclude Include="NoBtn.h" />
+    <ClInclude Include="Pirate.h" />
+    <ClInclude Include="PirateAttackState.h" />
+    <ClInclude Include="PirateChaseState.h" />
+    <ClInclude Include="PirateHoldState.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="ProjectileArrow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="QuitBtn.h" />
     <ClInclude Include="QuitWindow.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RestartBtn.h" />
     <ClInclude Include="RigidBody.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -322,6 +355,8 @@
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleCamera.h" />
+    <ClInclude Include="ToMapBtn.h" />
+    <ClInclude Include="ToTitleBtn.h" />
     <ClInclude Include="Transform2D.h" />
     <ClInclude Include="Transform3D.h" />
     <ClInclude Include="TutorialMap.h" />
@@ -342,6 +377,9 @@
     <ProjectReference Include="..\..\..\..\..\..\bullet\src\LinearMath\LinearMath.vcxproj">
       <Project>{19cf548f-9bc4-3147-92b1-91c64027a775}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CompEngine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

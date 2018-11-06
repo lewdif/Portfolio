@@ -12,9 +12,15 @@ namespace CompEngine
 		imgRect.LeftTop = Vec2(0, 0);
 		imgRect.RightBottom = Vec2(156, 67);
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
-		gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		if (!gameObject->GetComponent("Transform2D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
 
+		if (!gameObject->GetComponent("Button"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		}
 	}
 
 	void SinkBtn::Reference()
@@ -48,6 +54,7 @@ namespace CompEngine
 			{
 				if (!sndCounter)
 				{
+					button.SetPath("SinkOn.png");
 					SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble1.wav", 1.0, false);
 				}
 
@@ -56,6 +63,7 @@ namespace CompEngine
 			}
 			else if (button.GetStatus() == button.NORMAL)
 			{
+				button.SetPath("Sink.png");
 				sndCounter = false;
 			}
 		}

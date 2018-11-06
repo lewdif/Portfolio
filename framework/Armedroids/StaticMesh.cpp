@@ -51,7 +51,7 @@ namespace CompEngine
 
 				char* file = PathFindFileName(d3dxMaterials[i].pTextureFilename);
 
-				cout << file << endl;
+				//cout << file << endl;
 
 				if (d3dxMaterials[i].pTextureFilename != nullptr && lstrlenA(d3dxMaterials[i].pTextureFilename) > 0)
 				{

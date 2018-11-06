@@ -304,7 +304,7 @@ namespace CompEngine
 
 		if (fabs(dot - (-1.0f)) < 0.000001f)
 		{
-			return Quater(up.x, up.y, up.z, 3.1415926535897932f);
+			return Quater(up.x, up.y, up.z, D3DX_PI);
 		}
 		if (fabs(dot - (1.0f)) < 0.000001f)
 		{
@@ -325,15 +325,15 @@ namespace CompEngine
 	Quater Transform3D::CreateFromAxisAngle(Vec3 axis, float angle)
 	{
 		float halfAngle = angle * .5f;
-		float s = sin(halfAngle);
+		float sinHalfAngle = sin(halfAngle);
 		
-		Quater q;
-		q.x = (axis.x * s);
-		q.y = (axis.y * s);
-		q.z = (axis.z * s);
-		q.w = cos(halfAngle);
+		Quater resQuater;
+		resQuater.x = (axis.x * sinHalfAngle);
+		resQuater.y = (axis.y * sinHalfAngle);
+		resQuater.z = (axis.z * sinHalfAngle);
+		resQuater.w = cos(halfAngle);
 
-		return q;
+		return resQuater;
 	}
 
 	void Transform3D::MoveTowards(Vec3 to, float speed, float deltaTime)

@@ -11,7 +11,7 @@ namespace CompEngine
 {
 	Scene::Scene()
 		:name(""), isRunning(false), broadphase(0), dispatcher(0),
-		solver(0), collisionConfiguration(0), enablePhysics(true)
+		solver(0), collisionConfiguration(0), enablePhysics(true), debug_objectCnter(0)
 	{
 		dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
 	}
@@ -109,8 +109,9 @@ namespace CompEngine
 		cout << "Objects in current scene" << endl << "{" << endl;
 		for each(auto obj in objectList)
 		{
+			debug_objectCnter++;
 			obj->Init();
-			cout << "    " << obj->GetName() << endl;
+			cout << "    " << debug_objectCnter << ". " << obj->GetName() << endl;
 		}
 		cout << "}" << endl;
 
@@ -164,6 +165,7 @@ namespace CompEngine
 				obj->LateUpdate();
 			}
 		}
+		debug_objectCnter = 0;
 	}
 
 	void Scene::PhysicsUpdate(double deltaTime)
@@ -182,6 +184,7 @@ namespace CompEngine
 		}
 	}
 
+	// Doesn't work at all. Need to fix it.
 	void Scene::Destroy(GameObject* gameObject)
 	{
 		for each(auto obj in objectList)

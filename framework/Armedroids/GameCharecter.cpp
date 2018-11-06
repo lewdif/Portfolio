@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 
 #include "Bullet.h"
+#include "G_Val.h"
 
 namespace CompEngine
 {
@@ -38,10 +39,6 @@ namespace CompEngine
 		{
 			rigidBody.SetLinearVelocity(zeroMovement, 0, 0);
 			W_Key = false;
-
-			cout << "Player Pos : " << playerTrans3D.GetWorldPosition().x << ", "
-				<< playerTrans3D.GetWorldPosition().y << ", "
-				<< playerTrans3D.GetWorldPosition().z << endl;
 		}
 
 		if (InputMgr->KeyDown('S', false))
@@ -62,10 +59,6 @@ namespace CompEngine
 		{
 			rigidBody.SetLinearVelocity(0, 0, zeroMovement);
 			S_Key = false;
-
-			cout << "Player Pos : " << playerTrans3D.GetWorldPosition().x << ", "
-				<< playerTrans3D.GetWorldPosition().y << ", "
-				<< playerTrans3D.GetWorldPosition().z << endl;
 		}
 
 		if (InputMgr->KeyDown('A', false))
@@ -179,7 +172,7 @@ namespace CompEngine
 			bowgun->SetIsActive(false);
 			bowgun->FindChildByTag("Arrow")->SetIsActive(false);
 
-			//machinegun->SetIsActive(false);
+			machinegun->SetIsActive(false);
 		}
 	}
 
@@ -251,6 +244,10 @@ namespace CompEngine
 		if (stat.REM_HP <= damege)
 		{
 			isDead = true;
+			SceneMgr->CurrentScene()->FindObjectByName("GameOverWnd")->SetIsActive(true);
+			SceneMgr->CurrentScene()->FindObjectByName("RestartBtn")->SetIsActive(true);
+			SceneMgr->CurrentScene()->FindObjectByName("ToTitleBtn")->SetIsActive(true);
+			SceneMgr->CurrentScene()->FindObjectByName("ToMapBtn")->SetIsActive(true);
 			return;
 		}
 
@@ -310,39 +307,51 @@ namespace CompEngine
 		respawnCounter = 0;
 
 		//playerMesh = new SkinnedMesh();
-		stat = { 1, 15, 15, 4, 1, 8, 1, 8, 8, 0, 0 };
+		stat = { 1, 150, 1, 50, 1, 8, 1, 8, 8, 0, 0 };
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&playerTrans3D));
+		if (!gameObject->GetComponent("Transform3D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&playerTrans3D));
+		}
 
-		bowgun = new GameObject;
-		bowgunScript = new Bowgun;
+		if (!SceneMgr->CurrentScene()->FindObjectByName("Bowgun"))
+		{
+			bowgun = new GameObject;
+			bowgunScript = new Bowgun;
 
-		dynamic_cast<Script*>(bowgunScript)->SetInfo(bowgun, "bowgunScript");
-		bowgun->AddComponent(dynamic_cast<Component*>(bowgunScript));
+			dynamic_cast<Script*>(bowgunScript)->SetInfo(bowgun, "bowgunScript");
+			bowgun->AddComponent(dynamic_cast<Component*>(bowgunScript));
 
-		machinegun = new GameObject;
-		machinegunScript = new Machinegun;
+			SceneMgr->CurrentScene()->AddObject(bowgun, "Bowgun");
+		}
 
-		dynamic_cast<Script*>(machinegunScript)->SetInfo(machinegun, "machinegunScript");
-		machinegun->AddComponent(dynamic_cast<Component*>(machinegunScript));
+		if (!SceneMgr->CurrentScene()->FindObjectByName("Machinegun"))
+		{
+			machinegun = new GameObject;
+			machinegunScript = new Machinegun;
 
+			dynamic_cast<Script*>(machinegunScript)->SetInfo(machinegun, "machinegunScript");
+			machinegun->AddComponent(dynamic_cast<Component*>(machinegunScript));
+
+			SceneMgr->CurrentScene()->AddObject(machinegun, "Machinegun");
+		}
+		
 		weaponType = WEAPON_TYPE::BOWGUN;
 
-		this->gameObject->AttachChild(bowgun);
-
-		SceneMgr->CurrentScene()->AddObject(bowgun, "Bowgun");
-		SceneMgr->CurrentScene()->AddObject(machinegun, "Machinegun");
+		if (!gameObject->GetIsActive())
+		{
+			gameObject->SetIsActive(true);
+		}
 	}
 
 	void GameCharecter::Reference()
 	{
 		playerTrans3D.SetPosition(-300, 0, -400);
+		playerTrans3D.SetRotation(0, 0, 0);
 
 		colShape = new btBoxShape(btVector3(50 * playerTrans3D.GetScale().x,
 			50 * playerTrans3D.GetScale().y, 65 * playerTrans3D.GetScale().z));
 
-		//playerMesh->LoadMeshFromX(".\\Resources\\Lucy.x");
-		//gameObject->AddComponent(dynamic_cast<Component*>(playerMesh));
 		bullet = SceneMgr->CurrentScene()->FindObjectByName("Bullet");
 
 		boatMesh.SetFilePath(".\\Resources\\boat.x");
@@ -375,7 +384,11 @@ namespace CompEngine
 
 			return;
 		}
-		controll();
+
+		if (TUTORIAL_OVER)
+		{
+			controll();
+		}
 	}
 
 	void GameCharecter::LateUpdate()

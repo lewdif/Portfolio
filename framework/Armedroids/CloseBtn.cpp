@@ -12,14 +12,31 @@ namespace CompEngine
 		imgRect.LeftTop = Vec2(0, 0);
 		imgRect.RightBottom = Vec2(64, 64);
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
-		gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		if (!gameObject->GetComponent("Transform2D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
+
+		if (!gameObject->GetComponent("Button"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		}
+
 		gameObject->SetIsActive(false);
 	}
 
 	void CloseBtn::Reference()
 	{
-		trans.SetPosition(1100, 150, 0);
+		if (SceneMgr->CurrentScene()->GetName() == "gameMainScene")
+		{
+			trans.SetPosition(850, 130, 0);
+		}
+
+		if (SceneMgr->CurrentScene()->GetName() == "mapSelectScene")
+		{
+			trans.SetPosition(1100, 150, 0);
+		}
+
 		trans.SetSize(imgRect.RightBottom.x, imgRect.RightBottom.y);
 
 		button.SetPath("Close.png");
@@ -30,20 +47,30 @@ namespace CompEngine
 	{
 		if (button.GetStatus() == button.ON_CLICK)
 		{
+
 			if (btnCounter == false)
 			{
-				cout << "Close!" << endl;
+				//cout << "Close!" << endl;
 				SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble2.wav", 1.0, false);
 
-				if (SceneMgr->CurrentScene()->FindObjectByName("MapBasin")->GetIsActive())
+				if (SceneMgr->CurrentScene()->GetName() == "gameMainScene")
 				{
-					SceneMgr->CurrentScene()->FindObjectByName("MapBasin")->SetIsActive(false);
+					SceneMgr->CurrentScene()->FindObjectByName("CreditsWnd")->SetIsActive(false);
 				}
-				else if (SceneMgr->CurrentScene()->FindObjectByName("MapSink")->GetIsActive())
+
+				if (SceneMgr->CurrentScene()->GetName() == "mapSelectScene")
 				{
-					SceneMgr->CurrentScene()->FindObjectByName("MapSink")->SetIsActive(false);
+					if (SceneMgr->CurrentScene()->FindObjectByName("MapBasin")->GetIsActive())
+					{
+						SceneMgr->CurrentScene()->FindObjectByName("MapBasin")->SetIsActive(false);
+					}
+					else if (SceneMgr->CurrentScene()->FindObjectByName("MapSink")->GetIsActive())
+					{
+						SceneMgr->CurrentScene()->FindObjectByName("MapSink")->SetIsActive(false);
+					}
+					SceneMgr->CurrentScene()->FindObjectByName("EnterBtn")->SetIsActive(false);
 				}
-				SceneMgr->CurrentScene()->FindObjectByName("EnterBtn")->SetIsActive(false);
+
 				gameObject->SetIsActive(false);
 			}
 

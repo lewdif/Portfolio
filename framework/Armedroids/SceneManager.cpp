@@ -1,4 +1,5 @@
 #include "SceneManager.h"
+#include "SoundManager.h"
 
 namespace CompEngine
 {
@@ -120,6 +121,24 @@ namespace CompEngine
 			else
 				break;
 		}
+
+		if (msg.message != WM_QUIT)
+		{
+			SoundMgr->RemoveAllSounds();
+		}
+		/*
+		auto curScene = SceneContainer[sceneName];
+
+		if (SceneContainer[sceneName]->GetSceneFlag() == false)
+		{
+			SceneContainer.erase(sceneName);
+
+			delete curScene;
+			return;
+		}
+
+		SceneContainer.erase(sceneName);
+		delete curScene;*/
 	}
 
 	Scene* SceneManager::getScene(string sceneName)

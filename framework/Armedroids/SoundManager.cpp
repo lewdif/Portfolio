@@ -113,15 +113,18 @@ namespace CompEngine
 
 	void SoundManager::RemoveAllSounds()
 	{
-		for (auto iter = soundContainer.begin(); iter != soundContainer.end(); )
+		if (soundContainer.size() != 0)
 		{
-			if ((*iter).second != nullptr)
-				(*iter).second->drop();
+			for (auto iter = soundContainer.begin(); iter != soundContainer.end(); )
+			{
+				if ((*iter).second != nullptr)
+					(*iter).second->drop();
 
-			iter = soundContainer.erase(iter);
+				iter = soundContainer.erase(iter);
+			}
+
+			soundEngine->removeAllSoundSources();
 		}
-
-		soundEngine->removeAllSoundSources();
 	}
 
 }

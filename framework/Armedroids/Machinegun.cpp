@@ -1,5 +1,6 @@
 #include "Machinegun.h"
 #include "InputManager.h"
+#include "SoundManager.h"
 
 namespace CompEngine
 {
@@ -41,6 +42,8 @@ namespace CompEngine
 					bulletTrans->SetPosition(GameMgr->GetRayHitPos());
 					time = 0;
 					
+					SoundMgr->Play2D(".\\Resources\\Sounds\\Pistol.wav", 1.0f, false);
+
 					cout << "bullet Cnt : " << bulletCount << " / 20" << endl;
 				}
 
@@ -90,14 +93,17 @@ namespace CompEngine
 		bulletLoaded = true;
 		mouseClicker = false;
 
-		bullet = new GameObject;
-		bulletScript = new Bullet;
+		if (!SceneMgr->CurrentScene()->FindObjectByName("Bullet"))
+		{
+			bullet = new GameObject;
+			bulletScript = new Bullet;
 
-		bullet->AddTag("Bullet");
-		dynamic_cast<Script*>(bulletScript)->SetInfo(bullet, "bulletScript");
-		bullet->AddComponent(dynamic_cast<Component*>(bulletScript));
+			bullet->AddTag("Bullet");
+			dynamic_cast<Script*>(bulletScript)->SetInfo(bullet, "bulletScript");
+			bullet->AddComponent(dynamic_cast<Component*>(bulletScript));
 
-		SceneMgr->CurrentScene()->AddObject(bullet, "Bullet");
+			SceneMgr->CurrentScene()->AddObject(bullet, "Bullet");
+		}
 	}
 
 	void Machinegun::Reference()

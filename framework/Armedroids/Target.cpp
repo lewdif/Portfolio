@@ -29,6 +29,10 @@ namespace CompEngine
 		if (stat.REM_HP <= 0)
 		{
 			cout << "DEAD" << endl;
+
+			trans.SetPosition(0, -5000, 0);
+			rigidBody->SetTransform(trans.GetWorldPosition(), trans.GetRotationAngle());
+
 			gameObject->SetIsActive(false);
 		}
 	}
@@ -56,12 +60,12 @@ namespace CompEngine
 		cout << stat.LV << ". hp : " << stat.REM_HP << " / " << stat.HP << endl;
 	}
 
-
 	void Target::Init()
 	{
-		//gameObject->AddTag("Shark");
-
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		if (!gameObject->GetComponent("Transform3D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
 
 		zeroMovement = 1;
 		mass = 0;
@@ -70,13 +74,24 @@ namespace CompEngine
 		colShape = new btBoxShape(btVector3(40 * trans.GetScale().x,
 			100 * trans.GetScale().y, 60 * trans.GetScale().z));
 
-		rigidBody = new RigidBody;
-		rigidBody->SetRigidBody(gameObject, mass, colShape);
-		rigidBody->LockRotation(true, false, true);
-		gameObject->AddComponent(dynamic_cast<Component*>(rigidBody));
+		if (!gameObject->GetComponent("RigidBody"))
+		{
+			rigidBody = new RigidBody;
+			rigidBody->SetRigidBody(gameObject, mass, colShape);
+			rigidBody->LockRotation(true, false, true);
+			gameObject->AddComponent(dynamic_cast<Component*>(rigidBody));
+		}
 
-		evntSphere = new CollisionEventSphere;
-		gameObject->AddComponent(dynamic_cast<Component*>(evntSphere));
+		if (!gameObject->GetComponent("CollisionEventSphere"))
+		{
+			evntSphere = new CollisionEventSphere;
+			gameObject->AddComponent(dynamic_cast<Component*>(evntSphere));
+		}
+
+		if (!gameObject->GetIsActive())
+		{
+			gameObject->SetIsActive(true);
+		}
 	}
 
 	void Target::Reference()
@@ -85,26 +100,31 @@ namespace CompEngine
 
 		evntSphere->Init(trans.GetWorldPosition(), 50.0f);
 
-		staticMesh.SetFilePath(".\\Resources\\Target.x");
-		gameObject->AddComponent(dynamic_cast<Component*>(&staticMesh));
+		if (!gameObject->GetComponent("StaticMesh"))
+		{
+			staticMesh.SetFilePath(".\\Resources\\Target.x");
+			gameObject->AddComponent(dynamic_cast<Component*>(&staticMesh));
+		}
 
-		playerTrans = GET_TRANSFORM_3D(SceneMgr->CurrentScene()->FindObjectByTag("Player"));
-		arrowCollider = (CollisionEventSphere*)(SceneMgr->CurrentScene()->
-			FindObjectByName("ProjectileArrow")->GetComponent("CollisionEventSphere"));
-		bulletCollider = (CollisionEventSphere*)(SceneMgr->CurrentScene()->
-			FindObjectByName("Bullet")->GetComponent("CollisionEventSphere"));
+		if (arrowCollider == nullptr || bulletCollider == nullptr)
+		{
+			arrowCollider = (CollisionEventSphere*)(SceneMgr->CurrentScene()->
+				FindObjectByName("ProjectileArrow")->GetComponent("CollisionEventSphere"));
+			bulletCollider = (CollisionEventSphere*)(SceneMgr->CurrentScene()->
+				FindObjectByName("Bullet")->GetComponent("CollisionEventSphere"));
+		}
 
-		projArrow = SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow");
-		projArrowScript = (ProjectileArrow*)(projArrow->GetComponent("projArrowScript"));
-
-		bullet = SceneMgr->CurrentScene()->FindObjectByName("Bullet");
-
-		playerScript = (GameCharecter*)(SceneMgr->CurrentScene()->FindObjectByName("Player")->GetComponent("playerScript"));
+		if (projArrow == nullptr || playerScript == nullptr)
+		{
+			projArrow = SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow");
+			playerScript = (GameCharecter*)(SceneMgr->CurrentScene()->FindObjectByName("Player")->GetComponent("playerScript"));
+		}
 	}
 
 	void Target::Update()
 	{
 		evntSphere->Update(trans.GetWorldPosition());
+		//evntSphere->Render(trans.GetTransform(),COLOR::RED);
 
 		if (evntSphere->Collide(arrowCollider) && projArrow->GetIsActive())
 		{
@@ -121,7 +141,7 @@ namespace CompEngine
 			cout << "bullet hit" << endl;
 		}
 	}
-
+	
 	void Target::LateUpdate()
 	{
 	}

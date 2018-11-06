@@ -18,7 +18,8 @@ namespace CompEngine
 		bool mouseClicker;
 		double coolTime;
 
-		GameManager *GameMgr;
+		GameManager* GameMgr;
+		GameObject* projectileArrow;
 
 	public:
 		virtual void Init();

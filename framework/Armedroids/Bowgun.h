@@ -3,6 +3,8 @@
 #include "Transform3D.h"
 #include "StaticMesh.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
+#include "SoundClip.h"
 
 #include "Arrow.h"
 #include "ProjectileArrow.h"
@@ -29,6 +31,8 @@ namespace CompEngine
 		Quater resRot;
 		float rotSpeed;
 		float maximumRange;
+
+		//SoundClip sound;
 
 		GameObject* arrow;
 		Arrow* arrowScript;

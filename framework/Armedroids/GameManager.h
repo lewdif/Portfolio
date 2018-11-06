@@ -24,8 +24,21 @@ namespace CompEngine
 		double bulletCooltime;
 
 	private:
+		GameObject* targetA;
+		GameObject* targetB;
+		GameObject* targetC;
+
+		GameObject* pirate;
+		GameObject* sharkA;
+		GameObject* sharkB;
+		GameObject* sharkC;
+		GameObject* sharkD;
+		GameObject* sharkE;
+
+	private:
 		void playerRespawn();
 		void weaponReload();
+		void stageClear();
 
 	public:
 		void SetArrowPos(Vec3 pos);

@@ -1,5 +1,5 @@
 #include "InGameBasin.h"
-
+#include "G_Val.h"
 
 namespace CompEngine
 {
@@ -83,12 +83,52 @@ namespace CompEngine
 		water->AddComponent(dynamic_cast<Component*>(waterScript));
 		// -----------------------------------------------
 
+		// ---- BUTTONS ----------------------------------
+		continueBtn = new GameObject;
+		continueBtnScript = new ContinueBtn;
+
+		dynamic_cast<Script*>(continueBtnScript)->SetInfo(continueBtn, "continueBtnScript");
+		continueBtn->AddComponent(dynamic_cast<Component*>(continueBtnScript));
+		// -----------------------------------------------
+
 		// ---- IMAGE ------------------------------------
 		weaponImg = new GameObject;
 		weaponImgScript = new WeaponImage;
 
 		dynamic_cast<Script*>(weaponImgScript)->SetInfo(weaponImg, "weaponImgScript");
 		weaponImg->AddComponent(dynamic_cast<Component*>(weaponImgScript));
+
+		bGunMaskImg = new GameObject;
+		bGunMaskImgScript = new BGunMask;
+
+		dynamic_cast<Script*>(bGunMaskImgScript)->SetInfo(bGunMaskImg, "bGunMaskImgScript");
+		bGunMaskImg->AddComponent(dynamic_cast<Component*>(bGunMaskImgScript));
+
+		mGunMaskImg = new GameObject;
+		mGunMaskImgScript = new MGunMask;
+
+		dynamic_cast<Script*>(mGunMaskImgScript)->SetInfo(mGunMaskImg, "mGunMaskImgScript");
+		mGunMaskImg->AddComponent(dynamic_cast<Component*>(mGunMaskImgScript));
+
+		clearWnd = new GameObject;
+		clearWndScript = new Clear;
+
+		dynamic_cast<Script*>(clearWndScript)->SetInfo(clearWnd, "clearWndScript");
+		clearWnd->AddComponent(dynamic_cast<Component*>(clearWndScript));
+
+		/*gameOverWnd = new GameObject;
+		gameOverWndScript = new GameOverWindow;
+
+		dynamic_cast<Script*>(gameOverWndScript)->SetInfo(gameOverWnd, "gameOverWndScript");
+		gameOverWnd->AddComponent(dynamic_cast<Component*>(gameOverWndScript));*/
+		// -----------------------------------------------
+
+		// ---- TUTORIAL ---------------------------------
+		controlTutorial = new GameObject();
+		controlTutorialScript = new ControlTutorial();
+
+		dynamic_cast<Script*>(controlTutorialScript)->SetInfo(controlTutorial, "controlTutorialScript");
+		controlTutorial->AddComponent(dynamic_cast<Component*>(controlTutorialScript));
 		// -----------------------------------------------
 
 		basinScene->SetSceneFlag(true);
@@ -99,10 +139,16 @@ namespace CompEngine
 		basinScene->AddObject(projectileArrow, "ProjectileArrow");
 		basinScene->AddObject(basinMap, "BasinMap");
 		basinScene->AddObject(weaponImg, "WeaponImg");
+		basinScene->AddObject(bGunMaskImg, "BGunMaskImg");
+		basinScene->AddObject(mGunMaskImg, "MGunMaskImg");
+		basinScene->AddObject(clearWnd, "ClearWnd");
+		basinScene->AddObject(continueBtn, "ContinueBtn");
+		//basinScene->AddObject(gameOverWnd, "GameOverWnd");
 		basinScene->AddObject(water, "Water");
 		basinScene->AddObject(targetA_2, "TargetA");
 		basinScene->AddObject(targetB_2, "TargetB");
 		basinScene->AddObject(targetC_4, "TargetC");
+		basinScene->AddObject(controlTutorial, "ControlTutorial");
 
 		basinScene->SetSkybox(".\\Resources\\Skybox", "skySamp01", "png");
 	}

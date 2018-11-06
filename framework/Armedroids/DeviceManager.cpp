@@ -172,16 +172,16 @@ namespace CompEngine
 		Matrix projMat;
 		D3D_DEVICE->GetTransform(D3DTS_PROJECTION, &projMat);
 
-		float vx = (+2.0f * cursor.x / view.Width - 1.0f) / projMat._11;
-		float vy = (-2.0f * cursor.y / view.Height + 1.0f) / projMat._22;
+		//float vx = (+2.0f * cursor.x / view.Width - 1.0f) / projMat._11;
+		//float vy = (-2.0f * cursor.y / view.Height + 1.0f) / projMat._22;
 
-		D3DXVECTOR3 Origin(cursor.x, cursor.y, 0.0f);
-		D3DXVECTOR3 Direction(cursor.x, cursor.y, 1.0f);
+		Vec3 Origin(cursor.x, cursor.y, 0.0f);
+		Vec3 Direction(cursor.x, cursor.y, 1.0f);
 
 		Matrix viewMat;
 		D3D_DEVICE->GetTransform(D3DTS_VIEW, &viewMat);
 
-		D3DXVECTOR3 vtemp;
+		Vec3 vtemp;
 		D3DXVec3Unproject(&vOrg, &Origin, &view, &projMat, &viewMat, &matWorld);
 		D3DXVec3Unproject(&vtemp, &Direction, &view, &projMat, &viewMat, &matWorld);
 

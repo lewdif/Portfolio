@@ -37,6 +37,12 @@ namespace CompEngine
 		dynamic_cast<Script*>(settingBtnScript)->SetInfo(settingBtn, "settingBtnScript");
 		settingBtn->AddComponent(dynamic_cast<Component*>(settingBtnScript));
 
+		closeBtn = new GameObject;
+		closeBtnScript = new CloseBtn;
+
+		dynamic_cast<Script*>(closeBtnScript)->SetInfo(closeBtn, "closeBtnScript");
+		closeBtn->AddComponent(dynamic_cast<Component*>(closeBtnScript));
+
 		quitBtn = new GameObject;
 		quitBtnScript = new QuitBtn;
 
@@ -63,6 +69,12 @@ namespace CompEngine
 		dynamic_cast<Script*>(titleImgScript)->SetInfo(titleImg, "titleImgScript");
 		titleImg->AddComponent(dynamic_cast<Component*>(titleImgScript));
 
+		creditsWnd = new GameObject;
+		creditsWndScript = new CreditsWindow;
+
+		dynamic_cast<Script*>(creditsWndScript)->SetInfo(creditsWnd, "creditsWndScript");
+		creditsWnd->AddComponent(dynamic_cast<Component*>(creditsWndScript));
+
 		quitWnd = new GameObject;
 		quitWndScript = new QuitWindow;
 
@@ -74,6 +86,8 @@ namespace CompEngine
 		gameMainScene->AddObject(titleImg, "TitleImg");
 		gameMainScene->AddObject(startBtn, "StartBtn");
 		gameMainScene->AddObject(settingBtn, "SettingBtn");
+		gameMainScene->AddObject(creditsWnd, "CreditsWnd");
+		gameMainScene->AddObject(closeBtn, "CloseBtn");
 		gameMainScene->AddObject(quitBtn, "QuitBtn");
 		gameMainScene->AddObject(quitWnd, "QuitWnd");
 		gameMainScene->AddObject(yesBtn, "YesBtn");

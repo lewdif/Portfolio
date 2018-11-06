@@ -45,7 +45,7 @@ namespace CompEngine
 		btTransform InitTransform(InitOrientation, InitPosition);
 
 		rigidBody = createRigidBody(mass, InitTransform, colShape);
-		cout << owner->GetName() + " : Rigidbody set." << endl;
+		//cout << owner->GetName() + " : Rigidbody set." << endl;
 
 		return true;
 	}

@@ -98,7 +98,10 @@ namespace CompEngine
 		auto item = soundClips.find(clip);
 
 		if (item == soundClips.end())
+		{
+			cout << "Sound : " + clip + "doesn't exist." << endl;
 			return;
+		}
 
 		Vec3 pos = GET_TRANSFORM_3D(owner)->GetPosition();
 

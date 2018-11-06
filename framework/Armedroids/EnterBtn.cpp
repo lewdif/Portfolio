@@ -12,8 +12,15 @@ namespace CompEngine
 		imgRect.LeftTop = Vec2(0, 0);
 		imgRect.RightBottom = Vec2(223, 76);
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
-		gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		if (!gameObject->GetComponent("Transform2D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
+
+		if (!gameObject->GetComponent("Button"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		}
 
 		gameObject->SetIsActive(false);
 	}
@@ -43,6 +50,9 @@ namespace CompEngine
 				else if (SceneMgr->CurrentScene()->FindObjectByName("MapSink")->GetIsActive())
 				{
 					cout << "Enter : Sink!" << endl;
+					SoundMgr->Stop2D(".\\Resources\\Sounds\\bensound-memories.mp3");
+					SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble2.wav", 1.0, false);
+					SceneMgr->StartScene("inGameScene");
 				}
 
 				SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble2.wav", 1.0, false);
@@ -54,6 +64,7 @@ namespace CompEngine
 		{
 			if (!sndCounter)
 			{
+				button.SetPath("EnterOn.png");
 				SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble1.wav", 1.0, false);
 			}
 
@@ -62,6 +73,7 @@ namespace CompEngine
 		}
 		else if (button.GetStatus() == button.NORMAL)
 		{
+			button.SetPath("Enter.png");
 			sndCounter = false;
 		}
 	}

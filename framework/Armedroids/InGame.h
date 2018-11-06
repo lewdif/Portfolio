@@ -24,9 +24,18 @@
 #include "UserButton.h"
 #include "Plane.h"
 #include "Shark.h"
+#include "Pirate.h"
 #include "ProjectileArrow.h"
 #include "TutorialMap.h"
 #include "WeaponImage.h"
+#include "BGunMask.h"
+#include "MGunMask.h"
+#include "Clear.h"
+#include "ContinueBtn.h"
+#include "GameOverWindow.h"
+#include "RestartBtn.h"
+#include "ToTitleBtn.h"
+#include "ToMapBtn.h"
 
 namespace CompEngine
 {
@@ -53,14 +62,47 @@ namespace CompEngine
 		GameObject* weaponImg;
 		WeaponImage* weaponImgScript;
 
-		GameObject* sharkA_2;
+		GameObject* bGunMaskImg;
+		BGunMask* bGunMaskImgScript;
+
+		GameObject* mGunMaskImg;
+		MGunMask* mGunMaskImgScript;
+
+		GameObject* clearWnd;
+		Clear* clearWndScript;
+
+		GameObject* continueBtn;
+		ContinueBtn* continueBtnScript;
+
+		GameObject* gameOverWnd;
+		GameOverWindow* gameOverWndScript;
+
+		GameObject* restartBtn;
+		RestartBtn* restartBtnScript;
+
+		GameObject* toMapBtn;
+		ToMapBtn* toMapBtnScript;
+
+		GameObject* toTitleBtn;
+		ToTitleBtn* toTitleBtnScript;
+
+		GameObject* pirate;
+		Pirate* pirateScript;
+
+		GameObject* sharkA;
 		Shark* sharkScriptA;
 
-		GameObject* sharkB_2;
+		GameObject* sharkB;
 		Shark* sharkScriptB;
 
-		GameObject* sharkC_4;
+		GameObject* sharkC;
 		Shark* sharkScriptC;
+
+		GameObject* sharkD;
+		Shark* sharkScriptD;
+
+		GameObject* sharkE;
+		Shark* sharkScriptE;
 
 		GameObject* water;
 		Plane* waterScript;

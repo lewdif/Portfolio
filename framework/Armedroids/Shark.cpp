@@ -53,6 +53,7 @@ namespace CompEngine
 
 		case ENEMY_STATUS::ATTACK:
 			sharkState = atkState;
+			//sharkMesh.SetAnimation("normal");
 			break;
 
 		default:
@@ -64,13 +65,40 @@ namespace CompEngine
 	{
 		atkTimer += SceneMgr->GetTimeDelta();
 
+		if (sharkMesh.GetCurrentAnimation() == "move")
+		{
+			sharkMesh.SetAnimation("normal");
+		}
+
+		if (sharkMesh.GetAnimationRate() >= 0.99f && sharkMesh.GetCurrentAnimation() == "attack")
+		{
+			sharkMesh.SetAnimationLoop(true);
+			sharkMesh.SetAnimation("normal");
+		}
+
+
 		if (atkTimer > 2.5f && !((GameCharecter*)SceneMgr->CurrentScene()->
 			FindObjectByTag("Player")->GetComponent("playerScript"))->GetIsDead())
+		{
+			sharkMesh.SetAnimationLoop(false);
+			sharkMesh.SetAnimation("attack");
+			isAtk = true;
+
+			atkTimer = 0;
+		}
+		else
+		{
+		}
+
+		if (sharkMesh.GetAnimationRate() >= 0.95f && isAtk
+			&& sharkMesh.GetCurrentAnimation() == "attack")
 		{
 			((GameCharecter*)SceneMgr->CurrentScene()->FindObjectByTag("Player")
 				->GetComponent("playerScript"))->Dameged(stat.ATK);
 			cout << "Attack!" << endl;
-			atkTimer = 0;
+		cout << sharkMesh.GetCurrentAnimation() << " - anim rate : "
+			<< sharkMesh.GetAnimationRate() << endl;
+			isAtk = false;
 		}
 
 		rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
@@ -81,6 +109,9 @@ namespace CompEngine
 	void Shark::Chase()
 	{
 		//cout << "Chase!" << endl;
+		sharkMesh.SetAnimationLoop(true);
+		sharkMesh.SetAnimation("move");
+
 		trans.SetRotation(trans.LookAt(trans.GetWorldPosition(), playerTrans->GetWorldPosition()));
 
 		trans.GetWorldPosition(); // ?? 왜 이 함수를 호출하지 않으면 동작하지 않는지 확인 필요.
@@ -92,8 +123,49 @@ namespace CompEngine
 
 	void Shark::Patrol()
 	{
-		//cout << "Patrol!" << endl;
-		rigidBody->SetLinearVelocity(zeroMovement, 0, 0);
+		sharkMesh.SetAnimationLoop(true);
+		sharkMesh.SetAnimation("move");
+
+		if ((int)trans.GetWorldPosition().x != (int)destination.x ||
+			(int)trans.GetWorldPosition().z != (int)destination.z)
+		{
+			isReached = false;
+		}
+		else if ((int)trans.GetWorldPosition().x == (int)destination.x &&
+			(int)trans.GetWorldPosition().z == (int)destination.z)
+		{
+			isReached = true;
+		}
+
+		if (isReached && destination == patPoint)
+		{
+			destination = originPoint;
+			isReached = false;
+			if (gameObject->GetName() == "SharkA")
+			{
+				cout << "to origin" << endl;
+			}
+		}
+		else if (isReached && destination == originPoint)
+		{
+			destination = patPoint;
+			isReached = false;
+			if (gameObject->GetName() == "SharkA")
+			{
+				cout << "to path" << endl;
+			}
+		}
+
+		if (!isReached)
+		{
+			trans.SetRotation(trans.LookAt(trans.GetWorldPosition(), destination));
+
+			trans.GetWorldPosition(); // ?? 왜 이 함수를 호출하지 않으면 동작하지 않는지 확인 필요.
+
+			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
+			Forward *= 2000;
+			rigidBody->SetLinearVelocity(Forward.x, Forward.y, Forward.z);
+		}
 	}
 
 	float Shark::GetDistToPlayer()
@@ -101,18 +173,38 @@ namespace CompEngine
 		return D3DXVec3Length(&(playerTrans->GetWorldPosition() - trans.GetWorldPosition()));
 	}
 
-	void Shark::SetSharkInfo(int lv, int spd, Vec3 location)
+	void Shark::ChangeDestination()
+	{
+		if (D3DXVec3Length(&(destination - trans.GetWorldPosition())) < 200)
+		{
+			if (destination == originPoint)
+			{
+				destination = patPoint;
+			}
+			else
+			{
+				destination = originPoint;
+			}
+		}
+	}
+
+	void Shark::SetSharkInfo(int lv, int spd, Vec3 location, Vec3 patrolPoint)
 	{
 		if (lv < 0)
 		{
 			cout << "level can't be set below zero : " << lv << endl;
 			return;
 		}
+		
+		patPoint = patrolPoint;
+		originPoint = location;
+		destination = patPoint;
 
 		stat.LV = lv;
 		stat.SPD = spd;
 
 		trans.SetPosition(location);
+		trans.SetRotation(0, 0, 0);
 		rigidBody->SetTransform(trans.GetWorldPosition(), trans.GetRotationAngle());
 
 
@@ -128,39 +220,63 @@ namespace CompEngine
 	{
 		//gameObject->AddTag("Shark");
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		if (!gameObject->GetComponent("Transform3D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
 
 		zeroMovement = 1;
 		mass = 10;
 		atkTimer = 0;
 		stat = { 1, 1, 1, 3, 1 };
+		isAtk = false;
+		isReached = false;
 
 		colShape = new btBoxShape(btVector3(40 * trans.GetScale().x,
 			100 * trans.GetScale().y, 60 * trans.GetScale().z));
 
-		rigidBody = new RigidBody;
-		rigidBody->SetRigidBody(gameObject, mass, colShape);
-		rigidBody->LockRotation(true, false, true);
-		gameObject->AddComponent(dynamic_cast<Component*>(rigidBody));
+		if (!gameObject->GetComponent("RigidBody"))
+		{
+			rigidBody = new RigidBody;
+			rigidBody->SetRigidBody(gameObject, mass, colShape);
+			rigidBody->LockRotation(true, false, true);
+			gameObject->AddComponent(dynamic_cast<Component*>(rigidBody));
+		}
 
-		evntSphere = new CollisionEventSphere;
-		gameObject->AddComponent(dynamic_cast<Component*>(evntSphere));
+		if (!gameObject->GetComponent("CollisionEventSphere"))
+		{
+			evntSphere = new CollisionEventSphere;
+			gameObject->AddComponent(dynamic_cast<Component*>(evntSphere));
+		}
 
-		atkState = new SharkAttackState(this);
-		chsState = new SharkChaseState(this);
-		ptlState = new SharkPatrolState(this);
+		if (!gameObject->GetIsActive())
+		{
+			gameObject->SetIsActive(true);
+		}
 
+		if (atkState == nullptr || chsState == nullptr || ptlState == nullptr)
+		{
+			atkState = new SharkAttackState(this);
+			chsState = new SharkChaseState(this);
+			ptlState = new SharkPatrolState(this);
+		}
 	}
 
 	void Shark::Reference()
 	{
-		trans.SetPosition(400, 0, -400);
+		//trans.SetPosition(400, 0, -400);
+		//trans.SetRotation(0, 0, 0);
 
 		evntSphere->Init(trans.GetWorldPosition(), 50.0f);
 
-		sharkMesh.SetFilePath(".\\Resources\\Shark.x");
-		gameObject->AddComponent(dynamic_cast<Component*>(&sharkMesh));
+		if (!gameObject->GetComponent("SkinnedMesh"))
+		{
+			//sharkMesh.SetFilePath(".\\Resources\\Shark.x");
+			sharkMesh.LoadMeshFromX(".\\Resources\\SkinnedShark.X");
+			gameObject->AddComponent(dynamic_cast<Component*>(&sharkMesh));
+		}
 
+		sharkMesh.SetAnimation("normal");
 		playerTrans = GET_TRANSFORM_3D(SceneMgr->CurrentScene()->FindObjectByTag("Player"));
 		arrowCollider = (CollisionEventSphere*)(SceneMgr->CurrentScene()->
 			FindObjectByName("ProjectileArrow")->GetComponent("CollisionEventSphere"));
@@ -170,10 +286,6 @@ namespace CompEngine
 		sharkState = dynamic_cast<IEnemyState*>(ptlState);
 
 		projArrow = SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow");
-		projArrowScript = (ProjectileArrow*)(projArrow->GetComponent("projArrowScript"));
-
-		bullet = SceneMgr->CurrentScene()->FindObjectByName("Bullet");
-
 		playerScript = (GameCharecter*)(SceneMgr->CurrentScene()->FindObjectByName("Player")->GetComponent("playerScript"));
 	}
 

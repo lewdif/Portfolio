@@ -8,6 +8,8 @@
 #include "Bowgun.h"
 #include "Machinegun.h"
 #include "WeaponSelector.h"
+#include "BGunMask.h"
+#include "MGunMask.h"
 
 namespace CompEngine
 {
@@ -28,6 +30,9 @@ namespace CompEngine
 
 		GameObject* weaponSelectorR;
 		WeaponSelector* weaponSelectorScriptR;
+
+		GameObject* bMask;
+		GameObject* mMask;
 
 	private:
 

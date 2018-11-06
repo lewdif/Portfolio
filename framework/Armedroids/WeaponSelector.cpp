@@ -17,19 +17,26 @@ namespace CompEngine
 	{
 		imgRect.LeftTop = Vec2(0, 0);
 		imgRect.RightBottom = Vec2(200, 240);
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+
+		if (!gameObject->GetComponent("Transform3D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
 	}
 
 	void WeaponSelector::Reference()
 	{
-		trans.SetPosition(1150, 630, 0);
-		trans.SetScale(0.5f, 0.5f);
-		trans.SetSize(imgRect.RightBottom.x, imgRect.RightBottom.y);
+		if (!gameObject->GetComponent("Image"))
+		{
+			trans.SetPosition(1150, 630, 0);
+			trans.SetScale(0.5f, 0.5f);
+			trans.SetSize(imgRect.RightBottom.x, imgRect.RightBottom.y);
 
-		img.SetPath(fileName);
-		img.SetSize(imgRect);
+			img.SetPath(fileName);
+			img.SetSize(imgRect);
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&img));
+			gameObject->AddComponent(dynamic_cast<Component*>(&img));
+		}
 	}
 
 	void WeaponSelector::Update()

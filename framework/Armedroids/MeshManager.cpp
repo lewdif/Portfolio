@@ -42,7 +42,7 @@ namespace CompEngine
 
 			staticMeshList.insert(pair<string, MESH_INFO>(filePath, Temp));
 
-			cout << filePath << " is loaded." << endl;
+			//cout << filePath << " is loaded." << endl;
 
 			return &(staticMeshList.find(filePath)->second);
 		}
@@ -102,7 +102,7 @@ namespace CompEngine
 				return nullptr;
 			}
 
-			cout << fullPath << " - completely loaded!" << endl;
+			//cout << fullPath << " - completely loaded!" << endl;
 			textureList.insert(pair<string, LPDIRECT3DTEXTURE9>(fileName, Temp));
 
 			return textureList.find(fileName)->second;

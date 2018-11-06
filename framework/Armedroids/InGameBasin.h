@@ -27,6 +27,12 @@
 #include "ProjectileArrow.h"
 #include "BasinMap.h"
 #include "WeaponImage.h"
+#include "BGunMask.h"
+#include "MGunMask.h"
+#include "ControlTutorial.h"
+#include "Clear.h"
+#include "ContinueBtn.h"
+//#include "GameOverWindow.h"
 
 namespace CompEngine
 {
@@ -50,6 +56,21 @@ namespace CompEngine
 		GameObject* weaponImg;
 		WeaponImage* weaponImgScript;
 
+		GameObject* bGunMaskImg;
+		BGunMask* bGunMaskImgScript;
+
+		GameObject* mGunMaskImg;
+		MGunMask* mGunMaskImgScript;
+
+		GameObject* clearWnd;
+		Clear* clearWndScript;
+
+		GameObject* continueBtn;
+		ContinueBtn* continueBtnScript;
+
+		//GameObject* gameOverWnd;
+		//GameOverWindow* gameOverWndScript;
+
 		GameObject* basinMap;
 		BasinMap* basinMapScript;
 
@@ -65,6 +86,8 @@ namespace CompEngine
 		GameObject* targetC_4;
 		Target* targetScriptC;
 
+		GameObject* controlTutorial;
+		ControlTutorial* controlTutorialScript;
 
 	public:
 		void Init();

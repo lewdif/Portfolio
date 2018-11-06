@@ -18,6 +18,7 @@ namespace CompEngine
 		double accumulator;
 
 		int cameraIndex;
+		int debug_objectCnter;
 
 		bool isRunning;
 

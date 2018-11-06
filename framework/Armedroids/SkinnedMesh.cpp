@@ -66,7 +66,8 @@ namespace CompEngine
 		return animationLoop;
 	}
 
-	void SkinnedMesh::GetAnimationSets() {
+	void SkinnedMesh::GetAnimationSets()
+	{
 		ID3DXAnimationSet* pAnim = nullptr;
 
 		for (int i = 0; i < (int)animationController->GetMaxNumAnimationSets(); i++)

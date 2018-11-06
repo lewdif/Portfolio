@@ -11,8 +11,11 @@ namespace CompEngine
 	class InputManager : public ISingleton<InputManager>
 	{
 	public:
-		InputManager() {}
+		explicit InputManager() {}
 		virtual ~InputManager() {}
+
+		void InitMembers();
+		virtual void ReleaseMembers();
 
 	private:
 		POINT mousePos;
@@ -23,8 +26,6 @@ namespace CompEngine
 		bool focusedWindow;
 
 	public:
-		void InitMembers();
-
 		bool KeyDown(char _key, bool _onlyOne);
 		bool IsFocusedWindow();
 
@@ -41,7 +42,5 @@ namespace CompEngine
 		void SetMouseRBStatus(MOUSE_STATUS isClicked);
 		void SetMouseWheelStatus(MOUSE_WHEEL_STATUS mouseWheelStatus);
 		void SetFocusWindow(bool isFocused);
-
-		virtual void ReleaseMembers();
 	};
 }

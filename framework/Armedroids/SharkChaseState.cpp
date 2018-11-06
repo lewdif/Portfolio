@@ -15,6 +15,7 @@ namespace CompEngine
 		}
 		else if (shark->GetDistToPlayer() >= 500)
 		{
+			shark->ChangeDestination();
 			ToPatrolState();
 		}
 

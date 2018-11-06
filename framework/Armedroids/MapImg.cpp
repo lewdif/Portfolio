@@ -8,16 +8,24 @@ namespace CompEngine
 	{
 		imgRect.LeftTop = Vec2(0, 0);
 		imgRect.RightBottom = Vec2(1540, 868);
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+
+		if (!gameObject->GetComponent("Transform2D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
 	}
 
 	void MapImg::Reference()
 	{
 		trans.SetPosition(0, 0, 0);
 		trans.SetSize(imgRect.RightBottom.x, imgRect.RightBottom.y);
-		img.SetPath("MapSelect.png");
-		img.SetSize(imgRect);
-		gameObject->AddComponent(dynamic_cast<Component*>(&img));
+
+		if (!gameObject->GetComponent("Image"))
+		{
+			img.SetPath("MapSelect.png");
+			img.SetSize(imgRect);
+			gameObject->AddComponent(dynamic_cast<Component*>(&img));
+		}
 	}
 
 	void MapImg::Update()

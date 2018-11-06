@@ -11,18 +11,27 @@ namespace CompEngine
 		//mainCamera = new Camera(0, PROJECTION_TYPE::PROJECTION_PERSPACTIVE,
 		//	Vec3(0, 1, 0), DeviceMgr->GetWidth(), DeviceMgr->GetHeight(), 2000, 0.1f, D3DX_PI * 0.6f);
 
-		cameraTrans = new Transform3D;
-		gameObject->AddComponent(dynamic_cast<Component*>(cameraTrans));
+		if (!gameObject->GetComponent("Transform3D"))
+		{
+			cameraTrans = new Transform3D;
+			gameObject->AddComponent(dynamic_cast<Component*>(cameraTrans));
+		}
 
-		mainCamera = new Camera(0, PROJECTION_TYPE::PROJECTION_ORTHOGONAL, mainCamUpVec,
-			DeviceMgr->GetWidth(), DeviceMgr->GetHeight(), 3000, -1000, D3DX_PI * 0.6f);
+		if (mainCamera == nullptr)
+		{
+			mainCamera = new Camera(0, PROJECTION_TYPE::PROJECTION_ORTHOGONAL, mainCamUpVec,
+				DeviceMgr->GetWidth(), DeviceMgr->GetHeight(), 3000, -1000, D3DX_PI * 0.6f);
+		}
 	}
 
 	void FirstTestCam::Reference()
 	{
 		TargetTrans = GET_TRANSFORM_3D(SceneMgr->CurrentScene()->FindObjectByName("Player"));
 
-		gameObject->AddComponent(dynamic_cast<Component*>(mainCamera));
+		if (!gameObject->GetComponent("Camera"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(mainCamera));
+		}
 
 		if ((Camera*)SceneMgr->CurrentScene()->GetCurrentCamera() != mainCamera)
 		{

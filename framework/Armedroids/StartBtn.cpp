@@ -12,9 +12,15 @@ namespace CompEngine
 		imgRect.LeftTop = Vec2(0, 0);
 		imgRect.RightBottom = Vec2(310, 107);
 
-		gameObject->AddComponent(dynamic_cast<Component*>(&trans));
-		gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		if (!gameObject->GetComponent("Transform2D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&trans));
+		}
 
+		if (!gameObject->GetComponent("Button"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&button));
+		}
 	}
 
 	void StartBtn::Reference()
@@ -28,32 +34,38 @@ namespace CompEngine
 
 	void StartBtn::Update()
 	{
-		if (button.GetStatus() == button.ON_CLICK)
+		if (!SceneMgr->CurrentScene()->FindObjectByName("QuitWnd")->GetIsActive() &&
+		!SceneMgr->CurrentScene()->FindObjectByName("CreditsWnd")->GetIsActive())
 		{
-			if (btnCounter == false)
+			if (button.GetStatus() == button.ON_CLICK)
 			{
-				cout << "Start!" << endl;
-				SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble2.wav", 1.0, false);
-				SoundMgr->Stop2D(".\\Resources\\Sounds\\bensound-cute.mp3");
+				if (btnCounter == false)
+				{
+					cout << "Start!" << endl;
+					SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble2.wav", 1.0, false);
+					SoundMgr->Stop2D(".\\Resources\\Sounds\\bensound-cute.mp3");
 
-				SceneMgr->StartScene("mapSelectScene");
+					SceneMgr->StartScene("mapSelectScene");
+				}
+
+				btnCounter = true;
 			}
-
-			btnCounter = true;
-		}
-		else if (button.GetStatus() == button.HIGHLIGHT)
-		{
-			if (!sndCounter)
+			else if (button.GetStatus() == button.HIGHLIGHT)
 			{
-				SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble1.wav", 1.0, false);
-			}
+				if (!sndCounter)
+				{
+					button.SetPath("StartOn.png");
+					SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble1.wav", 1.0, false);
+				}
 
-			btnCounter = false;
-			sndCounter = true;
-		}
-		else if (button.GetStatus() == button.NORMAL)
-		{
-			sndCounter = false;
+				btnCounter = false;
+				sndCounter = true;
+			}
+			else if (button.GetStatus() == button.NORMAL)
+			{
+				button.SetPath("Start.png");
+				sndCounter = false;
+			}
 		}
 	}
 

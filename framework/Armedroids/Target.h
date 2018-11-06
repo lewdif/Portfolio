@@ -24,7 +24,7 @@ private:
 	float zeroMovement;
 	float mass;
 
-	Transform3D* playerTrans;
+	//Transform3D* playerTrans;
 
 	CollisionEventSphere* arrowCollider;
 	CollisionEventSphere* bulletCollider;
@@ -32,9 +32,8 @@ private:
 	Status stat;
 
 	GameObject* projArrow;
-	ProjectileArrow* projArrowScript;
-
-	GameObject* bullet;
+	//ProjectileArrow* projArrowScript;
+	//GameObject* bullet;
 
 	GameCharecter* playerScript;
 

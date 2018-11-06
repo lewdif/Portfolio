@@ -22,6 +22,8 @@
 #include "TitleCamera.h"
 #include "StartBtn.h"
 #include "SettingBtn.h"
+#include "CreditsWindow.h"
+#include "CloseBtn.h"
 #include "QuitBtn.h"
 #include "QuitWindow.h"
 #include "YesBtn.h"
@@ -45,6 +47,12 @@ namespace CompEngine
 
 		GameObject* settingBtn;
 		SettingBtn* settingBtnScript;
+
+		GameObject* creditsWnd;
+		CreditsWindow* creditsWndScript;
+
+		GameObject* closeBtn;
+		CloseBtn* closeBtnScript;
 
 		GameObject* quitBtn;
 		QuitBtn* quitBtnScript;

@@ -15,15 +15,11 @@ namespace CompEngine
 	private:
 		Transform3D trans;
 		CollisionEventSphere* evntSphere;
-		GameManager *GameMgr;
 
 	public:
 		virtual void Init();
 		virtual void Reference();
 		virtual void Update();
 		virtual void LateUpdate();
-
-	public:
-		//void SetPosToNowhere();
 	};
 }

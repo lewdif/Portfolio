@@ -8,9 +8,11 @@ namespace CompEngine
 {
 	void Arrow::Init()
 	{
-		gameObject->AddComponent(dynamic_cast<Component*>(&arrowTrans));
-
-		gameObject->AttachParent(SceneMgr->CurrentScene()->FindObjectByName("Bowgun"));
+		if (!gameObject->GetComponent("Transform3D"))
+		{
+			gameObject->AddComponent(dynamic_cast<Component*>(&arrowTrans));
+			gameObject->AttachParent(SceneMgr->CurrentScene()->FindObjectByName("Bowgun"));
+		}
 
 		mouseClicker = false;
 		coolTime = 0;
@@ -20,8 +22,17 @@ namespace CompEngine
 	{
 		arrowTrans.SetPosition(0, 50, 20);
 
-		arrowMesh.SetFilePath(".\\Resources\\Arrow.x");
-		gameObject->AddComponent(dynamic_cast<Component*>(&arrowMesh));
+		if (!gameObject->GetComponent("StaticMesh"))
+		{
+			arrowMesh.SetFilePath(".\\Resources\\Arrow.x");
+			gameObject->AddComponent(dynamic_cast<Component*>(&arrowMesh));
+		}
+
+		if (projectileArrow == nullptr)
+		{
+			projectileArrow = SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow");
+		}
+		
 		GameMgr = ((GameManager*)SceneMgr->CurrentScene()->FindObjectByTag("GameMgr")->GetComponent("gameMgrScript"));
 	}
 
@@ -38,12 +49,10 @@ namespace CompEngine
 		{
 			if (mouseClicker == true)
 			{
+				projectileArrow->SetIsActive(true);
+
 				if (((Bowgun*)gameObject->GetParent())->GetArrowStatus())
 				{
-					//cout << ((Bowgun*)gameObject->GetParent())->GetArrowStatus() << endl;
-					//((ProjectileArrow*)(SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow")
-					//	->GetComponent("projArrowScript")))->SetPosToNowhere();
-					SceneMgr->CurrentScene()->FindObjectByName("ProjectileArrow")->SetIsActive(true);
 					gameObject->SetIsActive(false);
 				}
 			}

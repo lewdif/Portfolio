@@ -131,12 +131,6 @@
     <Filter Include="Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State">
       <UniqueIdentifier>{4239f46d-dad6-4c7c-b0e9-bf62fe924343}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Testing codes\Scene\03.InGame\Objects\Map">
-      <UniqueIdentifier>{7382f426-cb40-4c5a-bfc7-3c342121d599}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Testing codes\Scene\03.InGame\Objects\Map\Walls">
-      <UniqueIdentifier>{eb23418f-de71-4ab5-b903-63d402fc7dfe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Testing codes\Scene\03.InGame\UI">
       <UniqueIdentifier>{3b53aa5a-f044-4429-904a-fec7ee6bfb0e}</UniqueIdentifier>
     </Filter>
@@ -160,6 +154,45 @@
     </Filter>
     <Filter Include="Testing codes\Scene\02.MapSelect\UI\Image">
       <UniqueIdentifier>{02c4fada-8b3b-40e3-8877-b08494235d78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Basin\Tutorial">
+      <UniqueIdentifier>{1b3d0863-6b4c-4553-924e-1866837b0b38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Basin\UI">
+      <UniqueIdentifier>{935d94c5-f947-4483-874c-abb3d5e5f026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Basin\UI\Image">
+      <UniqueIdentifier>{d6954cb3-bf5b-4a4c-b94f-dc6808eafefd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Enemy\Target">
+      <UniqueIdentifier>{5c2b2ee2-9cb3-4f3b-9ab0-132a86a015a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Sink\SinkMap">
+      <UniqueIdentifier>{7382f426-cb40-4c5a-bfc7-3c342121d599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Sink\SinkMap\Walls">
+      <UniqueIdentifier>{eb23418f-de71-4ab5-b903-63d402fc7dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\01.GameMain\UI\CreditsWindow">
+      <UniqueIdentifier>{ba1ecbd0-5d11-436b-96da-164d5d597ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\UI\GameOver">
+      <UniqueIdentifier>{ee93634e-a30f-4a6b-b73e-4fb2b4039589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\UI\GameOver\Buttons">
+      <UniqueIdentifier>{91c2ce86-e890-4309-bbe1-8c45e5449781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\UI\Clear">
+      <UniqueIdentifier>{72dc1cc0-9447-4d50-9993-30a74727f2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\UI\Clear\Button">
+      <UniqueIdentifier>{05483ef5-cf9d-43e9-85c0-8fe8c7bfb398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Enemy\Pirate">
+      <UniqueIdentifier>{ed21361a-f2ad-47e8-8c8b-c5e704b6e801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing codes\Scene\03.InGame\Objects\Enemy\Pirate\State">
+      <UniqueIdentifier>{82d01b3a-5d19-4268-a18d-dabb28fcca14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -276,10 +309,10 @@
       <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Shark\State</Filter>
     </ClCompile>
     <ClCompile Include="TutorialMap.cpp">
-      <Filter>Testing codes\Scene\03.InGame\Objects\Map</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Sink\SinkMap</Filter>
     </ClCompile>
     <ClCompile Include="Wall.cpp">
-      <Filter>Testing codes\Scene\03.InGame\Objects\Map\Walls</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Sink\SinkMap\Walls</Filter>
     </ClCompile>
     <ClCompile Include="WeaponImage.cpp">
       <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
@@ -298,9 +331,6 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Machinegun</Filter>
-    </ClCompile>
-    <ClCompile Include="InGame.cpp">
-      <Filter>Testing codes\Scene\03.InGame</Filter>
     </ClCompile>
     <ClCompile Include="GameMain.cpp">
       <Filter>Testing codes\Scene\01.GameMain</Filter>
@@ -365,8 +395,62 @@
     <ClCompile Include="BasinMap.cpp">
       <Filter>Testing codes\Scene\03.InGame\Basin</Filter>
     </ClCompile>
+    <ClCompile Include="ControlTutorial.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Basin\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlImg.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Basin\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="FireImg.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Basin\UI\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="G_Val.cpp">
+      <Filter>Testing codes</Filter>
+    </ClCompile>
     <ClCompile Include="Target.cpp">
-      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="InGame.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Sink</Filter>
+    </ClCompile>
+    <ClCompile Include="CreditsWindow.cpp">
+      <Filter>Testing codes\Scene\01.GameMain\UI\CreditsWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverWindow.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="RestartBtn.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="ToTitleBtn.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="ToMapBtn.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="Clear.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\Clear</Filter>
+    </ClCompile>
+    <ClCompile Include="ContinueBtn.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\Clear\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Pirate.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateAttackState.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateChaseState.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateHoldState.cpp">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate\State</Filter>
+    </ClCompile>
+    <ClCompile Include="BGunMask.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="MGunMask.cpp">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -486,10 +570,10 @@
       <Filter>Testing codes\Managers</Filter>
     </ClInclude>
     <ClInclude Include="TutorialMap.h">
-      <Filter>Testing codes\Scene\03.InGame\Objects\Map</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Sink\SinkMap</Filter>
     </ClInclude>
     <ClInclude Include="Wall.h">
-      <Filter>Testing codes\Scene\03.InGame\Objects\Map\Walls</Filter>
+      <Filter>Testing codes\Scene\03.InGame\Sink\SinkMap\Walls</Filter>
     </ClInclude>
     <ClInclude Include="WeaponImage.h">
       <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
@@ -508,9 +592,6 @@
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>Testing codes\Scene\03.InGame\Player\Weapons\Machinegun</Filter>
-    </ClInclude>
-    <ClInclude Include="InGame.h">
-      <Filter>Testing codes\Scene\03.InGame</Filter>
     </ClInclude>
     <ClInclude Include="GameMain.h">
       <Filter>Testing codes\Scene\01.GameMain</Filter>
@@ -575,8 +656,68 @@
     <ClInclude Include="BasinMap.h">
       <Filter>Testing codes\Scene\03.InGame\Basin</Filter>
     </ClInclude>
-    <ClInclude Include="Target.h">
-      <Filter>Testing codes\Scene\03.InGame\Objects</Filter>
+    <ClInclude Include="ControlTutorial.h">
+      <Filter>Testing codes\Scene\03.InGame\Basin\Tutorial</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ControlImg.h">
+      <Filter>Testing codes\Scene\03.InGame\Basin\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="FireImg.h">
+      <Filter>Testing codes\Scene\03.InGame\Basin\UI\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="G_Val.h">
+      <Filter>Testing codes</Filter>
+    </ClInclude>
+    <ClInclude Include="Target.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="InGame.h">
+      <Filter>Testing codes\Scene\03.InGame\Sink</Filter>
+    </ClInclude>
+    <ClInclude Include="CreditsWindow.h">
+      <Filter>Testing codes\Scene\01.GameMain\UI\CreditsWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverWindow.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="RestartBtn.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="ToTitleBtn.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="ToMapBtn.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\GameOver\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="Clear.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\Clear</Filter>
+    </ClInclude>
+    <ClInclude Include="ContinueBtn.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\Clear\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Pirate.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateAttackState.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateChaseState.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateHoldState.h">
+      <Filter>Testing codes\Scene\03.InGame\Objects\Enemy\Pirate\State</Filter>
+    </ClInclude>
+    <ClInclude Include="BGunMask.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="MGunMask.h">
+      <Filter>Testing codes\Scene\03.InGame\UI\Weapon</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CompEngine.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

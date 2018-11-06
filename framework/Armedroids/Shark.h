@@ -21,14 +21,19 @@ namespace CompEngine
 	{
 	private:
 		Transform3D trans;
-		//SkinnedMesh* playerMesh;
-		StaticMesh sharkMesh;
+		SkinnedMesh sharkMesh;
+		//StaticMesh sharkMesh;
 		RigidBody* rigidBody;
 		btBoxShape* colShape;
 		CollisionEventSphere* evntSphere;
 		float zeroMovement;
 		float mass;
 		float atkTimer;
+		bool isAtk;
+		Vec3 originPoint;
+		Vec3 patPoint;
+		Vec3 destination;
+		bool isReached;
 
 		Transform3D* playerTrans;
 
@@ -43,10 +48,6 @@ namespace CompEngine
 		Status stat;
 
 		GameObject* projArrow;
-		ProjectileArrow* projArrowScript;
-
-		GameObject* bullet;
-
 		GameCharecter* playerScript;
 
 	private:
@@ -58,8 +59,9 @@ namespace CompEngine
 		void Chase();
 		void Patrol();
 		float GetDistToPlayer();
+		void ChangeDestination();
 
-		void SetSharkInfo(int lv, int spd, Vec3 location);
+		void SetSharkInfo(int lv, int spd, Vec3 location, Vec3 patrolPoint);
 
 	public:
 		virtual void Init();

@@ -2,14 +2,15 @@
 #include "SceneManager.h"
 
 #include "GameCharecter.h"
+#include "Target.h"
 #include "Shark.h"
+#include "Pirate.h"
 #include "Bowgun.h"
 #include "Arrow.h"
 #include "ProjectileArrow.h"
 #include "Machinegun.h"
 #include "Bullet.h"
 
-#include "Target.h"
 
 namespace CompEngine
 {
@@ -64,7 +65,7 @@ namespace CompEngine
 			}
 
 			// Reload arrow.
-			if (arrowCooltime > 3)
+			if (arrowCooltime > 2.5)
 			{
 				arrow->SetIsActive(true);
 				//cout << "arrow ready to fire!" << endl;
@@ -77,6 +78,27 @@ namespace CompEngine
 				}
 
 				projArrowScript->SetPosToNowhere();
+			}
+		}
+	}
+
+	void GameManager::stageClear()
+	{
+		if (SceneMgr->CurrentScene()->GetName() == "basinScene")
+		{
+			if (targetA->GetIsActive() == false && targetB->GetIsActive() == false
+				&& targetC->GetIsActive() == false)
+			{
+				SceneMgr->CurrentScene()->FindObjectByName("ClearWnd")->SetIsActive(true);
+				SceneMgr->CurrentScene()->FindObjectByName("ContinueBtn")->SetIsActive(true);
+			}
+		}
+		else if (SceneMgr->CurrentScene()->GetName() == "inGameScene")
+		{
+			if (!pirate->GetIsActive())
+			{
+				SceneMgr->CurrentScene()->FindObjectByName("ClearWnd")->SetIsActive(true);
+				SceneMgr->CurrentScene()->FindObjectByName("ContinueBtn")->SetIsActive(true);
 			}
 		}
 	}
@@ -131,42 +153,47 @@ namespace CompEngine
 		// 캐릭터 스텟들이 초기화 되지않게 주의 -> 고려해서 안되면 전역으로 선언
 		if (SceneMgr->CurrentScene()->GetName() == "inGameScene")
 		{
-			((Shark*)(SceneMgr->CurrentScene()->FindObjectByName("SharkA")->
-				GetComponent("sharkScriptA")))->SetSharkInfo(2, 1, Vec3(-900, 0, -700));
-			((Shark*)(SceneMgr->CurrentScene()->FindObjectByName("SharkB")->
-				GetComponent("sharkScriptB")))->SetSharkInfo(2, 1, Vec3(600, 0, 500));
-			((Shark*)(SceneMgr->CurrentScene()->FindObjectByName("SharkC")->
-				GetComponent("sharkScriptC")))->SetSharkInfo(4, 1, Vec3(-400, 0, 600));
+			pirate = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("Pirate"));
+			sharkA = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("SharkA"));
+			sharkB = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("SharkB"));
+			sharkC = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("SharkC"));
+			sharkD = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("SharkD"));
+			sharkE = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("SharkE"));
+
+
+			((Pirate*)(pirate->GetComponent("pirateScript")))->
+				SetPirateInfo(2, 1, Vec3(-1200, 0, 600));
+			((Shark*)(sharkA->GetComponent("sharkScriptA")))->
+				SetSharkInfo(2, 1, Vec3(-900, 0, -450), Vec3(-1200, 0, -550));
+			((Shark*)(sharkB->GetComponent("sharkScriptB")))->
+				SetSharkInfo(2, 1, Vec3(-1500, 0, -300), Vec3(-1800, 0, -400));
+			((Shark*)(sharkC->GetComponent("sharkScriptC")))->
+				SetSharkInfo(4, 1, Vec3(-2300, 0, -350), Vec3(-2600, 0, -450));
+			((Shark*)(sharkD->GetComponent("sharkScriptD")))->
+				SetSharkInfo(4, 1, Vec3(-2700, 0, -300), Vec3(-2800, 0, 600));
+			((Shark*)(sharkE->GetComponent("sharkScriptE")))->
+				SetSharkInfo(4, 1, Vec3(-2300, 0, 400), Vec3(-2000, 0, 200));
 		}
 		else if (SceneMgr->CurrentScene()->GetName() == "basinScene")
 		{
-			((Target*)(SceneMgr->CurrentScene()->FindObjectByName("TargetA")->
-				GetComponent("targetScriptA")))->SetInfo(2, 1, Vec3(-400, 0, -400));
-			((Target*)(SceneMgr->CurrentScene()->FindObjectByName("TargetB")->
-				GetComponent("targetScriptB")))->SetInfo(2, 1, Vec3(400, 0, 300));
-			((Target*)(SceneMgr->CurrentScene()->FindObjectByName("TargetC")->
-				GetComponent("targetScriptC")))->SetInfo(4, 1, Vec3(-400, 0, 350));
+			targetA = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("TargetA"));
+			targetB = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("TargetB"));
+			targetC = (GameObject*)(SceneMgr->CurrentScene()->FindObjectByName("TargetC"));
+
+			((Target*)(targetA->GetComponent("targetScriptA")))->
+				SetInfo(1, 1, Vec3(-600, 0, -300));
+			((Target*)(targetB->GetComponent("targetScriptB")))->
+				SetInfo(1, 1, Vec3(400, 0, 300));
+			((Target*)(targetC->GetComponent("targetScriptC")))->
+				SetInfo(1, 1, Vec3(-400, 0, 400));
 		}
 		//player = ((GameCharecter*)SceneMgr->CurrentScene()->FindObjectByTag("Player")->GetComponent("playerScript"));
 	}
 
 	void GameManager::Update()
 	{
-		if (((GameCharecter*)SceneMgr->CurrentScene()->FindObjectByTag("Player")->GetComponent("playerScript"))->GetIsDead())
-		{
-			playerRespawnTime += SceneMgr->GetTimeDelta();
-			//cout << (int)playerRespawnTime << endl;
-
-			if (((GameCharecter*)SceneMgr->CurrentScene()->FindObjectByTag("Player")->GetComponent("playerScript"))->GetRespawnTime() <= playerRespawnTime)
-			{
-				((GameCharecter*)SceneMgr->CurrentScene()->FindObjectByTag("Player")->GetComponent("playerScript"))->Respawn(playerRespawnPos);
-
-				GET_TRANSFORM_3D(SceneMgr->CurrentScene()->FindObjectByTag("Player"))->SetPosition(0, 0, 0);
-				playerRespawnTime = 0;
-			}
-		}
-
 		weaponReload();
+		stageClear();
 	}
 
 	void GameManager::LateUpdate()
