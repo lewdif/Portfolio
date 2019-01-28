@@ -108,10 +108,6 @@ namespace CompEngine
 		if ((int)trans.GetWorldPosition().x != (int)originPoint.x ||
 			(int)trans.GetWorldPosition().z != (int)originPoint.z)
 		{
-			//trans.SetRotation(trans.LookAt(trans.GetWorldPosition(), originPoint));
-
-			//trans.GetWorldPosition(); // ?? 왜 이 함수를 호출하지 않으면 동작하지 않는지 확인 필요.
-
 			Vec3 Forward = GET_TRANSFORM_3D(gameObject)->GetForward() * SceneMgr->GetTimeDelta();
 			Forward *= 2000;
 			rigidBody->SetLinearVelocity(Forward.x, Forward.y, Forward.z);

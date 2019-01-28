@@ -1,6 +1,5 @@
 #include "EnterBtn.h"
 
-
 namespace CompEngine
 {
 	void EnterBtn::Init()

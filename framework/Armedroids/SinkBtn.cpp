@@ -1,4 +1,5 @@
 #include "SinkBtn.h"
+#include "G_Val.h"
 
 
 namespace CompEngine
@@ -42,9 +43,13 @@ namespace CompEngine
 				if (btnCounter == false)
 				{
 					cout << "Sink!" << endl;
-					SceneMgr->CurrentScene()->FindObjectByName("MapSink")->SetIsActive(true);
-					SceneMgr->CurrentScene()->FindObjectByName("CloseBtn")->SetIsActive(true);
-					SceneMgr->CurrentScene()->FindObjectByName("EnterBtn")->SetIsActive(true);
+
+					if (TUTORIAL_OVER)
+					{
+						SceneMgr->CurrentScene()->FindObjectByName("MapSink")->SetIsActive(true);
+						SceneMgr->CurrentScene()->FindObjectByName("CloseBtn")->SetIsActive(true);
+						SceneMgr->CurrentScene()->FindObjectByName("EnterBtn")->SetIsActive(true);
+					}
 					SoundMgr->Play2D(".\\Resources\\Sounds\\Bubble2.wav", 1.0, false);
 				}
 

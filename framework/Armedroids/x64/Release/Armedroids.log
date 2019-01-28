@@ -1,38 +1,397 @@
-﻿  BoneHierarchyLoader.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
-  Bt3dCollision.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
-  Bt3dRigidBody.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+﻿  Arrow.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  BackBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Basin.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  BasinBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  BasinMap.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  BGunMask.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+BGunMask.cpp(45): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  BoneHierarchyLoader.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+BoneHierarchyLoader.cpp(77): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Bowgun.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Box.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Bullet.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Button.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+Button.cpp(48): warning C4244: '초기화 중': 'FLOAT'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Button.cpp(49): warning C4244: '초기화 중': 'FLOAT'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Button.cpp(143): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Button.cpp(144): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Button.cpp(145): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Button.cpp(146): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Clear.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  CloseBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  CollisionEventSphere.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  ContinueBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  ControlImg.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  ControlTutorial.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  CreditsWindow.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  DebugDraw.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+DebugDraw.cpp(23): warning C4267: '인수': 'size_t'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  DrawShape.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  컴파일하고 있습니다...
+  EnterBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  FireImg.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  GameMain.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  GameManager.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  GameOverWindow.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  G_Val.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  InGame.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  InGameBasin.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Machinegun.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  MapImg.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  MapSeclect.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  MGunMask.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+MGunMask.cpp(45): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  NoBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Pirate.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+Pirate.cpp(66): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Pirate.cpp(101): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Pirate.cpp(111): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PirateAttackState.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  PirateChaseState.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  PirateHoldState.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Plane.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  ProjectileArrow.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+ProjectileArrow.cpp(8): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  QuitBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  컴파일하고 있습니다...
+  QuitWindow.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  RestartBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  RigidBody.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
   Camera.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+Camera.cpp(65): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Camera.cpp(67): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Camera.cpp(96): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Camera.cpp(98): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Camera.cpp(127): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Camera.cpp(129): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Component.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
   DeviceManager.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+DeviceManager.cpp(178): warning C4244: '인수': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+DeviceManager.cpp(179): warning C4244: '인수': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+DeviceManager.cpp(238): warning C4800: 'BOOL': 'true' 또는 'false'로 bool 값을 강제하고 있습니다(성능 경고).
+DeviceManager.cpp(257): warning C4244: '인수': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+DeviceManager.cpp(258): warning C4244: '인수': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+DeviceManager.cpp(274): warning C4800: 'BOOL': 'true' 또는 'false'로 bool 값을 강제하고 있습니다(성능 경고).
+DeviceManager.cpp(294): warning C4244: '인수': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+DeviceManager.cpp(314): warning C4800: 'BOOL': 'true' 또는 'false'로 bool 값을 강제하고 있습니다(성능 경고).
+DeviceManager.cpp(326): warning C4800: 'BOOL': 'true' 또는 'false'로 bool 값을 강제하고 있습니다(성능 경고).
   FirstTestCam.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
   GameCharecter.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+GameCharecter.cpp(30): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+GameCharecter.cpp(49): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+GameCharecter.cpp(69): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+GameCharecter.cpp(86): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+GameCharecter.cpp(254): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   GameObject.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
   InputManager.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+InputManager.cpp(48): warning C4244: '인수': 'LONG'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   main.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+main.cpp(101): warning C4244: '인수': 'WPARAM'에서 'char'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   MeshManager.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
   Scene.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+Scene.cpp(183): warning C4244: '인수': 'double'에서 'btScalar'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   SceneManager.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
   Script.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  SettingBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Shark.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+Shark.cpp(66): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Shark.cpp(119): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Shark.cpp(165): warning C4244: '인수': 'double'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SharkAttackState.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  SharkChaseState.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  SharkPatrolState.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  컴파일하고 있습니다...
+  Sink.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  SinkBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
   SkinnedMesh.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+SkinnedMesh.cpp(279): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   Skybox.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Image.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+Image.cpp(65): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Image.cpp(66): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Image.cpp(67): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+Image.cpp(68): warning C4244: '=': 'FLOAT'에서 'LONG'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SoundClip.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  SoundManager.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  StartBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  StaticMesh.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Target.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  TestCam.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  TestScene.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Title.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  TitleCamera.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  ToMapBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  ToTitleBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Transform2D.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+Transform2D.cpp(7): warning C4244: '인수': 'int'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Transform3D.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  TutorialMap.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  UserButton.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  컴파일하고 있습니다...
   Vertex.cpp
-c:\users\june7\desktop\171228\framework\armedroids\headers.h(10): fatal error C1083: 포함 파일을 열 수 없습니다. 'd3dx9.h': No such file or directory
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  Wall.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  WeaponImage.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  WeaponSelector.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  YesBtn.cpp
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(169): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(170): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+c:\bullet3-2.87\src\LinearMath/btIDebugDraw.h(171): warning C4305: '인수': 'double'에서 'const btScalar'(으)로 잘립니다.
+  코드를 생성하고 있습니다.
+c:\users\june7\desktop\framework\armedroids\gameobject.cpp(160): warning C4715: 'CompEngine::GameObject::FindChildByTag': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\june7\desktop\framework\armedroids\scene.cpp(318): warning C4715: 'CompEngine::Scene::GetCurrentCamera': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  All 3487 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  Armedroids.vcxproj -> C:\Users\june7\Desktop\framework\x64\Release\CompEngine.exe
+  Armedroids.vcxproj -> C:\Users\june7\Desktop\framework\x64\Release\CompEngine.pdb (Full PDB)

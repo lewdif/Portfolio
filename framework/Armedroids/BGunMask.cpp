@@ -49,8 +49,6 @@ namespace CompEngine
 				rate = 0;
 			}
 
-			cout << "rate : " << rate << endl;
-
 			imgRect.RightBottom = Vec2(600, rate);
 		}
 		else

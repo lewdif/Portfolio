@@ -307,7 +307,7 @@ namespace CompEngine
 		respawnCounter = 0;
 
 		//playerMesh = new SkinnedMesh();
-		stat = { 1, 150, 1, 50, 1, 8, 1, 8, 8, 0, 0 };
+		stat = { 1, 150, 1, 50, 5, 8, 1, 8, 8, 0, 0 };
 
 		if (!gameObject->GetComponent("Transform3D"))
 		{
